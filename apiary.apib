@@ -83,12 +83,13 @@ This API call will DELETE your defined Datacollection definition. Only Project A
 
 ## DataCollectionDefinitions [/datacollectiondefinitions]
 
-+ Model (application/hal+json)
+### List all DataCollectionDefinitions [GET]
+List all existing Datacollection definitions that the user is authorized to see. 
 
-    JSON representation of a DataCollectionDefinition resource. 
++ Response 200 (application/hal+json)
 
     + Body
-
+    
             {
                 "_links": {
                     "self": {
@@ -126,15 +127,6 @@ This API call will DELETE your defined Datacollection definition. Only Project A
                     ]
                 }
             }
-
-### List all DataCollectionDefinitions [GET]
-List all existing Datacollection definitions that the user is authorized to see. 
-
-+ Response 200 (application/hal+json)
-
-    + Body
-    
-            [datacollectiondefinitions][]
 
 ### Create a DataCollectionDefinition [POST]
 Create a new Datacollection definition.
