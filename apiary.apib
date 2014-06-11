@@ -29,6 +29,27 @@ Collection of all the different APIs provided by HealthData.
 # Group Bulk API
 Bulk-related resources of the **HealthData API**
 
+## Bulks [/bulks]
+
+### Submit a list of Datacollection instances [POST]
+Store a list of Datacollection instances.
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+            
+            {   
+                "datacollection instances": [
+                    {"JSON content datacollection instance 1"},
+                    {"JSON content datacollection instance 2"},
+                    {"JSON content datacollection instance 3"}
+                ]
+            }
++ Response 200
+
 # Group Datacollection Definition API
 DataCollectionDefinitions-related resources of the **HealthData API**
 
@@ -48,6 +69,9 @@ The DataCollectionDefinition resource has the following attributes:
 The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
 
 ## Datacollection Definition - ID [/datacollectiondefinitions/{id}]
+
++ Parameters
+    + id (required, string, `"1"`) ... `ID` of the DataCollectionDefinition. Has example value.
 
 + Model (application/hal+json)
 
@@ -73,11 +97,12 @@ The states *id* and *created_at* are assigned by the Collections API at the mome
 ### GET
 This API call will GET you the Datacollection definition with the provided ID.
 
-+ Parameters
-    + id (required, string, `"1"`) ... `ID` of the DataCollectionDefinition. Has example value.
-
 + Request
-
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
     + Body
     
             {
@@ -88,9 +113,12 @@ This API call will GET you the Datacollection definition with the provided ID.
 ### DELETE
 This API call will DELETE your defined Datacollection definition. Only Project ADMIN can do this action.
 
-+ Parameters
-    + id (required, string, `"1"`) ... `ID` of the DataCollectionDefinition. Has example value.
-
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
 + Response 204
 
 ## Datacollection Definition - Name & Version [/datacollectiondefinitions/{name}/{version}]
@@ -102,7 +130,11 @@ This API call will GET you the Datacollection definition with the provided name 
     + version (required, string, `"v2"`) ... `version` of the DataCollectionDefinition. Has example value.
 
 + Request
-
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
     + Body
     
             {
@@ -122,6 +154,10 @@ List all existing Datacollection definitions that the user is authorized to see.
 
 + Request
     
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
     + Body
             
             {
@@ -173,6 +209,11 @@ List all existing Datacollection definitions that the user is authorized to see.
 Create a new Datacollection definition.
 + Request (application/json)
     
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
+    
     + Body
             
             {   
@@ -206,15 +247,90 @@ Create a new Datacollection definition.
 # Group Transaction API
 Transaction-related resources of the **HealthData API**
 
+The transactional API will offer a programmatic alternative to the forms (the human interface). 
+This API will be accessible by calling applications wanting to submit structured data to HD4DP software.
+
 ## Transaction [/transactions]
 
 ### Submit a Datacollection instance [POST]
 Store a new Datacollection instance.
 + Request (application/json)
-
-        {   
-           "content": "JSON content" 
-        }
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+            
+            {   
+                "content": "JSON content" 
+            }
 + Response 200
 
 # Group Workflow API
+Workflow-related resources of the **HealthData API**
+
+## Workflow [/workflows]
+
+### Create a workflow item [POST]
+Store a new workflow item
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+            
+            {   
+                "status"    : "workflow status" 
+                "content"   : "JSON content" 
+            }
++ Response 200 (application/json)
+    
+    + Body
+            
+            {   
+                "ID"    : "ID of the created workflow item" 
+            }
+
+## Workflow [/workflows/{id}]
+
++ Parameters
+    + id (required, string, `"1"`) ... `ID` of the Workflow item. Has example value.
+
+### Retrieve a workflow item [GET]
+Get a workflow item with the provided ID
+
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+
++ Response 200 (application/json)
+
+    + Body
+            
+            {   
+                "id"      : "id of the workflow"
+                "status"  : "status of the workflow"
+                "content" : "json content" 
+            }
+
+### Update a workflow item [POST]
+Update an existing workflow item
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+            
+            {   
+                "status"    : "workflow status" 
+            }
++ Response 200 (application/json)
