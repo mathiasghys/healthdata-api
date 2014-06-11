@@ -1,0 +1,164 @@
+FORMAT: 1A
+HOST: https://api.healthdata.be
+
+# HealthData API
+Collection of all the different APIs provided by HealthData.
+
+##Allowed HTTPs requests:
+
+- `POST` - To create or update resource
+- `PUT` - To create or update resource
+- `GET` - Get a resource or list of resources
+- `DELETE` - To delete resource
+
+##Description Of Usual Server Responses
+
+- 200 `OK` - the request was successful (some API calls may return 201 instead).
+- 201 `Created` - the request was successful and a resource was created.
+- 204 `No Content` - the request was successful but there is no representation to return (i.e. the response is empty).
+- 400 `Bad Request` - the request could not be understood or was missing required parameters.
+- 401 `Unauthorized` - authentication failed or user doesn't have permissions for requested operation.
+- 403 `Forbidden` - access denied.
+- 404 `Not Found` - resource was not found.
+- 405 `Method Not Allowed` - requested method is not supported for resource.
+- 429 `Too Many Requests` - exceeded GoodData API limits. Pause requests, wait up to one minute, and try again. 
+- 503 `Service Unavailable` - service is temporary unavailable (e.g. scheduled Platform Maintenance). Try again later.
+
+# Group DataCollectionDefinition API
+DataCollectionDefinitions-related resources of the **HealthData API**
+
+## DataCollectionDefinition [/datacollectiondefinitions/{id}]
+A single DataCollectionDefinition object with all its details
+
+The DataCollectionDefinition resource has the following attributes:
+
+- id
+- name
+- language
+- created_at
+- valid_from
+- valid_till
+- description
+- content
+
+The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
+
+
++ Parameters
+    + id (required, string, `1`) ... `ID` of the DataCollectionDefinition. Has example value.
+
++ Model (application/json)
+
+    JSON representation of a DataCollectionDefinition resource. 
+
+    + Body
+
+            {
+                "id": "1",
+                "name": "Datacollection definition 1",
+                "created_at": "2014-06-10T02:15:15Z",
+                "valid_from": "2014-06-10T00:00:00Z",
+                "valid_till": "2024-06-10T00:00:00Z",
+                "description": "Datacollection definition 1 description",
+                "content": "JSON content"
+            }
+
+### Retrieve a DataCollectionDefinition [GET]
+This API call will GET you the Datacollection definition with the provided ID.
+
++ Response 200
+
+    [DataCollectionDefinition][]
+
+### Remove a DataCollectionDefinition [DELETE]
+This API call will DELETE your defined Datacollection definition. Only Project ADMIN can do this action.
+
++ Response 204
+
+
+## DataCollectionDefinitions Collection [/datacollectiondefinitions]
+
+### List all DataCollectionDefinitions [GET]
+List all existing Datacollection definitions that the user is authorized to see. 
+
++ Response 200 (application/hal+json)
+
+    + Body
+    
+            {
+            "_links": {
+                "self": {
+                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions"
+                }
+            },
+            "_embedded": {
+                "datacollectiondefinitions": [
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                            }
+                        },
+                        "id": "1", 
+                        "name": "Datacollection definition 1",
+                        "language": "nl",
+                        "created_at": "2014-06-10T02:15:15Z",
+                        "description": "Description of DataCollection definition 1.",
+                        "content": "JSON content"
+                    },
+                    {
+                        "_links": {
+                            "self": {
+                                "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/2"
+                            }
+                        },
+                         "id": "2", 
+                        "name": "Datacollection definition 2",
+                        "language": "nl",
+                        "created_at": "2014-06-10T02:15:15Z",
+                        "description": "Description of DataCollection definition 2.",
+                        "content": "JSON content"
+                    }
+                ]
+            }
+            }
+
+### Create a DataCollectionDefinition [POST]
+Create a new Datacollection definition.
++ Request (application/json)
+
+        {   
+            "name": "Datacollection definition 1",
+            "language": "nl",
+            "description": "Datacollection definition 1 description.",
+            "content": "JSON content" 
+        }
+
++ Response 201 (application/json)
+
+        {
+            "id": "1",
+            "name": "Datacollection definition 1",
+            "created_at": "2014-06-10T02:15:15Z",
+            "valid_from": "2014-06-10T00:00:00Z",
+            "valid_till": "2024-06-10T00:00:00Z",
+            "description": "Datacollection definition 1 description",
+            "content": "JSON content"
+        }
+        
+# Group Transaction API
+Transaction-related resources of the **HealthData API**
+
+## Transaction [/transactions]
+
+### Submit a Datacollection instance [POST]
+Store a new Datacollection instance.
++ Request (application/json)
+
+        {   
+           "content": "JSON content" 
+        }
++ Response 200
+
+# Group Bulk API
+Bulk-related resources of the **HealthData API**
