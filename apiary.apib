@@ -52,13 +52,18 @@ The states *id* and *created_at* are assigned by the Collections API at the mome
 + Parameters
     + id (required, string, `1`) ... `ID` of the DataCollectionDefinition. Has example value.
 
-+ Model (application/json)
++ Model (application/hal+json)
 
     JSON representation of a DataCollectionDefinition resource. 
 
     + Body
 
             {
+                "_links": {
+                    "self": {
+                        "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                    }
+                },
                 "id": "1",
                 "name": "Datacollection definition 1",
                 "created_at": "2014-06-10T02:15:15Z",
@@ -139,9 +144,14 @@ Create a new Datacollection definition.
             "content": "JSON content" 
         }
 
-+ Response 201 (application/json)
++ Response 201 (application/hal+json)
 
         {
+            "_links": {
+                "self": {
+                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                }
+            },
             "id": "1",
             "name": "Datacollection definition 1",
             "created_at": "2014-06-10T02:15:15Z",
