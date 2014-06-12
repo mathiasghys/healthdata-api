@@ -330,7 +330,50 @@ Create a new Datacollection definition.
             }
         
 # Group Data Provisioning API
-        
+
+# Group Documents API
+Document-related resources  of the **HealthData API**
+
+The Document resource has the following attributes:
+
+- id
+- name
+- description
+- created_at
+- content
+
+The states *id* and *created_at* are assigned by the Documents API at the moment of creation.
+
+## Document [/documents]
+
+### Create a document item [POST]
+Store a new document item
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+            
+            {   
+                "name"          : "name"
+                "description"   : "description"
+                "content"       : "JSON content" 
+            }
++ Response 200 (application/json)
+    
+    + Body
+            
+            {   
+                "ID"    : "ID of the created document item" 
+            }
+
+## Document [/documents/{id}]
+
++ Parameters
+    + id (required, string, `"1"`) ... `ID` of the Document item. Has example value.
+
 # Group Transaction API
 Transaction-related resources of the **HealthData API**
 
@@ -353,8 +396,6 @@ Store a new Datacollection instance.
                 "content": "JSON content" 
             }
 + Response 200
-
-# Group Documents API
 
 # Group Workflow API
 Workflow-related resources of the **HealthData API**
