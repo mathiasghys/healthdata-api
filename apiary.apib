@@ -50,6 +50,93 @@ Store a list of Datacollection instances.
             }
 + Response 200
 
+# Group Codelist API
+Codelists-related resources of the **HealthData API**
+
+The Codelist resource has the following attributes:
+
+- id
+- code
+- created_at
+- description_nl
+- description_fr
+- description_en
+
+The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
+
+## Code Lists [/codelists/]
+
+### POST
+Create a new Code list entry.
++ Request (application/json)
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+
+    + Body
+            
+            {   
+                "code": "code",
+                "description_nl": "Nederlandstalige beschrijving",
+                "description_fr": "Franstalige beschrijving",
+                "description_en": "Engelstalige beschrijving"
+            }
+
++ Response 201 (application/hal+json)
+
+    + Body
+            
+            {
+                "_links": {
+                    "self": {
+                        "href": "http://healthdata.apiary-mock.com/codelists/1"
+                    }
+                },
+                "id": "1",
+                "code": "code",
+                "created_at": "2014-06-10T02:15:15Z",
+                "description_nl": "Nederlandstalige beschrijving",
+                "description_fr": "Franstalige beschrijving",
+                "description_en": "Engelstalige beschrijving"
+            }
+
+## Code list - Code & Language [/codelists/{code}/{language}]
+
+### GET
+This API call will GET you the Code list with the provided code and language.
++ Parameters
+    + code (required, string, `"code"`) ... `code` of the Code list entry. Has example value.
+    + language = `"nl"`(optional, string, `"nl"`)
+
+        'language' of the Code list entry.
+
+        + Values
+            + `nl`
+            + `fr`
+            + `en`
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+    + Body
+    
+            {
+            }
+
++ Response 200
+
+    + Body
+            
+            {
+                "id": "1",
+                "code": "code",
+                "created_at": "2014-06-10T02:15:15Z",
+                "description_nl": "Nederlandstalige beschrijving" 
+            }
+
 # Group Datacollection Definition API
 DataCollectionDefinitions-related resources of the **HealthData API**
 
