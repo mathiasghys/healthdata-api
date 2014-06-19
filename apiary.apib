@@ -429,7 +429,45 @@ Store a new document item
                 "ID"    : "ID of the created document item" 
             }
 
-## Document [/documents/{id}]
+## Document - ID [/documents/{id}]
+
++ Parameters
+    + id (required, string, `"1"`) ... `ID` of the Document. Has example value.
+
++ Model (application/hal+json)
+
+    JSON representation of a Documents resource. 
+
+    + Body
+
+            {
+                "_links": {
+                    "self": {
+                        "href": "http://healthdata.apiary-mock.com/documents/1"
+                    }
+                },
+                "id": "1",
+                "name": "Document 1",
+                "description": "Document 1 description",
+                "created_at": "2014-06-10T02:15:15Z",
+                "content": "JSON content"
+            }
+
+### Get a document item [GET]
+This API call will GET you the Document with the provided ID.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+            
+            {
+            }
++ Response 200
+    [Document - ID][]
 
 + Parameters
     + id (required, string, `"1"`) ... `ID` of the Document item. Has example value.
