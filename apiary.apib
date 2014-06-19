@@ -58,9 +58,9 @@ The Codelist resource has the following attributes:
 - id
 - code
 - created_at
-- description_BE-nl
-- description_fr
-- description_en
+- description_nl-BE
+- description_fr-BE
+- description_en-US
 
 The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
 
@@ -78,9 +78,9 @@ Create a new Code list entry.
             
             {   
                 "code": "code",
-                "description_nl": "Nederlandstalige beschrijving",
-                "description_fr": "Franstalige beschrijving",
-                "description_en": "Engelstalige beschrijving"
+                "description_nl-BE": "Nederlandstalige beschrijving",
+                "description_fr-BE": "Franstalige beschrijving",
+                "description_en-US": "Engelstalige beschrijving"
             }
             
 + Response 201 (application/hal+json)
@@ -96,9 +96,9 @@ Create a new Code list entry.
                 "id": "1",
                 "code": "code",
                 "created_at": "2014-06-10T02:15:15Z",
-                "description_nl": "Nederlandstalige beschrijving",
-                "description_fr": "Franstalige beschrijving",
-                "description_en": "Engelstalige beschrijving"
+                "description_nl-BE": "Nederlandstalige beschrijving",
+                "description_fr-BE": "Franstalige beschrijving",
+                "description_en-US": "Engelstalige beschrijving"
             }
 
 ## Code list - Code & Language [/codelists/{code}/{language}]
@@ -112,9 +112,9 @@ This API call will GET you the Code list with the provided code and language.
         'language' of the Code list entry.
 
         + Values
-            + `nl`
-            + `fr`
-            + `en`
+            + `nl-BE`
+            + `fr-BE`
+            + `en-US`
 
 + Request
     
