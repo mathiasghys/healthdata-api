@@ -64,10 +64,10 @@ The Codelist resource has the following attributes:
 
 The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
 
-## Code Lists [/codelists/]
+## Data Reference [/datareferences/]
 
 ### POST
-Create a new Code list entry.
+Create a new Data Reference entry.
 + Request (application/json)
     
     + Headers
@@ -90,7 +90,7 @@ Create a new Code list entry.
             {
                 "_links": {
                     "self": {
-                        "href": "http://healthdata.apiary-mock.com/codelists/1"
+                        "href": "http://healthdata.apiary-mock.com/datareferences/1"
                     }
                 },
                 "id": "1",
@@ -101,15 +101,16 @@ Create a new Code list entry.
                 "description_en-US": "Engelstalige beschrijving"
             }
 
-## Code list - Code & Language [/codelists/{code}/{language}]
+## Data References - Code & Language [/datareferences/{code}/{language}]
 
 ### GET
-This API call will GET you the Code list with the provided code and language.
+This API call will GET you the Data Reference with the provided code and language.
+
 + Parameters
-    + code (required, string, `"code"`) ... `code` of the Code list entry. Has example value.
+    + code (required, string, `"code"`) ... `code` of the Data Reference entry. Has example value.
     + language = `"nl"`(optional, string, `"nl"`)
 
-        'language' of the Code list entry.
+        'language' of the Data Reference entry.
 
         + Values
             + `nl-BE`
@@ -330,7 +331,64 @@ Create a new Datacollection definition.
             }
 
 ## Datacollection Definition - QueryString parameters [/datacollectiondefinitions{?name,valid_from,valid_till,description}]
+
+List all existing Datacollections that match the given QueryString parameters.
+ 
+### GET
+
++ Request
+    
+    + Headers
         
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+            
+            {
+            }
+
++ Response 200 (application/hal+json)
+
+    + Body
+    
+            {
+                "_links": {
+                    "self": {
+                        "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions"
+                    }
+                },
+                "_embedded": {
+                    "datacollectiondefinitions": [
+                        {
+                            "_links": {
+                                "self": {
+                                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                                }
+                            },
+                            "id": "1", 
+                            "name": "Datacollection definition 1",
+                            "language": "nl",
+                            "created_at": "2014-06-10T02:15:15Z",
+                            "description": "Description of DataCollection definition 1.",
+                            "content": "JSON content"
+                        }
+                        {
+                            "_links": {
+                                "self": {
+                                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/2"
+                                }
+                            },
+                            "id": "2", 
+                            "name": "Datacollection definition 2",
+                            "language": "nl",
+                            "created_at": "2014-06-10T02:15:15Z",
+                            "description": "Description of DataCollection definition 2.",
+                            "content": "JSON content"
+                        }
+                    ]
+                }
+            }
+
 # Group Data Provisioning API
 
 # Group Documents API
