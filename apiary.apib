@@ -509,18 +509,10 @@ Store a new workflow item
             Authorization: "Bearer <<token>>"
             API version : version
     + Body
-            
-            "_links": {
-                    "self": {
-                        "href": "http://healthdata.apiary-mock.com/workflows/1"
-                    }
-                },
+        
             {   
                 "status"    : "workflow status" 
-                "_links": 
-                {
-                    "content": "http://healthdata.apiary-mock.com/documents/1"
-                }
+                "content"   : "JSON content"
             }
 + Response 200 (application/json)
     
@@ -530,10 +522,25 @@ Store a new workflow item
                 "ID"    : "ID of the created workflow item" 
             }
 
-## Workflow [/workflows/{id}]
+## Workflow - ID [/workflows/{id}]
 
 + Parameters
     + id (required, string, `"1"`) ... `ID` of the Workflow item. Has example value.
+
++ Model (application/hal+json)
+
+    JSON representation of a DataCollectionDefinition resource. 
+
+    + Body
+
+            {
+                "_links": {
+                    "self": { "href": "http://healthdata.apiary-mock.com/workflows/1" }
+                    "content": { "href": "http://healthdata.apiary-mock.com/documents/1" }
+                },
+                "id": "1",
+                "status": "New",
+            }
 
 ### Retrieve a workflow item [GET]
 Get a workflow item with the provided ID
@@ -547,16 +554,7 @@ Get a workflow item with the provided ID
 
 + Response 200 (application/hal+json)
 
-    + Body
-            
-            {   
-                "id"      : "id of the workflow"
-                "status"  : "status of the workflow"
-                "_links": 
-                {
-                    "content": "http://healthdata.apiary-mock.com/documents/1"
-                } 
-            }
+    [Workflow - ID][]
 
 ### Update a workflow item [POST]
 Update an existing workflow item
@@ -573,3 +571,5 @@ Update an existing workflow item
                 "status"    : "workflow status" 
             }
 + Response 200
+
+    [Workflow - ID][]
