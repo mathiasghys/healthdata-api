@@ -455,6 +455,27 @@ List all existing Datacollections that match the given QueryString parameters.
             }
 
 # Group Data Provisioning API
+Interface exposed to external parties that want to upload data that will be used for prefilling.
+
+## Data Provisioning [/dataprovisioning]
+
+### POST
+
++ Request (application/json)
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
+            Data type: "csv"
+    
+    + Body
+            
+            {   
+                "content": "data file"
+            }
+
++ Response 201
 
 # Group Documents API
 Document-related resources  of the **HealthData API**
