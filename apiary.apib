@@ -16,6 +16,7 @@ Collection of all the different APIs provided by HealthData.
 - 200 `OK` - the request was successful (some API calls may return 201 instead).
 - 201 `Created` - the request was successful and a resource was created.
 - 204 `No Content` - the request was successful but there is no representation to return (i.e. the response is empty).
+- 302 `Redirected` - the request is redirected to the URL in the Location header.
 - 400 `Bad Request` - the request could not be understood or was missing required parameters.
 - 401 `Unauthorized` - authentication failed or user doesn't have permissions for requested operation.
 - 403 `Forbidden` - access denied.
