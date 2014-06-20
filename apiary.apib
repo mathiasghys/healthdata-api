@@ -500,6 +500,21 @@ Workflow-related resources of the **HealthData API**
 
 ## Workflow [/workflows]
 
++ Model (application/hal+json)
+
+    JSON representation of a DataCollectionDefinition resource. 
+
+    + Body
+
+            {
+                "_links": {
+                    "self": { "href": "http://healthdata.apiary-mock.com/workflows/1" },
+                    "content": { "href": "http://healthdata.apiary-mock.com/documents/1" }
+                },
+                "id": "1",
+                "status": "New"
+            }
+
 ### Create a workflow item [POST]
 Store a new workflow item
 + Request (application/json)
@@ -516,11 +531,7 @@ Store a new workflow item
             }
 + Response 200 (application/json)
     
-    + Body
-            
-            {   
-                "ID"    : "ID of the created workflow item" 
-            }
+    [Workflow][]
 
 ## Workflow - ID [/workflows/{id}]
 
