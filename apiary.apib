@@ -65,47 +65,38 @@ The Codelist resource has the following attributes:
 
 The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
 
-## Data Reference [/datareferences/]
+## Data Reference [/datareferences/{name}/{version}]
 
-### POST
-Create a new Data Reference entry.
-+ Request (application/json)
+### GET
+This API call will GET you the Data Reference with the provided name and version.
++ Parameters
+    + name (required, string, `"postal_codes"`) ... `name` of the Data Reference. Has example value.
+    + version (required, string, `"v2"`) ... `version` of the Data Reference. Has example value.
+
++ Request
     
     + Headers
         
             Authorization: "Bearer <<token>>"
-
+            API version : version
     + Body
-            
-            {   
-                "code": "code",
-                "description_nl-BE": "Nederlandstalige beschrijving",
-                "description_fr-BE": "Franstalige beschrijving",
-                "description_en-US": "Engelstalige beschrijving"
-            }
-            
-+ Response 201 (application/hal+json)
-
-    + Body
-            
+    
             {
-                "_links": {
-                    "self": {
-                        "href": "http://healthdata.apiary-mock.com/datareferences/1"
-                    }
-                },
-                "id": "1",
-                "code": "code",
-                "created_at": "2014-06-10T02:15:15Z",
-                "description_nl-BE": "Nederlandstalige beschrijving",
-                "description_fr-BE": "Franstalige beschrijving",
-                "description_en-US": "Engelstalige beschrijving"
             }
 
-## Data References - Code & Language [/datareferences/{code}/{language}]
++ Response 302
+
+    + Headers
+    
+            Location: "http://healthdata.apiary-mock.com/datareferences/2"
+
+
+
+## Data References - Code & Language [/datareferences/id/{code}/{language}]
 
 + Parameters
-    + code (required, string, `"code"`) ... `code` of the Data Reference entry. Has example value.
+    + id (required, string, `"1"` ) ... `id` of the Data Reference entry.
+    + code (required, string, `"code"`) ... `code` of the Data Reference entry.
     + language = `en-US`(optional, string, `en-US`)
 
         'language' of the Data Reference entry.
