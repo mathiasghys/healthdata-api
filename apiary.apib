@@ -568,6 +568,33 @@ Store a new Datacollection instance.
             }
 + Response 200
 
+# Group Validation API
+API used for the validation of data collection instances.
+
+## Validation [/validations]
+
+### [POST]
+Perform a validation of a data collection instance.
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+        
+            {   
+                "content"   : "JSON content"
+            }
++ Response 200 (application/json)
+    
+    + Body
+        
+            {   
+                "status"    : "OK"
+                "content"   : "JSON content"
+            }
+
 # Group Workflow API
 Workflow-related resources of the **HealthData API**
 
