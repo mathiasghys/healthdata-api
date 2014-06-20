@@ -139,7 +139,7 @@ This API call will GET you the Data Reference with the provided code and languag
 
     [Data References - Code & Language][]
 
-## Data Reference - QueryString parameters [/datareferences{?created_at,description_nl_BE,description_fr_BE,description_en_US}]
+## Data Reference - QueryString parameters [/datareferences/id{?created_at,description_nl_BE,description_fr_BE,description_en_US}]
 
 List all existing Datacollections that match the given QueryString parameters.
 
@@ -149,6 +149,10 @@ Possible QueryString parameters:
 - description_nl_BE
 - description_fr_BE
 - description_en_US
+
++ Parameters
+    + id (required, string, `"1"` ) ... `id` of the Data Reference entry.
+
  
 ### GET
 
