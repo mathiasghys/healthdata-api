@@ -512,7 +512,10 @@ Store a new workflow item
             
             {   
                 "status"    : "workflow status" 
-                "content"   : "JSON content" 
+                "_links": 
+                {
+                    "content": "http://healthdata.apiary-mock.com/documents/1"
+                }
             }
 + Response 200 (application/json)
     
@@ -544,7 +547,10 @@ Get a workflow item with the provided ID
             {   
                 "id"      : "id of the workflow"
                 "status"  : "status of the workflow"
-                "content" : "json content" 
+                "_links": 
+                {
+                    "content": "http://healthdata.apiary-mock.com/documents/1"
+                } 
             }
 
 ### Update a workflow item [POST]
