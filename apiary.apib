@@ -104,17 +104,6 @@ Create a new Data Reference entry.
 
 ## Data References - Code & Language [/datareferences/{code}/{language}]
 
-+ Parameters
-    + code (required, string, `"code"`) ... `code` of the Data Reference entry. Has example value.
-    + language = `"nl"`(optional, string, `"nl"`)
-
-        'language' of the Data Reference entry.
-
-        + Values
-            + `nl-BE`
-            + `fr-BE`
-            + `en-US`
-
 + Model (application/hal+json)
 
     JSON representation of a Data reference resource. 
@@ -135,6 +124,17 @@ Create a new Data Reference entry.
 ### GET
 This API call will GET you the Data Reference with the provided code and language.
 
++ Parameters
+    + code (required, string, `"code"`) ... `code` of the Data Reference entry. Has example value.
+    + language = `"nl"`(optional, string, `"nl"`)
+
+        'language' of the Data Reference entry.
+
+        + Values
+            + `nl-BE`
+            + `fr-BE`
+            + `en-US`
+            
 + Request
     
     + Headers
