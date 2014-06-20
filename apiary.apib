@@ -596,3 +596,52 @@ Delete an existing workflow item
             Authorization: "Bearer <<token>>"
             API version : version
 + Response 204
+
+## Workflow - QueryString parameters [/workflows{?status}]
+
+List all existing Datacollections that match the given QueryString parameters.
+ 
+### GET
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+            
+            {
+            }
+
++ Response 200 (application/hal+json)
+
+    + Body
+    
+            {
+                "_links": {
+                    "self": {
+                        "href": "http://healthdata.apiary-mock.com/workflows"
+                    }
+                },
+                "_embedded": {
+                    "workflows": [
+                        {
+                           "_links": {
+                                "self": { "href": "http://healthdata.apiary-mock.com/workflows/1" },
+                                "content": { "href": "http://healthdata.apiary-mock.com/documents/1" }
+                            },
+                            "id": "1",
+                            "status": "New"
+                        }
+                        {
+                            "_links": {
+                                "self": { "href": "http://healthdata.apiary-mock.com/workflows/2" },
+                                "content": { "href": "http://healthdata.apiary-mock.com/documents/2" }
+                            },
+                            "id": "2",
+                            "status": "New"
+                        }
+                    ]
+                }
+            }
