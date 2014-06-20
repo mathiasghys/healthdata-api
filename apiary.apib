@@ -470,8 +470,16 @@ This API call will GET you the Document with the provided ID.
 + Response 200
     [Document - ID][]
 
-+ Parameters
-    + id (required, string, `"1"`) ... `ID` of the Document item. Has example value.
+### Delete a document item [DELETE]
+This API call will DELETE the defined Document.
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
++ Response 204
 
 # Group Transaction API
 Transaction-related resources of the **HealthData API**
