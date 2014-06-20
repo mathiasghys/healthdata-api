@@ -106,7 +106,7 @@ Create a new Data Reference entry.
 
 + Parameters
     + code (required, string, `"code"`) ... `code` of the Data Reference entry. Has example value.
-    + language = `"nl"`(optional, string, `"nl"`)
+    + language = `"en-US"`(optional, string, `"en-US"`)
 
         'language' of the Data Reference entry.
 
@@ -114,22 +114,6 @@ Create a new Data Reference entry.
             + `nl-BE`
             + `fr-BE`
             + `en-US`
-
-+ Model (application/hal+json)
-
-    JSON representation of a Data reference resource. 
-
-    + Body
-
-            {
-                "_links": {
-                    "self": { "href": "http://healthdata.apiary-mock.com/datareferences/1" }
-                },
-                "id": "1",
-                "code": "code",
-                "created_at": "2014-06-10T02:15:15Z",
-                "description_nl-BE": "Nederlandstalige beschrijving" 
-            }
 
 
 ### GET
@@ -148,7 +132,16 @@ This API call will GET you the Data Reference with the provided code and languag
 + Response 200
 
     + Body
-           [Data References - Code & Language][]
+
+            {
+                "_links": {
+                    "self": { "href": "http://healthdata.apiary-mock.com/datareferences/1" }
+                },
+                "id": "1",
+                "code": "code",
+                "created_at": "2014-06-10T02:15:15Z",
+                "description_nl-BE": "Nederlandstalige beschrijving" 
+            }
 # Group Datacollection Definition API
 DataCollectionDefinitions-related resources of the **HealthData API**
 
