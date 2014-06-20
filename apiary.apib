@@ -510,6 +510,11 @@ Store a new workflow item
             API version : version
     + Body
             
+            "_links": {
+                    "self": {
+                        "href": "http://healthdata.apiary-mock.com/workflows/1"
+                    }
+                },
             {   
                 "status"    : "workflow status" 
                 "_links": 
@@ -540,7 +545,7 @@ Get a workflow item with the provided ID
             Authorization: "Bearer <<token>>"
             API version : version
 
-+ Response 200 (application/json)
++ Response 200 (application/hal+json)
 
     + Body
             
