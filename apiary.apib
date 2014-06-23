@@ -275,6 +275,25 @@ This API call will DELETE your defined Datacollection definition. Only Project A
             API version : version
 + Response 204
 
+### PUT
+This API call will UPDATE your defined Datacollection definition. It is important to state that only the description, published and validTill properties can be updated.
+The other fields are immutable. 
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
+
+    + Body
+    
+            Published: true
+            "valid_till": "2025-06-10T00:00:00Z",
+            "description": "updated description"
+            
++ Response 204
+
 ## Datacollection Definition - Name & Version [/datacollectiondefinitions/{name}/{version}]
 
 ### GET
