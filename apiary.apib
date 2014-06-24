@@ -91,7 +91,7 @@ Possible values are:`nl-BE`,`fr-BE` and `en-US`
 
             {
                 "_links": {
-                    "self": { "href": "http://healthdata.apiary-mock.com/datareferences/1" }
+                    "self": { "href": "https://private-d734-healthdata.apiary-mock.com/datareferences/1" }
                 },
                 "id": "1",
                 "reference_type": "postal_codes",
@@ -122,7 +122,7 @@ This API call will GET you the Data Reference with the provided reference_type a
 
 ## Data Reference - QueryString parameters [/datareferences/reference_type{?reference_code,description,created_at,valid_from,valid_till}]
 
-List all existing Datacollections that match the given QueryString parameters.
+List all existing Data References that match the given QueryString parameters.
 
 Possible QueryString parameters:
 
@@ -168,7 +168,7 @@ Possible QueryString parameters:
                     "datareferences": [
                         {
                             "_links": {
-                                "self": { "href": "http://healthdata.apiary-mock.com/datareferences/1" }
+                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/datareferences/1" }
                             },
                             "id": "1",
                             "reference_type": "postal_codes",
@@ -180,7 +180,7 @@ Possible QueryString parameters:
                         },
                         {
                             "_links": {
-                                "self": { "href": "http://healthdata.apiary-mock.com/datareferences/1" }
+                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/datareferences/2" }
                             },
                                 "id": "2",
                                 "reference_type": "postal_codes",
@@ -227,12 +227,13 @@ The states *id* and *created_at* are assigned by the Collections API at the mome
             {
                 "_links": {
                     "self": {
-                        "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                        "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1"
                     }
                 },
                 "id": "1",
                 "name": "Datacollection definition 1",
                 "created_at": "2014-06-10T02:15:15Z",
+                "published": "false"
                 "valid_from": "2014-06-10T00:00:00Z",
                 "valid_till": "2024-06-10T00:00:00Z",
                 "description": "Datacollection definition 1 description",
@@ -317,7 +318,7 @@ This API call will GET you the Datacollection definition with the provided name 
 
     + Headers
     
-            Location: "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+            Location: "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1"
 
 ## Datacollection Definitions [/datacollectiondefinitions/]
 
@@ -350,7 +351,7 @@ indicating the presence of the Content-Range response header.
             {
                 "_links": {
                     "self": {
-                        "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions"
+                        "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions"
                     }
                 },
                 "_embedded": {
@@ -358,13 +359,14 @@ indicating the presence of the Content-Range response header.
                         {
                             "_links": {
                                 "self": {
-                                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                                    "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1"
                                 }
                             },
                             "id": "1", 
                             "name": "Datacollection definition 1",
                             "language": "nl",
                             "created_at": "2014-06-10T02:15:15Z",
+                            "published": "false"
                             "valid_from": "2014-06-10T00:00:00Z",
                             "valid_till": "2024-06-10T00:00:00Z",
                             "published": false
@@ -374,13 +376,14 @@ indicating the presence of the Content-Range response header.
                         {
                             "_links": {
                                 "self": {
-                                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/2"
+                                    "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/2"
                                 }
                             },
                             "id": "2", 
                             "name": "Datacollection definition 2",
                             "language": "nl",
                             "created_at": "2014-06-10T02:15:15Z",
+                            "published": "false"
                             "valid_from": "2014-06-10T00:00:00Z",
                             "valid_till": "2024-06-10T00:00:00Z",
                             "published": false
@@ -402,7 +405,7 @@ indicating the presence of the Content-Range response header.
             {
                 "_links": {
                     "self": {
-                        "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions"
+                        "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions"
                     }
                 },
                 "_embedded": {
@@ -410,7 +413,7 @@ indicating the presence of the Content-Range response header.
                         {
                             "_links": {
                                 "self": {
-                                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                                    "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1"
                                 }
                             },
                             "id": "1", 
@@ -426,7 +429,7 @@ indicating the presence of the Content-Range response header.
                         {
                             "_links": {
                                 "self": {
-                                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/2"
+                                    "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/2"
                                 }
                             },
                             "id": "2", 
@@ -468,12 +471,13 @@ Create a new Datacollection definition.
             {
                 "_links": {
                     "self": {
-                        "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                        "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1"
                     }
                 },
                 "id": "1",
                 "name": "Datacollection definition 1",
                 "created_at": "2014-06-10T02:15:15Z",
+                "published": "false"
                 "valid_from": "2014-06-10T00:00:00Z",
                 "valid_till": "2024-06-10T00:00:00Z",
                 "published": false
@@ -505,7 +509,7 @@ List all existing Datacollections that match the given QueryString parameters.
             {
                 "_links": {
                     "self": {
-                        "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions"
+                        "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions"
                     }
                 },
                 "_embedded": {
@@ -513,7 +517,7 @@ List all existing Datacollections that match the given QueryString parameters.
                         {
                             "_links": {
                                 "self": {
-                                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/1"
+                                    "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1"
                                 }
                             },
                             "id": "1", 
@@ -526,7 +530,7 @@ List all existing Datacollections that match the given QueryString parameters.
                         {
                             "_links": {
                                 "self": {
-                                    "href": "http://healthdata.apiary-mock.com/datacollectiondefinitions/2"
+                                    "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/2"
                                 }
                             },
                             "id": "2", 
@@ -615,7 +619,7 @@ Store a new document item
             {
                 "_links": {
                     "self": {
-                        "href": "http://healthdata.apiary-mock.com/documents/1"
+                        "href": "https://private-d734-healthdata.apiary-mock.com/documents/1"
                     }
                 },
                 "id": "1",
@@ -715,8 +719,8 @@ Workflow-related resources of the **HealthData API**
 
             {
                 "_links": {
-                    "self": { "href": "http://healthdata.apiary-mock.com/workflows/1" },
-                    "content": { "href": "http://healthdata.apiary-mock.com/documents/1" }
+                    "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/1" },
+                    "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
                 },
                 "id": "1",
                 "status": "New"
@@ -753,8 +757,8 @@ Store a new workflow item
 
             {
                 "_links": {
-                    "self": { "href": "http://healthdata.apiary-mock.com/workflows/1" },
-                    "content": { "href": "http://healthdata.apiary-mock.com/documents/1" }
+                    "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/1" },
+                    "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
                 },
                 "id": "1",
                 "status": "New"
@@ -838,16 +842,16 @@ Possible QueryString parameters:
                     "workflows": [
                         {
                            "_links": {
-                                "self": { "href": "http://healthdata.apiary-mock.com/workflows/1" },
-                                "content": { "href": "http://healthdata.apiary-mock.com/documents/1" }
+                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/1" },
+                                "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
                             },
                             "id": "1",
                             "status": "NEW"
                         },
                         {
                             "_links": {
-                                "self": { "href": "http://healthdata.apiary-mock.com/workflows/2" },
-                                "content": { "href": "http://healthdata.apiary-mock.com/documents/2" }
+                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/2" },
+                                "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/2" }
                             },
                             "id": "2",
                             "status": "NEW"
