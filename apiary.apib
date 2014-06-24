@@ -48,10 +48,6 @@ Store a list of Datacollection instances.
                     {"JSON content datacollection instance 1"},
                     {"JSON content datacollection instance 2"},
                     {"JSON content datacollection instance 3"}
-                ]"datacollection instances": [
-                    {"JSON content datacollection instance 1"},
-                    {"JSON content datacollection instance 2"},
-                    {"JSON content datacollection instance 3"}
                 ]
             }
 + Response 200 (application/hal+json)
@@ -59,11 +55,13 @@ Store a list of Datacollection instances.
     + Body
     
             {
-                "Workflow URIs": [
-                    {"href": "https://private-d734-healthdata.apiary-mock.com/workflows/1"},
-                    {"href": "https://private-d734-healthdata.apiary-mock.com/workflows/2"},
-                    {"href": "https://private-d734-healthdata.apiary-mock.com/workflows/3"}
-                ]
+                "_links": {
+                    "workflow": [
+                        { "href": "http://healthdata.apiary-mock.com/workflows/1" },
+                        { "href": "http://healthdata.apiary-mock.com/workflows/2" },
+                        { "href": "http://healthdata.apiary-mock.com/workflows/3" }
+                    ]
+                }
             }
             
 
@@ -693,6 +691,15 @@ Store a new Datacollection instance.
                 "content": "JSON content" 
             }
 + Response 200
+
+    + Body
+    
+            {
+                "_links": {
+                    "workflow": 
+                        { "href": "http://healthdata.apiary-mock.com/workflows/1" }
+                }
+            }
 
 # Group Validation API
 API used for the validation of data collection instances.
