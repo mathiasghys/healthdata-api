@@ -58,11 +58,14 @@ DataReference-related resources of the **HealthData API**
 The Codelist resource has the following attributes:
 
 - id
-- code
+- reference_type
+- reference_code
+- reference_value_nl-BE
+- reference_value_fr-BE
+- reference_value_en-US
 - created_at
-- description_nl-BE
-- description_fr-BE
-- description_en-US
+- valid_from
+- valid_till
 
 The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
 
@@ -92,35 +95,41 @@ This API call will redirect you the Data Reference with the id that matches the 
             Location: "http://healthdata.apiary-mock.com/datareferences/2"
 
 
+## Data References - Code & Language [/datareferences/{reference_type}/{reference_code}]
 
-## Data References - Code & Language [/datareferences/id/{code}/{language}]
-
-+ Parameters
-    + id (required, string, `"1"` ) ... `id` of the Data Reference entry.
-    + code (required, string, `"code"`) ... `code` of the Data Reference entry.
-    + language = `en-US`(optional, string, `en-US`)
-
-        'language' of the Data Reference entry.
+The desired language is added using the "Accept-Language" header in the request. possible values are:
 
         + Values
             + `nl-BE`
             + `fr-BE`
             + `en-US`
 
++ Parameters
+    + reference_type (required, string, `"postal_code"` ) ... `Reference type` of the Data Reference entry.
+    + reference_code (required, string, `"2000"`) ... `Reference code` of the Data Reference entry.
+
 + Model (application/hal+json)
 
     JSON representation of a Data Reference resource. 
 
-   + Body
+
+    + Headers
+    
+            Content-Language: "en-US"
+
+    + Body
 
             {
                 "_links": {
                     "self": { "href": "http://healthdata.apiary-mock.com/datareferences/1" }
                 },
                 "id": "1",
-                "code": "code",
-                "created_at": "2014-06-10T02:15:15Z",
-                "description_nl-BE": "Nederlandstalige beschrijving" 
+                "reference_type": "postal_codes",
+                "reference_code": "2000",
+                "reference_value_en-US": "Antwerp",
+                "created_at": "2014-06-24T02:15:15Z", 
+                "valid_from": "1995-01-01T00:00:00Z",
+                "valid_till": "2050-01-01T00:00:00Z"
             }
 
 ### GET
