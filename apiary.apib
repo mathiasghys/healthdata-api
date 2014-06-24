@@ -133,80 +133,6 @@ This API call will GET you the Data Reference with the provided reference_type a
 
     [Data References - Code & Language][]
 
-## Data Reference - QueryString parameters [/datareferences/reference_type{?reference_code,description,created_at,valid_from,valid_till}]
-
-List all existing Data References that match the given QueryString parameters.
-
-Possible QueryString parameters:
-
-- reference_code
-- description
-- created_at
-- valid_from
-- valid_till
-
-+ Parameters
-    + reference_type (required, string, `"postal_codes"` ) ... `Reference_type` of the Data Reference entry.
-
- 
-### GET
-
-+ Request
-    
-    + Headers
-        
-            Authorization: "Bearer <<token>>"
-            API version : version
-            Accept-Language: en-US
-    + Body
-            
-            {
-            }
-
-+ Response 200 (application/hal+json)
-
-    + Headers
-            
-            Content-Language: "en-US"
-
-    + Body
-    
-            {
-                "_links": {
-                    "self": {
-                        "href": "https://private-d734-healthdata.apiary-mock.com/datareferences"
-                    }
-                },
-                "_embedded": {
-                    "datareferences": [
-                        {
-                            "_links": {
-                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/datareferences/1" }
-                            },
-                            "id": "1",
-                            "reference_type": "postal_codes",
-                            "reference_code": "2000",
-                            "reference_value_en-US": "Antwerp",
-                            "created_at": "2014-06-24T02:15:15Z", 
-                            "valid_from": "1995-01-01T00:00:00Z",
-                            "valid_till": "2050-01-01T00:00:00Z" 
-                        },
-                        {
-                            "_links": {
-                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/datareferences/2" }
-                            },
-                                "id": "2",
-                                "reference_type": "postal_codes",
-                                "reference_code": "1000",
-                                "reference_value_en-US": "Brussels",
-                                "created_at": "2014-06-24T02:15:15Z", 
-                                "valid_from": "1995-01-01T00:00:00Z",
-                                "valid_till": "2050-01-01T00:00:00Z"
-                        }
-                    ]
-                }
-            }
-            
 # Group Datacollection Definition API
 DataCollectionDefinitions-related resources of the **HealthData API**
 
@@ -557,6 +483,7 @@ List all existing Datacollections that match the given QueryString parameters.
                 }
             }
 
+
 # Group Data Provisioning API
 Interface exposed to external parties that want to upload prefilling data.
 
@@ -579,6 +506,81 @@ Interface exposed to external parties that want to upload prefilling data.
             }
 
 + Response 201
+
+## Data Reference - QueryString parameters [/datareferences/reference_type{?reference_code,description,created_at,valid_from,valid_till}]
+
+List all existing Data References that match the given QueryString parameters.
+
+Possible QueryString parameters:
+
+- reference_code
+- description
+- created_at
+- valid_from
+- valid_till
+
++ Parameters
+    + reference_type (required, string, `"postal_codes"` ) ... `Reference_type` of the Data Reference entry.
+
+ 
+### GET
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
+            Accept-Language: en-US
+    + Body
+            
+            {
+            }
+
++ Response 200 (application/hal+json)
+
+    + Headers
+            
+            Content-Language: "en-US"
+
+    + Body
+    
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://private-d734-healthdata.apiary-mock.com/datareferences"
+                    }
+                },
+                "_embedded": {
+                    "datareferences": [
+                        {
+                            "_links": {
+                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/datareferences/1" }
+                            },
+                            "id": "1",
+                            "reference_type": "postal_codes",
+                            "reference_code": "2000",
+                            "reference_value_en-US": "Antwerp",
+                            "created_at": "2014-06-24T02:15:15Z", 
+                            "valid_from": "1995-01-01T00:00:00Z",
+                            "valid_till": "2050-01-01T00:00:00Z" 
+                        },
+                        {
+                            "_links": {
+                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/datareferences/2" }
+                            },
+                                "id": "2",
+                                "reference_type": "postal_codes",
+                                "reference_code": "1000",
+                                "reference_value_en-US": "Brussels",
+                                "created_at": "2014-06-24T02:15:15Z", 
+                                "valid_from": "1995-01-01T00:00:00Z",
+                                "valid_till": "2050-01-01T00:00:00Z"
+                        }
+                    ]
+                }
+            }
+            
 
 # Group Documents API
 Document-related resources  of the **HealthData API**
