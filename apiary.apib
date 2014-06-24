@@ -69,40 +69,10 @@ The Codelist resource has the following attributes:
 
 The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
 
-## Data Reference [/datareferences/{name}/{version}]
-
-### GET
-This API call will redirect you the Data Reference with the id that matches the provided name and version.
-+ Parameters
-    + name (required, string, `"postal_codes"`) ... `name` of the Data Reference.
-    + version (required, string, `"v2"`) ... `version` of the Data Reference.
-
-+ Request
-    
-    + Headers
-        
-            Authorization: "Bearer <<token>>"
-            API version : version
-    + Body
-    
-            {
-            }
-
-+ Response 302
-
-    + Headers
-    
-            Location: "http://healthdata.apiary-mock.com/datareferences/2"
-
-
 ## Data References - Code & Language [/datareferences/{reference_type}/{reference_code}]
 
-The desired language is added using the "Accept-Language" header in the request. possible values are:
-
-        + Values
-            + `nl-BE`
-            + `fr-BE`
-            + `en-US`
+The desired language is added using the "Accept-Language" header in the request. 
+Possible values are:`nl-BE`,`fr-BE` and `en-US`
 
 + Parameters
     + reference_type (required, string, `"postal_code"` ) ... `Reference type` of the Data Reference entry.
@@ -133,13 +103,14 @@ The desired language is added using the "Accept-Language" header in the request.
             }
 
 ### GET
-This API call will GET you the Data Reference with the provided code and language.
+This API call will GET you the Data Reference with the provided reference_type and reference_code.
             
 + Request
     
     + Headers
         
             Authorization: "Bearer <<token>>"
+            Accept-Language: en-US
     + Body
     
             {
@@ -149,19 +120,20 @@ This API call will GET you the Data Reference with the provided code and languag
 
     [Data References - Code & Language][]
 
-## Data Reference - QueryString parameters [/datareferences/id{?created_at,description_nl_BE,description_fr_BE,description_en_US}]
+## Data Reference - QueryString parameters [/datareferences/reference_type{?reference_code,description,created_at,valid_from,valid_till}]
 
 List all existing Datacollections that match the given QueryString parameters.
 
 Possible QueryString parameters:
 
+- reference_code
+- description
 - created_at
-- description_nl_BE
-- description_fr_BE
-- description_en_US
+- valid_from
+- valid_till
 
 + Parameters
-    + id (required, string, `"1"` ) ... `id` of the Data Reference entry.
+    + reference_type (required, string, `"postal_codes"` ) ... `Reference_type` of the Data Reference entry.
 
  
 ### GET
@@ -172,6 +144,7 @@ Possible QueryString parameters:
         
             Authorization: "Bearer <<token>>"
             API version : version
+            Accept-Language: en-US
     + Body
             
             {
@@ -179,12 +152,16 @@ Possible QueryString parameters:
 
 + Response 200 (application/hal+json)
 
+    + Headers
+            
+            Content-Language: "en-US"
+
     + Body
     
             {
                 "_links": {
                     "self": {
-                        "href": "http://healthdata.apiary-mock.com/datareferences"
+                        "href": "https://private-d734-healthdata.apiary-mock.com/datareferences"
                     }
                 },
                 "_embedded": {
@@ -194,20 +171,24 @@ Possible QueryString parameters:
                                 "self": { "href": "http://healthdata.apiary-mock.com/datareferences/1" }
                             },
                             "id": "1",
-                            "code": "code",
-                            "created_at": "2014-06-10T02:15:15Z",
-                            "description_nl-BE": "Nederlandstalige beschrijving" 
+                            "reference_type": "postal_codes",
+                            "reference_code": "2000",
+                            "reference_value_en-US": "Antwerp",
+                            "created_at": "2014-06-24T02:15:15Z", 
+                            "valid_from": "1995-01-01T00:00:00Z",
+                            "valid_till": "2050-01-01T00:00:00Z" 
                         },
                         {
                             "_links": {
-                                "self": {
-                                    "href": "http://healthdata.apiary-mock.com/datareferences/2"
-                                }
+                                "self": { "href": "http://healthdata.apiary-mock.com/datareferences/1" }
                             },
-                            "id": "2", 
-                            "code": "code",
-                            "created_at": "2014-06-10T02:15:15Z",
-                            "description_nl-BE": "Nederlandstalige beschrijving" 
+                                "id": "2",
+                                "reference_type": "postal_codes",
+                                "reference_code": "1000",
+                                "reference_value_en-US": "Antwerp",
+                                "created_at": "2014-06-24T02:15:15Z", 
+                                "valid_from": "1995-01-01T00:00:00Z",
+                                "valid_till": "2050-01-01T00:00:00Z"
                         }
                     ]
                 }
