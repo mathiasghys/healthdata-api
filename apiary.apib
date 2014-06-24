@@ -48,9 +48,24 @@ Store a list of Datacollection instances.
                     {"JSON content datacollection instance 1"},
                     {"JSON content datacollection instance 2"},
                     {"JSON content datacollection instance 3"}
+                ]"datacollection instances": [
+                    {"JSON content datacollection instance 1"},
+                    {"JSON content datacollection instance 2"},
+                    {"JSON content datacollection instance 3"}
                 ]
             }
-+ Response 200
++ Response 200 (application/hal+json)
+
+    + Body
+    
+            {
+                "Workflow URIs": [
+                    {"href": "https://private-d734-healthdata.apiary-mock.com/workflows/1"},
+                    {"href": "https://private-d734-healthdata.apiary-mock.com/workflows/2"},
+                    {"href": "https://private-d734-healthdata.apiary-mock.com/workflows/3"}
+                ]
+            }
+            
 
 # Group Data Reference API
 DataReference-related resources of the **HealthData API**
