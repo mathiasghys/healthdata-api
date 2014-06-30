@@ -28,42 +28,6 @@ Collection of all the different APIs provided by HealthData.
 
 # Group Annotations API
 
-# Group Bulk API
-Bulk-related resources of the **HealthData API**
-
-## Bulks [/bulks]
-
-### Submit a list of Datacollection instances [POST]
-Store a list of Datacollection instances.
-+ Request (application/json)
-    
-    + Headers
-    
-            Authorization: "Bearer <<token>>"
-            API version : version
-    + Body
-            
-            {   
-                "datacollection instances": [
-                    {"JSON content datacollection instance 1"},
-                    {"JSON content datacollection instance 2"},
-                    {"JSON content datacollection instance 3"}
-                ]
-            }
-+ Response 200 (application/hal+json)
-
-    + Body
-    
-            {
-                "_links": {
-                    "workflow": [
-                        { "href": "http://healthdata.apiary-mock.com/workflows/1" },
-                        { "href": "http://healthdata.apiary-mock.com/workflows/2" },
-                        { "href": "http://healthdata.apiary-mock.com/workflows/3" }
-                    ]
-                }
-            }
-
 # Group Datacollection Definition API
 DataCollectionDefinitions-related resources of the **HealthData API**
 
@@ -669,38 +633,6 @@ This API call will DELETE the defined Document.
             Authorization: "Bearer <<token>>"
             API version : version
 + Response 204
-
-# Group Transaction API
-Transaction-related resources of the **HealthData API**
-
-The transactional API will offer a programmatic alternative to the forms (the human interface). 
-This API will be accessible by calling applications wanting to submit structured data to HD4DP software.
-
-## Transaction [/transactions]
-
-### Submit a Datacollection instance [POST]
-Create a new Workflow instance containing a Datacollection.
-+ Request (application/json)
-    
-    + Headers
-    
-            Authorization: "Bearer <<token>>"
-            API version : version
-    + Body
-            
-            {   
-                "content": "JSON content" 
-            }
-+ Response 200
-
-    + Body
-    
-            {
-                "_links": {
-                    "workflow": 
-                        { "href": "http://healthdata.apiary-mock.com/workflows/1" }
-                }
-            }
 
 # Group Validation API
 API used for the validation of data collection instances.
