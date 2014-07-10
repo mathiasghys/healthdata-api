@@ -821,6 +821,39 @@ This API call will DELETE the defined Document.
             API version : version
 + Response 204
 
+# Group Mapping API
+API used to provide the mapping functionality between the different formats.
+
+## Mapping [/mappings]
+
+### POST
+Perform a mapping from a given format into another specified format.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+        
+            {   
+                "from"  : "csv"
+                "to"    : "json"
+                "content"   : "content"
+            }
++ Response 200 (application/json)
+
+    + Header
+    
+            Content-type: json
+    + Body
+        
+            {   
+                "status"    : "OK"
+                "content"   : "JSON content"
+            }
+
 # Group Validation API
 API used for the validation of data collection instances.
 
