@@ -297,25 +297,6 @@ Only Project ADMIN can do this action and only data collection definitions with 
 
         The data collection definition you want to delete does not exist anymore.
 
-### PUT
-This API call will UPDATE your defined Datacollection definition. It is important to state that only the description, published and validTill properties can be updated.
-The other fields are immutable. 
-
-+ Request
-    
-    + Headers
-        
-            Authorization: "Bearer <<token>>"
-            API version : version
-
-    + Body
-    
-            Published: true
-            "valid_till": "2025-06-10T00:00:00Z",
-            "description": "updated description"
-            
-+ Response 204
-
 ## Datacollection Definition - Name & Version [/datacollectiondefinitions/{name}/{version}]
 
 ### GET
@@ -463,47 +444,6 @@ indicating the presence of the Content-Range response header.
                         }
                     ]
                 }
-            }
-
-### POST
-Create a new Datacollection definition.
-+ Request (application/json)
-    
-    + Headers
-        
-            Authorization: "Bearer <<token>>"
-            API version : version
-    
-    + Body
-            
-            {   
-                "name": "Datacollection definition 1",
-                "language": "nl",
-                "valid_from": "2014-06-10T00:00:00Z",
-                "valid_till": "2024-06-10T00:00:00Z",
-                "description": "Datacollection definition 1 description.",
-                "content": "JSON content" 
-            }
-
-+ Response 201 (application/hal+json)
-
-    + Body
-            
-            {
-                "_links": {
-                    "self": {
-                        "href": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1"
-                    }
-                },
-                "id": "1",
-                "name": "Datacollection definition 1",
-                "created_at": "2014-06-10T02:15:15Z",
-                "published": false
-                "valid_from": "2014-06-10T00:00:00Z",
-                "valid_till": "2024-06-10T00:00:00Z",
-                "published": false
-                "description": "Datacollection definition 1 description",
-                "content": "JSON content"
             }
 
 ## Datacollection Definition - QueryString parameters [/datacollectiondefinitions{?name,valid_from,valid_till,description}]
