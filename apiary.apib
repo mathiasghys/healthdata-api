@@ -224,15 +224,16 @@ The DataCollectionDefinition resource has the following attributes:
 
 - id
 - name
+- description
+- content
+- version
 - language
-- created_at
+- created_on
 - published
 - valid_from
 - valid_till
-- description
-- content
 
-The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
+The states *id* and *created_on* are assigned by the Collections API at the moment of creation.
 
 ## Datacollection Definition - ID [/datacollectiondefinitions/{id}]
 
@@ -276,26 +277,6 @@ This API call will GET you the Datacollection definition with the provided ID.
             }
 + Response 200
     [Datacollection Definition - ID][]
-
-### DELETE
-This API call will DELETE your defined Datacollection definition. 
-Only Project ADMIN can do this action and only data collection definitions with the published property set to false can be deleted.
-
-+ Request
-    
-    + Headers
-        
-            Authorization: "Bearer <<token>>"
-            API version : version
-+ Response 204
-
-+ Response 403
-
-        You are not allowed to delete a data collection definition that is already published.
-
-+ Response 404
-
-        The data collection definition you want to delete does not exist anymore.
 
 ## Datacollection Definition - Name & Version [/datacollectiondefinitions/{name}/{version}]
 
@@ -680,7 +661,7 @@ The Document resource has the following attributes:
 - id
 - name
 - description
-- created_at
+- createdOn
 - content
 
 The states *id* and *created_at* are assigned by the Documents API at the moment of creation.
@@ -730,7 +711,7 @@ Store a new document item
                 "id": "1",
                 "name": "Document 1",
                 "description": "Document 1 description",
-                "created_at": "2014-06-10T02:15:15Z",
+                "createdOn": "2014-06-10T02:15:15Z",
                 "content": "JSON content"
             }
 
@@ -821,6 +802,22 @@ Perform a validation of a data collection instance.
 # Group Workflow API
 Workflow-related resources of the **HealthData API**
 
+The workflow resource has the following attributes:
+
+-id
+-status
+-documentUri
+-createdOn
+-updatedOn
+-history
+
+The history attribute itself has the following attributes:
+
+-id
+-newStatus
+-updatedOn
+-updatedBy
+
 ## Workflow [/workflows]
 
 + Model (application/hal+json)
@@ -835,7 +832,13 @@ Workflow-related resources of the **HealthData API**
                     "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
                 },
                 "id": "1",
-                "status": "New"
+                "status": "IN_PROGRESS"
+                "createdOn": "2014-08-06T09:21:00Z", 
+                "updatedOn": "2014-08-06T09:21:00Z",
+                "history": [
+                    {"id": "1","newStatus": "IN_PROGRESS","updatedOn": "2014-08-05T09:00:00Z","updatedBy": "John Doe"},
+                    {"id": "2","newStatus": "IN_PROGRESS","updatedOn": "2014-08-05T12:00:00Z","updatedBy": "John Doe"}
+                ]
             }
 
 ### Create a workflow item [POST]
@@ -849,7 +852,7 @@ Store a new workflow item
     + Body
         
             {   
-                "status"    : "workflow status" 
+                "status"    : "IN_PROGRESS" 
                 "content"   : "JSON content"
             }
 + Response 200 (application/json)
@@ -873,7 +876,13 @@ Store a new workflow item
                     "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
                 },
                 "id": "1",
-                "status": "SENT"
+                "status": "SUBMITTED"
+                "createdOn": "2014-08-06T09:21:00Z", 
+                "updatedOn": "2014-08-06T09:21:00Z",
+                "history": [
+                    {"id": "1","newStatus": "IN_PROGRESS","updatedOn": "2014-08-05T09:00:00Z","updatedBy": "John Doe"},
+                    {"id": "2","newStatus": "SENT","updatedOn": "2014-08-05T12:00:00Z","updatedBy": "John Doe"}
+                ]
             }
 
 ### Retrieve a workflow item [GET]
@@ -902,7 +911,7 @@ Update an existing workflow item
     + Body
             
             {   
-                "status"    : "SENT" 
+                "status"    : "SUBMITTED" 
             }
 + Response 200
 
@@ -953,12 +962,15 @@ Possible QueryString parameters:
                 "_embedded": {
                     "workflows": [
                         {
-                           "_links": {
+                            "_links": {
                                 "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/1" },
                                 "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
                             },
                             "id": "1",
                             "status": "NEW"
+                            "createdOn": "2014-08-06T09:21:00Z", 
+                            "updatedOn": "2014-08-06T09:21:00Z",
+                            "history": []
                         },
                         {
                             "_links": {
@@ -967,6 +979,9 @@ Possible QueryString parameters:
                             },
                             "id": "2",
                             "status": "NEW"
+                            "createdOn": "2014-08-06T12:21:00Z", 
+                            "updatedOn": "2014-08-06T12:21:00Z",
+                            "history": []
                         }
                     ]
                 }
