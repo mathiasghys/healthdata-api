@@ -831,38 +831,56 @@ The history attribute itself has the following attributes:
             {
                 "id": 1,
                 "status": "NEW",
-                "documentUri": null,
-                "dataCollectionUri": null,
-                "metaData": null,
+                "documentUri": "http://localhost:8080/healthdata_webapp/workflows/1/documents",
+                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
+                "metaData":  {
+                        "PERSON": "Robin Merckx",
+                        "YEAR": "2014"
+                    },
                 "createdOn": "2014-08-21 10:39:04",
                 "updatedOn": "2014-08-21 10:39:04",
-                "history": [{
-                                "action": "CREATE",
-                                "newStatus": "NEW",
-                                "executedOn": "2014-08-21 10:39:04",
-                                "updatedBy": null
-                            }]
+                "history": [
+                    {
+                        "action": "CREATE",
+                        "newStatus": "NEW",
+                        "executedOn": "2014-08-21 10:39:04",
+                        "executedBy": null
+                    }
+                ]
             }
 
 ### Create a workflow item [POST]
-Store a new workflow item
-+ Request (application/json)
+Create a new Workflow 
++ Request
     
     + Headers
     
             Authorization: "Bearer <<token>>"
             API version : version
-    + Body
-        
-            {   
-                "status"    : "NEW" 
-                "content"   : "JSON content"
-            }
-+ Response 200 (application/json)
-    
-    [Workflow][]
 
-## Workflow - ID [/workflows/{id}]
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "id": 1,
+                "status": "NEW",
+                "documentUri": null,
+                "dataCollectionUri": null,
+                "metaData": null,
+                "createdOn": "2014-08-21 11:36:19",
+                "updatedOn": "2014-08-21 11:36:19",
+                "history": [
+                    {
+                        "action": "CREATE",
+                        "newStatus": "NEW",
+                        "executedOn": "2014-08-21 11:36:19",
+                        "updatedBy": null
+                    }
+                ]
+            }
+    
+### Workflow - ID [/workflows/{id}]
 
 + Parameters
     + id (required, string, `"1"`) ... `ID` of the Workflow item. Has example value.
@@ -874,22 +892,28 @@ Store a new workflow item
     + Body
 
             {
-                "_links": {
-                    "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/1" },
-                    "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
-                },
-                "id": "1",
-                "status": "SUBMITTED"
-                "createdOn": "2014-08-06T09:21:00Z", 
-                "updatedOn": "2014-08-06T09:21:00Z",
+                "id": 1,
+                "status": "NEW",
+                "documentUri": "http://localhost:8080/healthdata_webapp/workflows/1/documents",
+                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
+                "metaData":  {
+                        "PERSON": "Robin Merckx",
+                        "YEAR": "2014"
+                    },
+                "createdOn": "2014-08-21 10:39:04",
+                "updatedOn": "2014-08-21 10:39:04",
                 "history": [
-                    {"id": "1","newStatus": "IN_PROGRESS","updatedOn": "2014-08-05T09:00:00Z","updatedBy": "John Doe"},
-                    {"id": "2","newStatus": "SENT","updatedOn": "2014-08-05T12:00:00Z","updatedBy": "John Doe"}
+                    {
+                        "action": "CREATE",
+                        "newStatus": "NEW",
+                        "executedOn": "2014-08-21 10:39:04",
+                        "executedBy": null
+                    }
                 ]
             }
 
-### Retrieve a workflow item [GET]
-Get a workflow item with the provided ID
+### Retrieve a Workflow [GET]
+Get a Workflow with the provided ID
 
 + Request
     
@@ -901,9 +925,203 @@ Get a workflow item with the provided ID
 + Response 200 (application/hal+json)
 
     [Workflow - ID][]
+    
+### Delete a workflow item [DELETE]
+Delete a workflow with the provided ID
 
-### Update a workflow item [PUT]
-Update an existing workflow item
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
+
++ Response 204
+
+## Workflow - QueryString [/workflows{?status,dataCollectionUri,_metaData}]
+ 
+### List all Workflows [GET]
+List all existing Workflows that match the given QueryString parameters.
+
++ Parameters
+    + status (optional, string) ... Status of the Workflow
+    + dataCollectionUri (optional, string) ... DataCollectionUri of the Workflow
+    + _metaData (optional, string) ... All other parameters are concidered metaData where the name is the Key of the metaData end the value is the value of the metaData
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
+
++ Response 200 (application/hal+json)
+
+    + Body
+    
+            [
+                {
+                    "id": 1,
+                    "status": "IN_PROGRESS",
+                    "documentUri": "http://localhost:8080/healthdata_webapp/workflows/1/documents",
+                    "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
+                    "metaData": {
+                        "PERSON": "Robin Merckx",
+                        "YEAR": "2014"
+                    },
+                    "createdOn": "2014-08-21 10:39:04",
+                    "updatedOn": "2014-08-21 11:33:05",
+                    "history": [
+                        {
+                            "action": "CREATE",
+                            "newStatus": "NEW",
+                            "executedOn": "2014-08-21 10:39:04",
+                            "updatedBy": null
+                        },
+                        {
+                            "action": "START",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-08-21 11:33:02",
+                            "updatedBy": null
+                        },
+                        {
+                            "action": "SAVE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-08-21 11:33:05",
+                            "updatedBy": null
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "status": "NEW",
+                    "documentUri": null,
+                    "dataCollectionUri": null,
+                    "metaData": {},
+                    "createdOn": "2014-08-21 11:36:19",
+                    "updatedOn": "2014-08-21 11:36:19",
+                    "history": [
+                        {
+                            "action": "CREATE",
+                            "newStatus": "NEW",
+                            "executedOn": "2014-08-21 11:36:19",
+                            "updatedBy": null
+                        }
+                    ]
+                }
+            ]
+
+## Workflow - ID - Documents [/workflow/{id}/documents]
+
+### Retrieve a Document [GET]
+Retrieve a Document for Workflow with the given 'ID'
+
++ Parameters
+    + id (required, string, `"1"`) ... `ID` of the Workflow item. Has example value.
+    
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "documentContent": "some JSON"
+            }
+            
+## Workflow - Actions [/workflows/actions]
+
+### List all Actions [GET]
+List all actions that can be executed on a Workflow.
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+
++ Response 200 (application/json)
+
+    + Body
+    
+            [
+                {
+                    "action": "CREATE"
+                },
+                {
+                    "action": "START",
+                    "dataCollectionUri": null
+                },
+                {
+                    "action": "SAVE",
+                    "documentContent": "some JSON",
+                    "metaData": {
+                        "PERSON": "Robin Merckx",
+                        "YEAR": "2014"
+                    }
+                },
+                {
+                    "action": "SUBMIT"
+                },
+                {
+                    "action": "START_CORRECTION"
+                },
+                {
+                    "action": "CREATE_FOR_REVIEW",
+                    "documentContent": null,
+                    "metaData": null
+                },
+                {
+                    "action": "START_REVIEW"
+                },
+                {
+                    "action": "SAVE_REVIEW",
+                    "documentContent": null
+                },
+                {
+                    "action": "ACCEPT"
+                },
+                {
+                    "action": "REJECT"
+                }
+            ]
+
+## Workflow - ID - Actions [/workflows/{id}/actions]
+
+### List all Actions [GET]
+List all Actions that can be executed on the Workflow with this 'ID' at this time.
+
++ Parameters
+    + id (required, string, `"1"`) ... `ID` of the Workflow item. Has example value.
+
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+
++ Response 200 (application/json)
+    + Body
+        
+            {
+              "action": "SAVE",
+              "metaData": {
+                                "PERSON" : "Robin Merckx",
+                                "YEAR" : "2014"
+                          },
+              "documentContent": "some JSON"
+            }
+
+### Execute Action [POST]
+Execute an action on the Workflow with this 'ID'.
+
++ Parameters
+    + id (required, string, `"1"`) ... `ID` of the Workflow item. Has example value.
 
 + Request (application/json)
     
@@ -912,84 +1130,13 @@ Update an existing workflow item
             Authorization: "Bearer <<token>>"
             API version : version
     + Body
-            
-            {   
-                "status"    : "SUBMITTED" 
+        
+            {
+              "action": "SAVE",
+              "metaData": {
+                                "PERSON" : "Robin Merckx",
+                                "YEAR" : "2014"
+                          },
+              "documentContent": "some JSON"
             }
 + Response 200
-
-    [Workflow - ID][]
-    
-### Delete a workflow item [DELETE]
-Delete an existing workflow item
-
-+ Request
-    
-    + Headers
-        
-            Authorization: "Bearer <<token>>"
-            API version : version
-+ Response 204
-
-## Workflow - QueryString parameters [/workflows{?status}]
-
-List all existing Datacollections that match the given QueryString parameters.
- 
-Possible QueryString parameters:
-
-- status
- 
-### GET
-
-+ Request
-    
-    + Headers
-        
-            Authorization: "Bearer <<token>>"
-            API version : version
-    + Body
-            
-            {
-            }
-
-+ Response 200 (application/hal+json)
-
-    + Body
-    
-            {
-                "_links": {
-                    "self": {
-                        "href": "http://healthdata.apiary-mock.com/workflows"
-                    }
-                },
-                "_embedded": {
-                    "workflows": [
-                        {
-                            "_links": {
-                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/1" },
-                                "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
-                            },
-                            "id": "1",
-                            "status": "NEW"
-                            "createdOn": "2014-08-06T09:21:00Z", 
-                            "updatedOn": "2014-08-06T09:21:00Z",
-                            "history": [
-                                 {"id": "1","newStatus": "NEW","updatedOn": "2014-08-06T09:21:00Z","updatedBy": "John Doe"}
-                            ]
-                        },
-                        {
-                            "_links": {
-                                "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/2" },
-                                "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/2" }
-                            },
-                            "id": "2",
-                            "status": "NEW"
-                            "createdOn": "2014-08-06T12:21:00Z", 
-                            "updatedOn": "2014-08-06T12:21:00Z",
-                            "history": [
-                                 {"id": "2","newStatus": "NEW","updatedOn": "2014-08-06T12:21:00Z","updatedBy": "John Doe"}
-                            ]
-                        }
-                    ]
-                }
-            }
