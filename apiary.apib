@@ -808,6 +808,7 @@ The workflow resource has the following attributes:
 - status
 - documentUri
 - dataCollectionUri
+- metaData
 - createdOn
 - updatedOn
 - history
@@ -823,22 +824,24 @@ The history attribute itself has the following attributes:
 
 + Model (application/hal+json)
 
-    JSON representation of a DataCollectionDefinition resource. 
+    JSON representation of a Workflow resource. 
 
     + Body
 
             {
-                "_links": {
-                    "self": { "href": "https://private-d734-healthdata.apiary-mock.com/workflows/1" },
-                    "content": { "href": "https://private-d734-healthdata.apiary-mock.com/documents/1" }
-                },
-                "id": "1",
-                "status": "NEW"
-                "createdOn": "2014-08-06T09:21:00Z", 
-                "updatedOn": "2014-08-06T09:21:00Z",
-                "history": [
-                    {"id": "1","newStatus": "NEW","updatedOn": "2014-08-06T09:21:00Z","updatedBy": "John Doe"}
-                ]
+                "id": 1,
+                "status": "NEW",
+                "documentUri": null,
+                "dataCollectionUri": null,
+                "metaData": null,
+                "createdOn": "2014-08-21 10:39:04",
+                "updatedOn": "2014-08-21 10:39:04",
+                "history": [{
+                                "action": "CREATE",
+                                "newStatus": "NEW",
+                                "executedOn": "2014-08-21 10:39:04",
+                                "updatedBy": null
+                            }]
             }
 
 ### Create a workflow item [POST]
