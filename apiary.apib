@@ -769,6 +769,23 @@ Create a new Workflow
             Authorization: "Bearer <<token>>"
             API version : version
 
+    + Body
+        
+            {
+              "action": "CREATE"
+            }
+            
+            or
+            
+            {
+              "action": "CREATE_FOR_REVIEW", 
+              "metaData": {
+                      "PERSON" : "Robin Merckx",
+                      "YEAR" : "2014"
+                  },
+              "documentContent": "some JSON"
+              }
+
 + Response 200 (application/json)
 
     + Body
