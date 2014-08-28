@@ -767,7 +767,6 @@ Create a new Workflow
     + Headers
     
             Authorization: "Bearer <<token>>"
-            API version : version
 
     + Body
         
@@ -848,7 +847,6 @@ Get a Workflow with the provided ID
     + Headers
     
             Authorization: "Bearer <<token>>"
-            API version : version
 
 + Response 200 (application/hal+json)
 
@@ -862,7 +860,6 @@ Delete a workflow with the provided ID
     + Headers
         
             Authorization: "Bearer <<token>>"
-            API version : version
 
 + Response 204
 
@@ -881,7 +878,6 @@ List all existing Workflows that match the given QueryString parameters.
     + Headers
         
             Authorization: "Bearer <<token>>"
-            API version : version
 
 + Response 200 (application/hal+json)
 
@@ -952,7 +948,7 @@ Retrieve a Document for Workflow with the given 'ID'
     + Headers
     
             Authorization: "Bearer <<token>>"
-            API version : version
+
 + Response 200 (application/json)
 
     + Body
@@ -970,7 +966,6 @@ List all actions that can be executed on a Workflow.
     + Headers
     
             Authorization: "Bearer <<token>>"
-            API version : version
 
 + Response 200 (application/json)
 
@@ -1031,7 +1026,6 @@ List all Actions that can be executed on the Workflow with this 'ID' at this tim
     + Headers
     
             Authorization: "Bearer <<token>>"
-            API version : version
 
 + Response 200 (application/json)
     + Body
@@ -1056,7 +1050,7 @@ Execute an action on the Workflow with this 'ID'.
     + Headers
     
             Authorization: "Bearer <<token>>"
-            API version : version
+
     + Body
         
             {
