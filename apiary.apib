@@ -656,10 +656,16 @@ Possible QueryString parameters:
 # Group Mapping API
 API used to provide the mapping functionality between the different formats.
 
-## Mapping [/mappings]
+## Mapping [/mappings{?from,to,dataCollectionUri,content}]
 
 ### POST
-Perform a mapping from a given format into another specified format.
+Perform a one-to-one mapping from a given format into another specified format.
+
++ Parameters
+    + from (required, string, `"kmehr"`) ... The format of the input data
+    + to (required, string, `"skryv"`) ... The desired format of the output
+    + dataCollectionUri (required, string, `"https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/2"`) ... A reference to the data collection definition
+    + content (required, string, `"<a><b></b></a>"`) ... A string with the input data. Double quotes musts be escaped.
 
 + Request (application/json)
     
@@ -670,26 +676,54 @@ Perform a mapping from a given format into another specified format.
     + Body
         
             {   
-                "from"  : "csv"
-                "to"    : "json"
-                "content"   : "content"
+                "from": "kmehr",
+                "to": "skryv",
+                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
+                "content"   : " ... "
             }
 + Response 200 (application/json)
     
     + Body
         
             {   
-                "status"    : "OK"
-                "content"   : "JSON content"
+                "result": " ... "
+            }
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+        
+            {   
+                "from": "xyz",
+                "to": "abc",
+                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
+                "content"   : " ... "
+            }
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "message": "Cannot convert from xyz to abc"
             }
 
 # Group Validation API
 API used for the validation of data collection instances.
 
-## Validation [/validations]
+## Validation [/validations{?dataCollectionUri,content}]
 
 ### POST
 Perform a validation of a data collection instance.
+
++ Parameters
+    + dataCollectionUri (required, string, `"https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/2"`) ... A reference to the data collection definition
+    + content (required, string, `"<a><b></b></a>"`) ... A string with the content of the data collection instance. Double quotes must be escaped.
+
 + Request (application/json)
     
     + Headers
@@ -698,7 +732,8 @@ Perform a validation of a data collection instance.
             API version : version
     + Body
         
-            {   
+            {
+                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
                 "content"   : "JSON content"
             }
 + Response 200 (application/json)
@@ -706,8 +741,9 @@ Perform a validation of a data collection instance.
     + Body
         
             {   
-                "status"    : "OK"
-                "content"   : "JSON content"
+                "result": [
+                    ... validation errors ...
+                ]
             }
 
 # Group Workflow API
