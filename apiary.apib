@@ -731,7 +731,74 @@ The authority object has the following attributes:
 
 ## User [/users]
 
+### POST
+Add a new user to the User database.
 
++ Parameters
+    + user (required, User) ... The user object to store
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+        
+            {
+                "username":"username",
+                "password":"password",
+                "enabled":"true",
+                "authorities": [
+                {
+                    "authority":"ROLE_USER"
+                }],
+                "profiles": [
+                {
+                    "name":"profile_name",
+                    "roles": [
+                    {
+                        "name":"physician"
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                    }]
+                }],
+                "roles": [
+                {
+                    "name":"administrator"
+                    "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                }]
+            }
++ Response 200 (application/json)
+    
+    + Body
+        
+            {
+                "username":"username",
+                "password":"password",
+                "enabled":"true",
+                "authorities": [
+                {
+                     "authorityId":"1"
+                     "authority":"ROLE_USER"
+                }],
+                "profiles": [
+                {
+                    "id":"1",
+                    "name":"profile_name",
+                    "roles": [
+                    {
+                        "id":"1",
+                        "name":"physician",
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                    }]
+                }],
+                "roles": [
+                {
+                    "id": "2",
+                    "name":"administrator",
+                    "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                }]
+            }
 
 # Group Validation API
 API used for the validation of data collection instances.
