@@ -800,6 +800,146 @@ Add a new user to the User database.
                 }]
             }
 
+## User - ID [/users/{username}]
+
++ Parameters
+    + username (required, string, `"Dr. Zhivago"`) ... unique user name of the User object. Has example value.
+
++ Model (application/hal+json)
+
+    JSON representation of a DataCollectionDefinition resource. 
+
+    + Body
+        
+            {
+                "username":"username",
+                "password":"password",
+                "enabled":"true",
+                "authorities": [
+                {
+                     "authorityId":"1"
+                     "authority":"ROLE_USER"
+                }],
+                "profiles": [
+                {
+                    "id":"1",
+                    "name":"profile_name",
+                    "roles": [
+                    {
+                        "id":"1",
+                        "name":"physician",
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                    }]
+                }],
+                "roles": [
+                {
+                    "id": "2",
+                    "name":"administrator",
+                    "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                }]
+            }
+
+###GET
+Retrieve a user object based on username
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+    
+            {
+            }
++ Response 200
+    [User - ID][]
+
+###PUT
+Updates an existing user object. For example for a password change.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+        
+            {
+                "username":"username",
+                "password":"updated_password",
+                "enabled":"true",
+                "authorities": [
+                {
+                    "authorityId":"1"
+                    "authority":"ROLE_USER"
+                }],
+                "profiles": [
+                {
+                    "id":"1",
+                    "name":"profile_name",
+                    "roles": [
+                    {
+                        "id":"1",
+                        "name":"physician"
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                    }]
+                }],
+                "roles": [
+                {
+                    "id":"2",
+                    "name":"administrator"
+                    "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                }]
+            }
++ Response 200 (application/json)
+    
+    + Body
+        
+            {
+                "username":"username",
+                "password":"updated_password",
+                "enabled":"true",
+                "authorities": [
+                {
+                     "authorityId":"1"
+                     "authority":"ROLE_USER"
+                }],
+                "profiles": [
+                {
+                    "id":"1",
+                    "name":"profile_name",
+                    "roles": [
+                    {
+                        "id":"1",
+                        "name":"physician",
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                    }]
+                }],
+                "roles": [
+                {
+                    "id": "2",
+                    "name":"administrator",
+                    "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                }]
+            }
+
+
+###DELETE
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer <<token>>"
+            API version : version
++ Response 204
+
++ Response 404
+
+        The configuration you want to delete does not exist.
+
 # Group Validation API
 API used for the validation of data collection instances.
 
