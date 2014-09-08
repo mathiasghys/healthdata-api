@@ -1174,6 +1174,38 @@ Delete a workflow with the provided ID
                 ]
             }
 
+### Workflow - 2 [/workflows/2]
+
+### Retrieve workflow 2 [GET]
+
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+
++ Response 200 (application/hal+json)
+
+    + Body
+
+            {
+                "id": 2,
+                "status": "NEW",
+                "documentUri": "http://private-96c9c-healthdata.apiary-mock.com/workflows/2/documents",
+                "dataCollectionUri": "http://private-96c9c-healthdata.apiary-mock.com/datacollectiondefinitions/2",
+                "metaData": {},
+                "createdOn": "2014-08-21 11:36:19",
+                "updatedOn": "2014-08-21 11:36:19",
+                "history": [
+                    {
+                        "action": "CREATE",
+                        "newStatus": "NEW",
+                        "executedOn": "2014-08-21 11:36:19",
+                        "updatedBy": null
+                    }
+                ]
+            }
+
 ## Workflow - QueryString [/workflows{?status,dataCollectionUri,_metaData}]
  
 ### List all Workflows [GET]
