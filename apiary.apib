@@ -1299,7 +1299,25 @@ Retrieve a Document for Workflow with the given 'ID'
             {
                 "documentContent": "some JSON"
             }
-            
+
+## Workflow - 1 - Documents [/workflow/1/documents]
+
+### Retrieve document 1 [GET]
+
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "documentContent": "{\"algemeen\":{\"creatiedatum_van_klinische_file\":\"Wed Sep 03 2014 00:00:00 GMT+0200 (CEST)\",\"jaar_van_datacollectie\":2013},\"patientgegevens\":{\"geslacht\":{\"selectedChoice\":\"Vrouw\"},\"etniciteit_vader\":{\"selectedChoice\":\"Zwart-Afrikaans\"},\"etniciteit_moeder\":{\"selectedChoice\":\"Maghrebijns\"},\"datum_van_de_eerste_insulinetoediening\":\"Wed May 15 2013 00:00:00 GMT+0200 (CEST)\",\"patient_niss\":7895,\"geboortemaand\":5,\"geboortejaar\":1997,\"arrondissement\":4,\"overleden\":false},\"datacollectie\":{\"algemeen\":{\"taalproblemen\":{\"selectedChoices\":{}},\"puberteitprepuberteit\":{\"selectedChoice\":\"Puberteit\"},\"insulineschema\":{\"selectedChoice\":\"Individueel samengestelde mengsels toegediend 's morgens en 's avonds met een systematische toediening van een snelle/ultrasnelle insuline (d.w.z. elke dag)\"},\"datum_van_de_meest_recente_consultatie\":\"Thu Dec 12 2013 00:00:00 GMT+0100 (CET)\",\"de_patient_was_gedurende_het_ganse_kalenderjaar_in_behandeling_bij_dit_centrum\":false},\"metingen\":{\"lengte\":{},\"gewicht\":{},\"systolische_bloeddruk\":{},\"diastolische_bloeddruk\":{}},\"screenings\":{\"coeliakie\":{\"selectedChoices\":{}},\"schildklierimmuniteit\":{\"selectedChoices\":{}},\"hypo_of_hyperthyreodie\":{\"selectedChoices\":{}},\"epilepsie\":{\"selectedChoices\":{}},\"retinopathie\":{\"selectedChoices\":{}},\"nefropathie\":{\"selectedChoices\":{}},\"bloedlipiden\":{\"selectedChoices\":{}},\"neuropathie\":{\"selectedChoices\":{}}}}}"
+            }
+
 ## Workflow - Actions [/workflows/actions]
 
 ### List all Actions [GET]
