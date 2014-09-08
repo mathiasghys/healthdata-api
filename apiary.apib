@@ -484,19 +484,22 @@ Interface exposed to external parties that want to upload prefilling data.
 # Group Data Reference API
 DataReference-related resources of the **HealthData API**
 
+This isn't implemented yet and subject to changes
+
 The Codelist resource has the following attributes:
 
 - id
-- reference_type
-- reference_code
-- reference_value_nl-BE
-- reference_value_fr-BE
-- reference_value_en-US
-- created_at
-- valid_from
-- valid_till
+- referenceType
+- referenceCode
+- referenceValueNl
+- referenceValueFr
+- referenceValueEn
+- createdOn
+- validFrom
+- validTill
+- dataReferenceUri
 
-The states *id* and *created_at* are assigned by the Collections API at the moment of creation.
+The states *id* and *createdOn* are assigned by the Collections API at the moment of creation.
 
 ## Data References - Code & Language [/datareferences/{reference_type}/{reference_code}]
 
@@ -507,7 +510,7 @@ Possible values are:`nl-BE`,`fr-BE` and `en-US`
     + reference_type (required, string, `"postal_code"` ) ... `Type` of the Data Reference entry.
     + reference_code (required, string, `"2000"`) ... `Code` of the Data Reference entry.
 
-+ Model (application/hal+json)
++ Model (application/json)
 
     JSON representation of a Data Reference resource. 
 
