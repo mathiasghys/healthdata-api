@@ -1019,17 +1019,15 @@ Perform a validation of a data collection instance.
     + Body
         
             {
-                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
-                "content"   : "JSON content"
+                "dataCollectionUri": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1",
+                "content"   : "{\"algemeen\":{\"creatiedatum_van_klinische_file\":\"Mon Sep 01 2014 00:00:00 GMT+0200 (CEST)\",\"jaar_van_datacollectie\":2013},\"patientgegevens\":{\"geslacht\":{\"selectedChoice\":\"Vrouw\"},\"etniciteit_vader\":{\"selectedChoice\":\"Kaukasisch\"},\"etniciteit_moeder\":{\"selectedChoice\":\"Maghrebijns\"},\"datum_van_de_eerste_insulinetoediening\":\"Thu Feb 10 2011 00:00:00 GMT+0100 (CET)\",\"patient_niss\":1234,\"geboortemaand\":7,\"geboortejaar\":1999},\"datacollectie\":{\"algemeen\":{\"taalproblemen\":{\"selectedChoices\":{}},\"puberteitprepuberteit\":{\"selectedChoice\":\"Puberteit\"},\"insulineschema\":{\"selectedChoice\":\"Insulinepomp\"},\"datum_van_de_meest_recente_consultatie\":\"Fri Feb 15 2013 00:00:00 GMT+0100 (CET)\",\"de_patient_was_gedurende_het_ganse_kalenderjaar_in_behandeling_bij_dit_centrum\":true},\"metingen\":{\"lengte\":{},\"gewicht\":{},\"systolische_bloeddruk\":{\"systolische_bloeddruk_mmhg\":123},\"diastolische_bloeddruk\":{\"diastolische_bloeddruk_mmhg\":120}},\"screenings\":{\"coeliakie\":{\"selectedChoices\":{}},\"schildklierimmuniteit\":{\"selectedChoices\":{}},\"hypo_of_hyperthyreodie\":{\"selectedChoices\":{}},\"epilepsie\":{\"selectedChoices\":{}},\"retinopathie\":{\"selectedChoices\":{}},\"nefropathie\":{\"selectedChoices\":{}},\"bloedlipiden\":{\"selectedChoices\":{}},\"neuropathie\":{\"selectedChoices\":{}}}}}"
             }
 + Response 200 (application/json)
     
     + Body
         
             {   
-                "result": [
-                    ... validation errors ...
-                ]
+                "result": []
             }
 
 # Group Workflow API
