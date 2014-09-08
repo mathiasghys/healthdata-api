@@ -1115,7 +1115,7 @@ Get a Workflow with the provided ID
 + Response 200 (application/hal+json)
 
     [Workflow - ID][]
-    
+
 ### Delete a workflow item [DELETE]
 Delete a workflow with the provided ID
 
@@ -1126,6 +1126,53 @@ Delete a workflow with the provided ID
             Authorization: "Bearer <<token>>"
 
 + Response 204
+
+### Workflow - 1 [/workflows/1]
+
+### Retrieve workflow 1 [GET]
+
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+
++ Response 200 (application/hal+json)
+
+    + Body
+
+            {
+                "id": 1,
+                "status": "IN_PROGRESS",
+                "documentUri": "http://private-96c9c-healthdata.apiary-mock.com/workflows/1/documents",
+                "dataCollectionUri": "http://private-96c9c-healthdata.apiary-mock.com/datacollectiondefinitions/1",
+                "metaData": {
+                    "PERSON": "Robin Merckx",
+                    "YEAR": "2014"
+                },
+                "createdOn": "2014-08-21 10:39:04",
+                "updatedOn": "2014-08-21 11:33:05",
+                "history": [
+                    {
+                        "action": "CREATE",
+                        "newStatus": "NEW",
+                        "executedOn": "2014-08-21 10:39:04",
+                        "updatedBy": null
+                    },
+                    {
+                        "action": "START",
+                        "newStatus": "IN_PROGRESS",
+                        "executedOn": "2014-08-21 11:33:02",
+                        "updatedBy": null
+                    },
+                    {
+                        "action": "SAVE",
+                        "newStatus": "IN_PROGRESS",
+                        "executedOn": "2014-08-21 11:33:05",
+                        "updatedBy": null
+                    }
+                ]
+            }
 
 ## Workflow - QueryString [/workflows{?status,dataCollectionUri,_metaData}]
  
