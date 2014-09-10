@@ -951,13 +951,18 @@ Workflow-related resources of the **HealthData API**
 The workflow resource has the following attributes:
 
 - id
+- hd4dpWorkflowUri
+- landingZoneWorkflowUri
 - status
+- identificationType
+- identificationValue
 - documentUri
 - dataCollectionUri
 - metaData
 - createdOn
 - updatedOn
 - history
+- allowedActions
 
 The history attribute itself has the following attributes:
 
@@ -968,7 +973,7 @@ The history attribute itself has the following attributes:
 
 ## Workflow [/workflows]
 
-+ Model (application/hal+json)
++ Model (application/json)
 
     JSON representation of a Workflow resource. 
 
@@ -976,7 +981,11 @@ The history attribute itself has the following attributes:
 
             {
                 "id": 1,
-                "status": "NEW",
+                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
+                "landingZoneWorkflowUri": null,
+                "status": "IN_PROGRESS",
+                "identificationType": "NIHI",
+                "identificationValue": "NIHI-123",
                 "documentUri": "http://localhost:8080/healthdata_webapp/workflows/1/documents",
                 "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
                 "metaData":  {
@@ -987,10 +996,20 @@ The history attribute itself has the following attributes:
                 "updatedOn": "2014-08-21 10:39:04",
                 "history": [
                     {
-                        "action": "CREATE",
-                        "newStatus": "NEW",
-                        "executedOn": "2014-08-21 10:39:04",
-                        "executedBy": null
+                            "action": "CREATE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:07:15",
+                            "executedBy": "admin"
+                    }
+                ],
+                "allowedActions": [
+                    {
+                        "action": "SAVE",
+                        "documentContent": null,
+                        "metaData": null
+                    },
+                    {
+                        "action": "SUBMIT"
                     }
                 ]
             }
@@ -1007,18 +1026,16 @@ Create a new Workflow
         
             {
               "action": "CREATE"
+                "dataCollectionUri": "testUri"
             }
             
             or
             
             {
               "action": "CREATE_FOR_REVIEW", 
-              "metaData": {
-                      "PERSON" : "Robin Merckx",
-                      "YEAR" : "2014"
-                  },
-              "documentContent": "some JSON"
-              }
+              "documentContent": "some JSON",
+              "hd4dpWorkflowUri": "http://localhost:8080/hd4dp/workflows/1"
+            }
 
 + Response 200 (application/json)
 
@@ -1026,18 +1043,32 @@ Create a new Workflow
     
             {
                 "id": 1,
-                "status": "NEW",
+                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
+                "landingZoneWorkflowUri": null,
+                "status": "IN_PROGRESS",
+                "identificationType": "NIHI",
+                "identificationValue": "NIHI-123",
                 "documentUri": null,
-                "dataCollectionUri": null,
-                "metaData": null,
-                "createdOn": "2014-08-21 11:36:19",
-                "updatedOn": "2014-08-21 11:36:19",
+                "dataCollectionUri": "testUri",
+                "metaData": {},
+                "createdOn": "2014-09-10 09:07:15",
+                "updatedOn": "2014-09-10 09:07:15",
                 "history": [
                     {
                         "action": "CREATE",
-                        "newStatus": "NEW",
-                        "executedOn": "2014-08-21 11:36:19",
-                        "updatedBy": null
+                        "newStatus": "IN_PROGRESS",
+                        "executedOn": "2014-09-10 09:07:15",
+                        "executedBy": "admin"
+                    }
+                ],
+                "allowedActions": [
+                    {
+                        "action": "SAVE",
+                        "documentContent": null,
+                        "metaData": null
+                    },
+                    {
+                        "action": "SUBMIT"
                     }
                 ]
             }
@@ -1047,7 +1078,7 @@ Create a new Workflow
 + Parameters
     + id (required, string, `"1"`) ... `ID` of the Workflow item. Has example value.
 
-+ Model (application/hal+json)
++ Model (application/json)
 
     JSON representation of a DataCollectionDefinition resource. 
 
@@ -1055,21 +1086,32 @@ Create a new Workflow
 
             {
                 "id": 1,
-                "status": "NEW",
-                "documentUri": "http://localhost:8080/healthdata_webapp/workflows/1/documents",
-                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
-                "metaData":  {
-                        "PERSON": "Robin Merckx",
-                        "YEAR": "2014"
-                    },
-                "createdOn": "2014-08-21 10:39:04",
-                "updatedOn": "2014-08-21 10:39:04",
+                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
+                "landingZoneWorkflowUri": null,
+                "status": "IN_PROGRESS",
+                "identificationType": "NIHI",
+                "identificationValue": "NIHI-123",
+                "documentUri": null,
+                "dataCollectionUri": "testUri",
+                "metaData": {},
+                "createdOn": "2014-09-10 09:07:15",
+                "updatedOn": "2014-09-10 09:07:15",
                 "history": [
                     {
                         "action": "CREATE",
-                        "newStatus": "NEW",
-                        "executedOn": "2014-08-21 10:39:04",
-                        "executedBy": null
+                        "newStatus": "IN_PROGRESS",
+                        "executedOn": "2014-09-10 09:07:15",
+                        "executedBy": "admin"
+                    }
+                ],
+                "allowedActions": [
+                    {
+                        "action": "SAVE",
+                        "documentContent": null,
+                        "metaData": null
+                    },
+                    {
+                        "action": "SUBMIT"
                     }
                 ]
             }
@@ -1083,7 +1125,7 @@ Get a Workflow with the provided ID
     
             Authorization: "Bearer <<token>>"
 
-+ Response 200 (application/hal+json)
++ Response 200 (application/json)
 
     [Workflow - ID][]
 
@@ -1108,74 +1150,42 @@ Delete a workflow with the provided ID
     
             Authorization: "Bearer <<token>>"
 
-+ Response 200 (application/hal+json)
++ Response 200 (application/json)
 
     + Body
 
             {
                 "id": 1,
+                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
+                "landingZoneWorkflowUri": null,
                 "status": "IN_PROGRESS",
-                "documentUri": "http://private-96c9c-healthdata.apiary-mock.com/workflows/1/documents",
-                "dataCollectionUri": "http://private-96c9c-healthdata.apiary-mock.com/datacollectiondefinitions/1",
-                "metaData": {
-                    "PERSON": "Robin Merckx",
-                    "YEAR": "2014"
-                },
-                "createdOn": "2014-08-21 10:39:04",
-                "updatedOn": "2014-08-21 11:33:05",
+                "identificationType": "NIHI",
+                "identificationValue": "NIHI-123",
+                "documentUri": null,
+                "dataCollectionUri": "testUri",
+                "metaData": {},
+                "createdOn": "2014-09-10 09:07:15",
+                "updatedOn": "2014-09-10 09:07:15",
                 "history": [
                     {
                         "action": "CREATE",
-                        "newStatus": "NEW",
-                        "executedOn": "2014-08-21 10:39:04",
-                        "updatedBy": null
-                    },
-                    {
-                        "action": "START",
                         "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-08-21 11:33:02",
-                        "updatedBy": null
-                    },
+                        "executedOn": "2014-09-10 09:07:15",
+                        "executedBy": "admin"
+                    }
+                ],
+                "allowedActions": [
                     {
                         "action": "SAVE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-08-21 11:33:05",
-                        "updatedBy": null
-                    }
-                ]
-            }
-
-### Workflow - 2 [/workflows/2]
-
-### Retrieve workflow 2 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer <<token>>"
-
-+ Response 200 (application/hal+json)
-
-    + Body
-
-            {
-                "id": 2,
-                "status": "NEW",
-                "documentUri": "http://private-96c9c-healthdata.apiary-mock.com/workflows/2/documents",
-                "dataCollectionUri": "http://private-96c9c-healthdata.apiary-mock.com/datacollectiondefinitions/2",
-                "metaData": {},
-                "createdOn": "2014-08-21 11:36:19",
-                "updatedOn": "2014-08-21 11:36:19",
-                "history": [
+                        "documentContent": null,
+                        "metaData": null
+                    },
                     {
-                        "action": "CREATE",
-                        "newStatus": "NEW",
-                        "executedOn": "2014-08-21 11:36:19",
-                        "updatedBy": null
+                        "action": "SUBMIT"
                     }
                 ]
             }
+
 
 ## Workflow - QueryString [/workflows{?status,dataCollectionUri,_metaData}]
  
@@ -1200,50 +1210,72 @@ List all existing Workflows that match the given QueryString parameters.
             [
                 {
                     "id": 1,
+                    "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
+                    "landingZoneWorkflowUri": null,
                     "status": "IN_PROGRESS",
-                    "documentUri": "http://private-96c9c-healthdata.apiary-mock.com/workflows/1/documents",
-                    "dataCollectionUri": "http://private-96c9c-healthdata.apiary-mock.com/datacollectiondefinitions/1",
+                    "identificationType": "NIHI",
+                    "identificationValue": "NIHI-123",
+                    "documentUri": "http://localhost:8080/healthdata_hd4dp/workflows/1/documents",
+                    "dataCollectionUri": "testUri",
                     "metaData": {
                         "PERSON": "Robin Merckx",
                         "YEAR": "2014"
                     },
-                    "createdOn": "2014-08-21 10:39:04",
-                    "updatedOn": "2014-08-21 11:33:05",
+                    "createdOn": "2014-09-10 09:07:15",
+                    "updatedOn": "2014-09-10 09:18:27",
                     "history": [
                         {
                             "action": "CREATE",
-                            "newStatus": "NEW",
-                            "executedOn": "2014-08-21 10:39:04",
-                            "updatedBy": null
-                        },
-                        {
-                            "action": "START",
                             "newStatus": "IN_PROGRESS",
-                            "executedOn": "2014-08-21 11:33:02",
-                            "updatedBy": null
+                            "executedOn": "2014-09-10 09:07:15",
+                            "executedBy": "admin"
                         },
                         {
                             "action": "SAVE",
                             "newStatus": "IN_PROGRESS",
-                            "executedOn": "2014-08-21 11:33:05",
-                            "updatedBy": null
+                            "executedOn": "2014-09-10 09:18:27",
+                            "executedBy": "admin"
+                        }
+                    ],
+                    "allowedActions": [
+                        {
+                            "action": "SAVE",
+                            "documentContent": null,
+                            "metaData": null
+                        },
+                        {
+                            "action": "SUBMIT"
                         }
                     ]
                 },
                 {
                     "id": 2,
-                    "status": "NEW",
-                    "documentUri": "http://private-96c9c-healthdata.apiary-mock.com/workflows/2/documents",
-                    "dataCollectionUri": "http://private-96c9c-healthdata.apiary-mock.com/datacollectiondefinitions/2",
+                    "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/2",
+                    "landingZoneWorkflowUri": null,
+                    "status": "IN_PROGRESS",
+                    "identificationType": "NIHI",
+                    "identificationValue": "NIHI-123",
+                    "documentUri": null,
+                    "dataCollectionUri": "testUri",
                     "metaData": {},
-                    "createdOn": "2014-08-21 11:36:19",
-                    "updatedOn": "2014-08-21 11:36:19",
+                    "createdOn": "2014-09-10 09:19:14",
+                    "updatedOn": "2014-09-10 09:19:14",
                     "history": [
                         {
                             "action": "CREATE",
-                            "newStatus": "NEW",
-                            "executedOn": "2014-08-21 11:36:19",
-                            "updatedBy": null
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:19:14",
+                            "executedBy": "admin"
+                        }
+                    ],
+                    "allowedActions": [
+                        {
+                            "action": "SAVE",
+                            "documentContent": null,
+                            "metaData": null
+                        },
+                        {
+                            "action": "SUBMIT"
                         }
                     ]
                 }
@@ -1305,19 +1337,13 @@ List all actions that can be executed on a Workflow.
     
             [
                 {
-                    "action": "CREATE"
-                },
-                {
-                    "action": "START",
+                    "action": "CREATE",
                     "dataCollectionUri": null
                 },
                 {
                     "action": "SAVE",
-                    "documentContent": "some JSON",
-                    "metaData": {
-                        "PERSON": "Robin Merckx",
-                        "YEAR": "2014"
-                    }
+                    "documentContent": null,
+                    "metaData": null
                 },
                 {
                     "action": "SUBMIT"
@@ -1328,7 +1354,7 @@ List all actions that can be executed on a Workflow.
                 {
                     "action": "CREATE_FOR_REVIEW",
                     "documentContent": null,
-                    "metaData": null
+                    "hd4dpWorkflowUri": null
                 },
                 {
                     "action": "START_REVIEW"
@@ -1346,30 +1372,6 @@ List all actions that can be executed on a Workflow.
             ]
 
 ## Workflow - ID - Actions [/workflows/{id}/actions]
-
-### List all Actions [GET]
-List all Actions that can be executed on the Workflow with this 'ID' at this time.
-
-+ Parameters
-    + id (required, string, `"1"`) ... `ID` of the Workflow item. Has example value.
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer <<token>>"
-
-+ Response 200 (application/json)
-    + Body
-        
-            {
-              "action": "SAVE",
-              "metaData": {
-                                "PERSON" : "Robin Merckx",
-                                "YEAR" : "2014"
-                          },
-              "documentContent": "some JSON"
-            }
 
 ### Execute Action [POST]
 Execute an action on the Workflow with this 'ID'.
@@ -1394,3 +1396,46 @@ Execute an action on the Workflow with this 'ID'.
               "documentContent": "some JSON"
             }
 + Response 200
+
+    + Body
+    
+            {
+                    "id": 1,
+                    "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
+                    "landingZoneWorkflowUri": null,
+                    "status": "IN_PROGRESS",
+                    "identificationType": "NIHI",
+                    "identificationValue": "NIHI-123",
+                    "documentUri": "http://localhost:8080/healthdata_hd4dp/workflows/1/documents",
+                    "dataCollectionUri": "testUri",
+                    "metaData": {
+                        "PERSON": "Robin Merckx",
+                        "YEAR": "2014"
+                    },
+                    "createdOn": "2014-09-10 09:07:15",
+                    "updatedOn": "2014-09-10 09:18:27",
+                    "history": [
+                        {
+                            "action": "CREATE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:07:15",
+                            "executedBy": "admin"
+                        },
+                        {
+                            "action": "SAVE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:18:27",
+                            "executedBy": "admin"
+                        }
+                    ],
+                    "allowedActions": [
+                        {
+                            "action": "SAVE",
+                            "documentContent": null,
+                            "metaData": null
+                        },
+                        {
+                            "action": "SUBMIT"
+                        }
+                    ]
+                }
