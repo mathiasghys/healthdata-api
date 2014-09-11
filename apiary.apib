@@ -627,12 +627,14 @@ Possible QueryString parameters:
             }
 
 # Group Mapping API
-API used to provide the mapping functionality between the different formats.
+The purpose of this API is to export existing documents to various output formats
+and to create new documents based on existing data.
 
 ## Mapping [/mappings{?from,to,dataCollectionUri,content}]
 
 ### POST
-Perform a one-to-one mapping from a given format into another specified format.
+Perform a one-to-one mapping from a given format into another specified format. One of the
+formats must always be a document that satisfies the given data collection definition.
 
 + Parameters
     + from (required, string, `"kmehr"`) ... The format of the input data
@@ -659,6 +661,7 @@ Perform a one-to-one mapping from a given format into another specified format.
     + Body
             
             {   
+                "info": "This string contains information about which data was extracted from the input data",
                 "result": "{\"geslacht\":{\"values\":{\"vrouw\":{},\"man\":{}}},\"etniciteit_vader\":{\"values\":{\"kaukasisch\":{},\"maghrebijns\":{},\"zwartafrikaans\":{},\"andere\":{}}},\"etniciteit_moeder\":{\"values\":{\"kaukasisch\":{},\"maghrebijns\":{},\"zwartafrikaans\":{},\"andere\":{}}},\"taalproblemen\":{\"selectedOptions\":{},\"values\":{\"zijn_er_taalproblemen_die_de_communicatie_bemoeilijken\":{}}},\"puberteitprepuberteit\":{\"values\":{\"puberteit\":{},\"prepuberteit\":{}}},\"insulineschema\":{\"values\":{\"standaard_mengsels_toegediend_s_morgens_en_s_avonds_met_occasioneel_een_extra_toediening_van_snelleultrasnelle_insuline\":{},\"individueel_samengestelde_mengsels_toegediend_s_morgens_en_s_avonds_met_occasioneel_een_extra_toediening_van_snelleultrasnelle_insuline\":{},\"individueel_samengestelde_mengsels_toegediend_s_morgens_en_s_avonds_met_een_systematische_toediening_van_een_snelleultrasnelle_insuline_dwz_elke_dag\":{},\"basaalprandiale_insulinebehandeling_basaalbolus\":{},\"insulinepomp\":{},\"andere\":{}}},\"lengte\":{},\"gewicht\":{\"gewicht_kg\":76.3},\"systolische_bloeddruk\":{},\"diastolische_bloeddruk\":{},\"coeliakie\":{\"selectedOptions\":{},\"values\":{\"gebeurde_screening_naar_coeliakie\":{}}},\"schildklierimmuniteit\":{\"selectedOptions\":{},\"values\":{\"gebeurde_screening_naar_schildklierautoimmuniteit\":{}}},\"hypo_of_hyperthyreodie\":{\"selectedOptions\":{},\"values\":{\"wordt_de_patient_behandeld_voor_hypo_of_hyperthyreodie\":{}}},\"epilepsie\":{\"selectedOptions\":{},\"values\":{\"wordt_de_patient_behandeld_voor_epilepsie\":{}}},\"retinopathie\":{\"selectedOptions\":{},\"values\":{\"gebeurde_screening_naar_retinopathie\":{}}},\"nefropathie\":{\"selectedOptions\":{},\"values\":{\"gebeurde_screening_naar_nefropathie\":{}}},\"bloedlipiden\":{\"selectedOptions\":{},\"values\":{\"gebeurde_bepaling_van_bloedlipiden\":{}}},\"neuropathie\":{\"selectedOptions\":{},\"values\":{\"gebeurde_screening_naar_neuropathie\":{}}}}"
             }
 
