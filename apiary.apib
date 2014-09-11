@@ -685,6 +685,29 @@ Perform a one-to-one mapping from a given format into another specified format.
                 "message": "Cannot convert from xyz to abc"
             }
 
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <<token>>"
+            API version : version
+    + Body
+        
+            {   
+                "from": "kmehr",
+                "to": "skryv",
+                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
+                "content"   : "This is not KMEHR"
+            }
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "message": "The input data is invalid"
+            }
+
 # Group User API
 API user for the management of Users in Healthdata.
 
