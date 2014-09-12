@@ -70,7 +70,7 @@ Create a new configuration key-value pair.
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
     + Body
             
@@ -103,7 +103,7 @@ This API call will GET you the Configuration value that matches the passed key.
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
     + Body
     
             {
@@ -118,7 +118,7 @@ This API call will DELETE the configuration value that matches the passed key
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 + Response 204
 
 + Response 404
@@ -132,7 +132,7 @@ This API call will UPDATE an existing configuration value.
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
     + Body
     
@@ -156,7 +156,7 @@ List all existing configuration keys with their according values.
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
     + Body
             
             {
@@ -468,7 +468,7 @@ Interface exposed to external parties that want to upload prefilling data.
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
             Data type: "csv"
     
@@ -541,7 +541,7 @@ This API call will GET you the Data Reference with the provided reference_type a
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             Accept-Language: en-US
     + Body
     
@@ -574,7 +574,7 @@ Possible QueryString parameters:
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
             Accept-Language: en-US
     + Body
@@ -646,7 +646,7 @@ formats must always be a document that satisfies the given data collection defin
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
     + Body
         
@@ -669,7 +669,7 @@ formats must always be a document that satisfies the given data collection defin
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
     + Body
         
@@ -692,7 +692,7 @@ formats must always be a document that satisfies the given data collection defin
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
     + Body
         
@@ -709,6 +709,42 @@ formats must always be a document that satisfies the given data collection defin
     
             {
                 "message": "The input data is invalid"
+            }
+
+# Group Oauth 2.O API
+Oauth 2.0 complient standard used to obtain the access token and the refresh token.
+
+## Oauth Token [/oauth/token?{username,password,client_id,grant_type}]
+
+### POST
+Requests a Oauth token based on a username/password combination together with a client id that must be available in the Authentication database.
+The actual token and a refresh token must be returned by the service
+
++ Parameters
+    + username (required, string, `"admin"`) ... The username of client that requests the token.
+    + password (required, string, `"admin_password"`) ... The password of client that requests the token.
+    + client_id (required, string, `"healthdata_client"`) ... The client identifier for your application.
+    + grant_type (required, string, `"password"`) ... The access grant type included in the request. The grant_type identifies what type of grant you are passing into the method.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Accept: Application/json
+    + Body
+        
+            {   
+            }
++ Response 200 (application/json)
+    
+    + Body
+            
+            {
+                "access_token": "d33af621-0a6e-40f7-b1f4-d4226b45bbad",
+                "token_type": "bearer",
+                "refresh_token": "ab3ed73f-7d83-4274-bce5-d8d5c2f01c70",
+                "expires_in": 299,
+                "scope": "read trust write"
             }
 
 # Group User API
@@ -740,7 +776,7 @@ Add a new user to the User database.
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
     + Body
         
@@ -845,7 +881,7 @@ Retrieve a user object based on username
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
     + Body
     
@@ -861,7 +897,7 @@ Updates an existing user object. For example for a password change.
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
     + Body
         
@@ -931,7 +967,7 @@ Updates an existing user object. For example for a password change.
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
 + Response 204
 
@@ -955,7 +991,7 @@ Perform a validation of a data collection instance.
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             API version : version
     + Body
         
@@ -1048,7 +1084,7 @@ Create a new Workflow
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
     + Body
         
@@ -1153,7 +1189,7 @@ Get a Workflow with the provided ID
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
 + Response 200 (application/json)
 
@@ -1166,7 +1202,7 @@ Delete a workflow with the provided ID
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
 + Response 204
 
@@ -1178,7 +1214,7 @@ Delete a workflow with the provided ID
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
 + Response 200 (application/json)
 
@@ -1225,7 +1261,7 @@ Delete a workflow with the provided ID
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
 + Response 200 (application/json)
 
@@ -1278,7 +1314,7 @@ List all existing Workflows that match the given QueryString parameters.
     
     + Headers
         
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
 + Response 200 (application/hal+json)
 
@@ -1372,7 +1408,7 @@ Retrieve a Document for Workflow with the given 'ID'
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
 + Response 200 (application/json)
 
@@ -1390,7 +1426,7 @@ Retrieve a Document for Workflow with the given 'ID'
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
 + Response 200 (application/json)
 
@@ -1408,7 +1444,7 @@ List all actions that can be executed on a Workflow.
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
 + Response 200 (application/json)
 
@@ -1462,7 +1498,7 @@ Execute an action on the Workflow with this 'ID'.
     
     + Headers
     
-            Authorization: "Bearer <<token>>"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
     + Body
         
