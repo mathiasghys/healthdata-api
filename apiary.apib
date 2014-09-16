@@ -747,6 +747,31 @@ The actual token and a refresh token must be returned by the service
                 "scope": "read trust write"
             }
 
+### Oauth - Dummy [/oauth/token?username=admin&password=admin&client_id=1&grant_type=password]
+
+### Retrieve token [GET]
+
++ Request (application/json)
+    
+    + Headers
+    
+            Accept: Application/json
+    + Body
+        
+            {   
+            }
++ Response 200 (application/json)
+    
+    + Body
+            
+            {
+                "access_token": "d33af621-0a6e-40f7-b1f4-d4226b45bbad",
+                "token_type": "bearer",
+                "refresh_token": "ab3ed73f-7d83-4274-bce5-d8d5c2f01c70",
+                "expires_in": 299,
+                "scope": "read trust write"
+            }
+
 # Group User API
 API user for the management of Users in Healthdata.
 
