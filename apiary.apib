@@ -714,7 +714,7 @@ formats must always be a document that satisfies the given data collection defin
 # Group Oauth 2.O API
 Oauth 2.0 complient standard used to obtain the access token and the refresh token.
 
-## Oauth Token [/oauth/token?{username,password,client_id,grant_type}]
+## Oauth Token Refresh Token [/oauth/token?{username,password,client_id,grant_type}]
 
 ### POST
 Requests a Oauth token based on a username/password combination together with a client id that must be available in the Authentication database.
@@ -747,9 +747,16 @@ The actual token and a refresh token must be returned by the service
                 "scope": "read trust write"
             }
 
-### Oauth - Dummy [/oauth/token?username=admin&password=admin&client_id=1&grant_type=password]
+## Oauth Token Access Token [/oauth/token?{client_id,grant_type,refresh_token}]
 
-### Retrieve token [GET]
+### POST
+Requests a Oauth access token based on the refreshtoken
+The actual token and a refresh token must be returned by the service
+
++ Parameters
+    + refresh_token (required, string, `"ab3ed73f-7d83-4274-bce5-d8d5c2f01c70"`) ... The refresh token received by a previous request at the Oauth2 service.
+    + client_id (required, string, `"healthdata_client"`) ... The client identifier for your application.
+    + grant_type (required, string, `"refresh_token"`) ... The access grant type included in the request. The grant_type identifies what type of grant you are passing into the method.
 
 + Request (application/json)
     
@@ -771,6 +778,7 @@ The actual token and a refresh token must be returned by the service
                 "expires_in": 299,
                 "scope": "read trust write"
             }
+
 
 # Group User API
 API user for the management of Users in Healthdata.
