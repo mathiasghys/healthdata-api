@@ -930,8 +930,28 @@ The supported mappings include:
     + Body
     
             {
-                "error": "invalid_input"
+                "error": "invalid_request"
                 "error_description": "There is no mapping from xyz to abc"
+            }
+
++ Request (application/json)
+
+    + Body
+        
+            {   
+                "from": "xyz",
+                "to": "abc",
+                "dataCollectionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/1",
+                "content"   : " ... "
+            }
+
++ Response 503 (application/json)
+
+    + Body
+    
+            {
+                "error": "failed_request",
+                "error_description": "Could not obtain the data collection definition"
             }
 
 + Request (application/json)
@@ -951,7 +971,7 @@ The supported mappings include:
     
             {
                 "error": "invalid_input",
-                "error_description": "The input data is invalid"
+                "error_description": "The input data is not valid KMEHR"
             }
 
 # Group Oauth 2.O API
@@ -1261,26 +1281,47 @@ Perform a validation of a data collection instance.
 
 + Parameters
     + dataCollectionUri (required, string, `"https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/2"`) ... A reference to the data collection definition
-    + content (required, string, `"<a><b></b></a>"`) ... A string with the content of the data collection instance. Double quotes must be escaped.
+    + content (required, string, `"{ \"niss\": 12345 }"`) ... A string with the content of the data collection instance. Double quotes must be escaped.
 
 + Request (application/json)
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-            API version : version
+
     + Body
         
             {
                 "dataCollectionUri": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1",
                 "content"   : "{\"algemeen\":{\"creatiedatum_van_klinische_file\":\"Mon Sep 01 2014 00:00:00 GMT+0200 (CEST)\",\"jaar_van_datacollectie\":2013},\"patientgegevens\":{\"geslacht\":{\"selectedChoice\":\"Vrouw\"},\"etniciteit_vader\":{\"selectedChoice\":\"Kaukasisch\"},\"etniciteit_moeder\":{\"selectedChoice\":\"Maghrebijns\"},\"datum_van_de_eerste_insulinetoediening\":\"Thu Feb 10 2011 00:00:00 GMT+0100 (CET)\",\"patient_niss\":1234,\"geboortemaand\":7,\"geboortejaar\":1999},\"datacollectie\":{\"algemeen\":{\"taalproblemen\":{\"selectedChoices\":{}},\"puberteitprepuberteit\":{\"selectedChoice\":\"Puberteit\"},\"insulineschema\":{\"selectedChoice\":\"Insulinepomp\"},\"datum_van_de_meest_recente_consultatie\":\"Fri Feb 15 2013 00:00:00 GMT+0100 (CET)\",\"de_patient_was_gedurende_het_ganse_kalenderjaar_in_behandeling_bij_dit_centrum\":true},\"metingen\":{\"lengte\":{},\"gewicht\":{},\"systolische_bloeddruk\":{\"systolische_bloeddruk_mmhg\":123},\"diastolische_bloeddruk\":{\"diastolische_bloeddruk_mmhg\":120}},\"screenings\":{\"coeliakie\":{\"selectedChoices\":{}},\"schildklierimmuniteit\":{\"selectedChoices\":{}},\"hypo_of_hyperthyreodie\":{\"selectedChoices\":{}},\"epilepsie\":{\"selectedChoices\":{}},\"retinopathie\":{\"selectedChoices\":{}},\"nefropathie\":{\"selectedChoices\":{}},\"bloedlipiden\":{\"selectedChoices\":{}},\"neuropathie\":{\"selectedChoices\":{}}}}}"
             }
+
 + Response 200 (application/json)
     
     + Body
         
             {   
-                "result": []
+                "validation_errors": [
+                    "Weight is a required field.",
+                    "Height must be a non-negative number."
+                ],
+                "validation_warnings": [
+                    "Please verify the age."
+                ]
+            }
+
++ Request (application/json)
+
+    + Body
+        
+            {
+                "dataCollectionUri": "https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/1",
+                "content"   : "{\"algemeen\":{\"creatiedatum_van_klinische_file\":\"Mon Sep 01 2014 00:00:00 GMT+0200 (CEST)\",\"jaar_van_datacollectie\":2013},\"patientgegevens\":{\"geslacht\":{\"selectedChoice\":\"Vrouw\"},\"etniciteit_vader\":{\"selectedChoice\":\"Kaukasisch\"},\"etniciteit_moeder\":{\"selectedChoice\":\"Maghrebijns\"},\"datum_van_de_eerste_insulinetoediening\":\"Thu Feb 10 2011 00:00:00 GMT+0100 (CET)\",\"patient_niss\":1234,\"geboortemaand\":7,\"geboortejaar\":1999},\"datacollectie\":{\"algemeen\":{\"taalproblemen\":{\"selectedChoices\":{}},\"puberteitprepuberteit\":{\"selectedChoice\":\"Puberteit\"},\"insulineschema\":{\"selectedChoice\":\"Insulinepomp\"},\"datum_van_de_meest_recente_consultatie\":\"Fri Feb 15 2013 00:00:00 GMT+0100 (CET)\",\"de_patient_was_gedurende_het_ganse_kalenderjaar_in_behandeling_bij_dit_centrum\":true},\"metingen\":{\"lengte\":{},\"gewicht\":{},\"systolische_bloeddruk\":{\"systolische_bloeddruk_mmhg\":123},\"diastolische_bloeddruk\":{\"diastolische_bloeddruk_mmhg\":120}},\"screenings\":{\"coeliakie\":{\"selectedChoices\":{}},\"schildklierimmuniteit\":{\"selectedChoices\":{}},\"hypo_of_hyperthyreodie\":{\"selectedChoices\":{}},\"epilepsie\":{\"selectedChoices\":{}},\"retinopathie\":{\"selectedChoices\":{}},\"nefropathie\":{\"selectedChoices\":{}},\"bloedlipiden\":{\"selectedChoices\":{}},\"neuropathie\":{\"selectedChoices\":{}}}}}"
+            }
+
++ Response 503 (application/json)
+    
+    + Body
+        
+            {
+                "error": "failed_request",
+                "error_description": "Could not obtain the data collection definition"
             }
 
 # Group Workflow API
