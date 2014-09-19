@@ -868,20 +868,32 @@ Possible QueryString parameters:
             }
 
 # Group Mapping API
-The purpose of this API is to export existing documents to various output formats
-and to create new documents based on existing data.
+The purpose of this API is convert data from one format to another.
+The available formats include:
+
+- _kmehr_: an XML document following a KMEHR standard
+- _csv_: a CSV file
+- _healthdata_: the healthdata-specific data format for documents (including annotations)
+- _healthdata-annotations_: a list of annotations 
+- _healthdata-summary_: a list of properties exposed from a healthdata document, available for searching documents
+
+The format in which the input data must be provided, as well as the format of the result, depends on the mapping at hand.
+The supported mappings include:
+
+- from _kmehr_ to _healthdata_: the XML must be provided as a single string, the result is a string containing a (json) healthdata document
+- from _csv_ to _healthdata_: the CSV must be provided as a string, the result is a string containing a healthdata document
+- from _healthdata_ to _healthdata-comments_: the healthdata document must be provided as a single string, the result is a list of strings
+- from _healthdata_ to _healthdata-summary_: the healthdata document must be provided as a single string, the result is a JSON object (key-value)
 
 ## Mapping [/mappings{?from,to,dataCollectionUri,content}]
 
 ### POST
-Perform a one-to-one mapping from a given format into another specified format. One of the
-formats must always be a document that satisfies the given data collection definition.
 
 + Parameters
     + from (required, string, `"kmehr"`) ... The format of the input data
     + to (required, string, `"skryv"`) ... The desired format of the output
     + dataCollectionUri (required, string, `"https://private-d734-healthdata.apiary-mock.com/datacollectiondefinitions/2"`) ... A reference to the data collection definition
-    + content (required, string, `"<a><b></b></a>"`) ... A string with the input data. Double quotes musts be escaped.
+    + content (required, string, `"<a><b c=\"d\"></b></a>"`) ... The input data. Double quotes musts be escaped.
 
 + Request (application/json)
     
