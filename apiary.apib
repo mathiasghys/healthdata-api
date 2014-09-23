@@ -414,7 +414,6 @@ The Range header is used for pagination. If the Range header is included in the 
 indicating the presence of the Content-Range response header.
 
 + Request
-    
     + Body
             
             {
@@ -424,9 +423,6 @@ indicating the presence of the Content-Range response header.
 
     + Headers
     
-            Accept-Ranges: "datacollectiondefinitions"
-            Content-Range: "datacollectiondefinitions 0-1/10
-
     + Body
     
             [
@@ -510,11 +506,22 @@ indicating the presence of the Content-Range response header.
                 }
             ]
 
-+ Response 206 (application/json)
++ Request
+
     + Headers
     
-            Accept-Ranges: "datacollectiondefinitions"
-            Content-Range: "datacollectiondefinitions 0-1/10
+            Range: "items=1-5"
+    
+    + Body
+            
+            {
+            }
+
++ Response 206 (application/json)
+
+    + Headers
+    
+            Content-Range: "1-5/10"
 
     + Body
     
@@ -583,19 +590,6 @@ indicating the presence of the Content-Range response header.
                     "validFrom": "2014-01-01 00:00:00",
                     "validTill": "2114-01-01 00:00:00",
                     "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/5"
-                },
-                {
-                    "id": "6",
-                    "name": "SARI",
-                    "description": "SARI",
-                    "content": "{\"label\":\"SARI\",\"sections\":[{\"label\":\"Algemeen\",\"name\":\"algemeen\",\"fields\":[{\"label\":\"Code Ziekenhuis\",\"name\":\"code_ziekenhuis\",\"type\":\"text\",\"database_id\":\"ca_user\",\"required\":true},{\"label\":\"Referentienummer NRC Influenza\",\"name\":\"referentienummer_nrc_influenza\",\"type\":\"text\",\"database_id\":\"ca_refid\",\"mask\":\"xxSxxxx\",\"required\":true},{\"label\":\"Datum Ontvangst Staal\",\"name\":\"datum_ontvangst_staal\",\"type\":\"date\",\"database_id\":\"ca_receptdate\"}]},{\"label\":\"Gegevens betreffende de patient\",\"name\":\"gegevens_betreffende_de_pati‘nt\",\"fields\":[{\"label\":\"Referentie\",\"name\":\"referentie\",\"type\":\"text\",\"database_id\":\"ca_npatient\"},{\"label\":\"INSZ-nummer\",\"name\":\"insznummer\",\"type\":\"number\",\"database_id\":\"ca_nis\",\"required\":true},{\"label\":\"Datum opname\",\"name\":\"datum_opname\",\"type\":\"date\",\"database_id\":\"ca_admindate\"},{\"label\":\"Geslacht\",\"name\":\"geslacht\",\"type\":\"choice\",\"choices\":[{\"label\":\"Vrouw\",\"name\":\"vrouw\",\"database_id\":\"0\"},{\"label\":\"Man\",\"name\":\"man\",\"database_id\":\"1\"}],\"database_id\":\"ca_sex\"},{\"label\":\"Geboortedatum\",\"name\":\"geboortedatum\",\"type\":\"date\",\"database_id\":\"ca_dob\"}]},{\"label\":\"Klinische gegevens bij opname\",\"name\":\"klinische_gegevens_bij_opname\",\"fields\":[{\"label\":\"Symptomen\",\"name\":\"symptomen\",\"type\":\"fieldset\",\"fields\":[{\"label\":\"Datum van het begin van symptomen\",\"name\":\"datum_van_het_begin_van_symptomen\",\"type\":\"date\",\"database_id\":\"ca_sympdate\"},{\"label\":\"Symptomen\",\"name\":\"symptomen\",\"type\":\"multichoice\",\"choices\":[{\"label\":\"Koorts bij opname\",\"name\":\"koorts_bij_opname\",\"database_id\":\"ca_temp\"},{\"label\":\"Geschiedenis van koorts\",\"name\":\"geschiedenis_van_koorts\",\"database_id\":\"ca_temph\"},{\"label\":\"Hoest\",\"name\":\"hoest\",\"database_id\":\"ca_cough\"},{\"label\":\"Dyspneu\",\"name\":\"dyspneu\",\"database_id\":\"ca_dyspn\"},{\"label\":\"Cyanose\",\"name\":\"cyanose\",\"database_id\":\"ca_cyano\"},{\"label\":\"Intercostale tirage\",\"name\":\"intercostale_tirage\",\"database_id\":\"ca_draw\"},{\"label\":\"Tachypneu\",\"name\":\"tachypneu\",\"database_id\":\"ca_tachy\"},{\"label\":\"Ronchus\",\"name\":\"ronchus\",\"database_id\":\"ca_sibi\"},{\"label\":\"Spijsverteringsproblemen\",\"name\":\"spijsverteringsproblemen\",\"database_id\":\"ca_digest\"},{\"label\":\"Andere significante symptomen\",\"name\":\"andere_significante_symptomen\",\"database_id\":\"ca_others\",\"fields\":[{\"label\":\"Specifieer\",\"name\":\"specifieer\",\"type\":\"text\",\"database_id\":\"ca_othersy\"}]}]}]},{\"label\":\"Opname in intensieve zorgen\",\"name\":\"opname_in_intensieve_zorgen\",\"type\":\"boolean\",\"database_id\":\"ca_icuhosp\"},{\"label\":\"Prognose\",\"name\":\"prognose\",\"type\":\"choice\",\"choices\":[{\"label\":\"Herstel verwacht\",\"name\":\"herstel_verwacht\",\"database_id\":\"\"},{\"label\":\"Kritiek, prognose is onzeker\",\"name\":\"kritiek,_prognose_is_onzeker\",\"database_id\":\"\"}],\"database_id\":\"ca_prono\"},{\"label\":\"Voorgeschiedenis en geassocieerde pathologieen\",\"name\":\"voorgeschiedenis_en_geassocieerde_pathologie‘n\",\"type\":\"multichoice\",\"choices\":[{\"label\":\"Geen\",\"name\":\"geen\",\"database_id\":\"ca_nopathol\"},{\"label\":\"Zwanger\",\"name\":\"zwanger\",\"database_id\":\"ca_pregn\"},{\"label\":\"Chronisch respiratoire aandoening (buiten astma)\",\"name\":\"chronisch_respiratoire_aandoening_buiten_astma\",\"database_id\":\"ca_respi\"},{\"label\":\"Astma\",\"name\":\"astma\",\"database_id\":\"ca_asthma\"},{\"label\":\"Chronische hartaandoening (buiten hypertensie)\",\"name\":\"chronische_hartaandoening_buiten_hypertensie\",\"database_id\":\"ca_cardio\"},{\"label\":\"Matige tot ernstige nierinsufficientie\",\"name\":\"matige_tot_ernstige_nierinsuffici‘ntie\",\"database_id\":\"ca_renal\"},{\"label\":\"Matige tot ernstige leverinsufficientie\",\"name\":\"matige_tot_ernstige_leverinsuffici‘ntie\",\"database_id\":\"ca_hepato\"},{\"label\":\"Immuniteitsstoornis (door geneesmiddel of ziekte)\",\"name\":\"immuniteitsstoornis_door_geneesmiddel_of_ziekte\",\"database_id\":\"ca_immuno\"},{\"label\":\"Obesitas (BMI > 30)\",\"name\":\"obesitas_bmi__30\",\"database_id\":\"ca_obesity\"},{\"label\":\"Neuromusculaire aandoening\",\"name\":\"neuromusculaire_aandoening\",\"database_id\":\"ca_neuro\"},{\"label\":\"Metabole aandoening (zonder diabetes)\",\"name\":\"metabole_aandoening_zonder_diabetes\",\"database_id\":\"ca_metabol\"},{\"label\":\"Diabetes type I of II\",\"name\":\"diabetes_type_i_of_ii\",\"database_id\":\"ca_diabete\"},{\"label\":\"Langdurige behandeling met acetylsalicylzuur (enkel voor kinderen)\",\"name\":\"langdurige_behandeling_met_acetylsalicylzuur_enkel_voor_kinderen\",\"database_id\":\"ca_aspro\"},{\"label\":\"Andere significante pathologie\",\"name\":\"andere_significante_pathologie\",\"database_id\":\"ca_otherd\",\"fields\":[{\"label\":\"Specifieer\",\"name\":\"specifieer\",\"type\":\"text\",\"database_id\":\"ca_otherdi\"}]}]},{\"label\":\"Antigriepvaccinatie\",\"name\":\"antigriepvaccinatie\",\"fields\":[{\"label\":\"Antigriepvaccinatie gedurende de laatste vaccinatiecampagne\",\"name\":\"antigriepvaccinatie_gedurende_de_laatste_vaccinatiecampagne\",\"type\":\"choice\",\"database_id\":\"ca_vacci\",\"choices\":[{\"label\":\"Gevaccineerd\",\"name\":\"gevaccineerd\",\"fields\":[{\"label\":\"Indien gevaccineerd, was de vaccinatie tenminste 2 weken geleden\",\"name\":\"indien_gevaccineerd,_was_de_vaccinatie_tenminste_2_weken_geleden\",\"type\":\"choice\",\"choices\":[{\"label\":\"Ja, >= 2 weken\",\"name\":\"ja,__2_weken\",\"database_id\":\"\"},{\"label\":\"Nee, < 2 weken\",\"name\":\"nee,__2_weken\",\"database_id\":\"\"},{\"label\":\"Onbekend\",\"name\":\"onbekend\",\"database_id\":\"\"}],\"database_id\":\"ca_valid\"}]},{\"label\":\"Niet gevaccineerd\",\"name\":\"niet_gevaccineerd\"},{\"label\":\"Onbekend\",\"name\":\"onbekend\"}]}]},{\"label\":\"Antivirale behandeling\",\"name\":\"antivirale_behandeling\",\"type\":\"boolean\",\"database_id\":\"ca_antivir\"}]},{\"label\":\"Laboratorium aanvrager\",\"name\":\"laboratorium_aanvrager\",\"fields\":[{\"label\":\"Resultaat influenza test\",\"name\":\"resultaat_influenza_test\",\"type\":\"choice\",\"choices\":[{\"label\":\"Niet influenza getest\",\"name\":\"niet_influenza_getest\",\"database_id\":\"\"},{\"label\":\"Influenza negatief\",\"name\":\"influenza_negatief\",\"database_id\":\"\"},{\"label\":\"Influenza A\",\"name\":\"influenza_a\",\"database_id\":\"\"},{\"label\":\"Influenza B\",\"name\":\"influenza_b\",\"database_id\":\"\"}],\"database_id\":\"ca_labhosp\"},{\"label\":\"Type influenza test\",\"name\":\"type_influenza_test\",\"type\":\"choice\",\"choices\":[{\"label\":\"Antigen\",\"name\":\"antigen\",\"database_id\":\"\"},{\"label\":\"PCR\",\"name\":\"pcr\",\"database_id\":\"\"},{\"label\":\"Cultuur\",\"name\":\"cultuur\",\"database_id\":\"\"}],\"database_id\":\"ca_testhtype\"},{\"label\":\"Andere test op respiratoire pathogenen\",\"name\":\"andere_test_op_respiratoire_pathogenen\",\"type\":\"boolean\",\"database_id\":\"ca_testhother\"},{\"label\":\"Positief op ander virus\",\"name\":\"positief_op_ander_virus\",\"type\":\"choice\",\"database_id\":\"ca_poshvirus\",\"choices\":[{\"label\":\"Ja\",\"name\":\"ja\",\"fields\":[{\"label\":\"Specifieer\",\"name\":\"specifieer\",\"type\":\"text\",\"database_id\":\"ca_virushosp\"}]},{\"label\":\"Neen\",\"name\":\"neen\"}]},{\"label\":\"Positief op bacteriele aandoening\",\"name\":\"positief_op_bacteri‘le_aandoening\",\"type\":\"choice\",\"database_id\":\"ca_poshbact\",\"choices\":[{\"label\":\"Ja\",\"name\":\"ja\",\"fields\":[{\"label\":\"Specifieer\",\"name\":\"specifieer\",\"type\":\"text\",\"database_id\":\"ca_bacthosp\"}]},{\"label\":\"Neen\",\"name\":\"neen\"}]},{\"label\":\"Datum staalafname\",\"name\":\"datum_staalafname\",\"type\":\"date\",\"database_id\":\"ca_sampledate\"},{\"label\":\"Type staal\",\"name\":\"type_staal\",\"type\":\"choice\",\"choices\":[{\"label\":\"Nasopharyngeaal aspiraat\",\"name\":\"nasopharyngeaal_aspiraat\",\"database_id\":\"\"},{\"label\":\"Broncho-alveolaire lavage\",\"name\":\"bronchoalveolaire_lavage\",\"database_id\":\"\"},{\"label\":\"Nasopharyngeale wisser\",\"name\":\"nasopharyngeale_wisser\",\"database_id\":\"\"}],\"database_id\":\"ca_sampletype\"}]},{\"label\":\"Klinische gegevens gedurende hospitalisatie en bij ontslag\",\"name\":\"klinische_gegevens_gedurende_hospitalisatie_en_bij_ontslag\",\"fields\":[{\"label\":\"Complicaties en behandeling gedurende de hospitalisatie\",\"name\":\"complicaties_en_behandeling_gedurende_de_hospitalisatie\",\"type\":\"fieldset\",\"fields\":[{\"label\":\"Pneumonie op RX\",\"name\":\"pneumonie_op_rx\",\"type\":\"choice\",\"choices\":[{\"label\":\"Geen\",\"name\":\"geen\",\"database_id\":\"\"},{\"label\":\"Bacterieel\",\"name\":\"bacterieel\",\"database_id\":\"\"},{\"label\":\"Viraal\",\"name\":\"viraal\",\"database_id\":\"\"},{\"label\":\"Niet onderzocht\",\"name\":\"niet_onderzocht\",\"database_id\":\"\"}],\"database_id\":\"ca_pneumo\"},{\"label\":\"ARDS\",\"name\":\"ards\",\"type\":\"boolean\",\"database_id\":\"ca_ards\"},{\"label\":\"Transfer naar intensieve zorgen (gedurende hospitalisatie)\",\"name\":\"transfer_naar_intensieve_zorgen_gedurende_hospitalisatie\",\"type\":\"choice\",\"database_id\":\"ca_icu\",\"choices\":[{\"label\":\"Ja\",\"name\":\"ja\",\"fields\":[{\"label\":\"Verblijf in intensieve zorgen (dagen)\",\"name\":\"verblijf_in_intensieve_zorgen_dagen\",\"type\":\"number\",\"database_id\":\"ca_icudur\"}]},{\"label\":\"Neen\",\"name\":\"neen\"}]},{\"label\":\"Intensieve ventilatie\",\"name\":\"intensieve_ventilatie\",\"type\":\"boolean\",\"database_id\":\"ca_invasive\"},{\"label\":\"Niet-intensieve ventilatie\",\"name\":\"nietintensieve_ventilatie\",\"type\":\"boolean\",\"database_id\":\"ca_noninvasive\"},{\"label\":\"ECMO\",\"name\":\"ecmo\",\"type\":\"boolean\",\"database_id\":\"ca_ecmo\"},{\"label\":\"Antivirale behandeling\",\"name\":\"antivirale_behandeling\",\"type\":\"boolean\",\"database_id\":\"ca_antiv\"},{\"label\":\"Andere complicatie\",\"name\":\"andere_complicatie\",\"type\":\"choice\",\"database_id\":\"ca_otherc\",\"choices\":[{\"label\":\"Ja\",\"name\":\"ja\",\"fields\":[{\"label\":\"Specifieer\",\"name\":\"specifieer\",\"type\":\"text\",\"database_id\":\"ca_othercomp\"}]},{\"label\":\"Neen\",\"name\":\"neen\"}]}]},{\"label\":\"Gegevens bij ontslag\",\"name\":\"gegevens_bij_ontslag\",\"type\":\"fieldset\",\"fields\":[{\"label\":\"Datum van ontslag\",\"name\":\"datum_van_ontslag\",\"type\":\"date\",\"database_id\":\"ca_dateout\"},{\"label\":\"Vitale status\",\"name\":\"vitale_status\",\"type\":\"choice\",\"choices\":[{\"label\":\"Leven\",\"name\":\"leven\",\"database_id\":\"\"},{\"label\":\"Dood\",\"name\":\"dood\",\"database_id\":\"\"}],\"database_id\":\"ca_status\"}]}]},{\"label\":\"Virologie\",\"name\":\"virologie\",\"fields\":[{\"label\":\"Resultaat Influenza\",\"name\":\"resultaat_influenza\",\"type\":\"multichoice\",\"choices\":[{\"label\":\"Negatief\",\"name\":\"negatief\",\"database_id\":\"ca_fluneg\"},{\"label\":\"A\",\"name\":\"a\",\"database_id\":\"ca_flua\"},{\"label\":\"H3\",\"name\":\"h3\",\"database_id\":\"ca_h3\"},{\"label\":\"B\",\"name\":\"b\",\"database_id\":\"ca_flub\"},{\"label\":\"H1p\",\"name\":\"h1p\",\"database_id\":\"ca_h1p\"},{\"label\":\"H1s\",\"name\":\"h1s\",\"database_id\":\"ca_h1s\"},{\"label\":\"yam\",\"name\":\"yam\",\"database_id\":\"ca_yam\"},{\"label\":\"vic\",\"name\":\"vic\",\"database_id\":\"ca_vic\"},{\"label\":\"Niet gedefinieerd\",\"name\":\"niet_gedefinieerd\",\"database_id\":\"ca_undef\"},{\"label\":\"Geen subtype\",\"name\":\"geen_subtype\",\"database_id\":\"ca_nosub\"},{\"label\":\"Ontestbaar\",\"name\":\"ontestbaar\",\"database_id\":\"ca_notestable\"}]},{\"label\":\"Respivirus getest?\",\"name\":\"respivirus_getest\",\"type\":\"choice\",\"database_id\":\"ca_respivirus\",\"choices\":[{\"label\":\"Ja\",\"name\":\"ja\",\"fields\":[{\"label\":\"Resultaat\",\"name\":\"resultaat\",\"type\":\"multichoice\",\"choices\":[{\"label\":\"RSVA\",\"name\":\"rsva\",\"database_id\":\"ca_rsva\"},{\"label\":\"RSVB\",\"name\":\"rsvb\",\"database_id\":\"ca_rsvb\"},{\"label\":\"HMPV\",\"name\":\"hmpv\",\"database_id\":\"ca_hmpv\"},{\"label\":\"EV\",\"name\":\"ev\",\"database_id\":\"ca_ev\"},{\"label\":\"PIV1\",\"name\":\"piv1\",\"database_id\":\"ca_piv1\"},{\"label\":\"PIV2\",\"name\":\"piv2\",\"database_id\":\"ca_piv2\"},{\"label\":\"PIV3\",\"name\":\"piv3\",\"database_id\":\"ca_piv3\"},{\"label\":\"PIV4\",\"name\":\"piv4\",\"database_id\":\"ca_piv4\"},{\"label\":\"Adeno\",\"name\":\"adeno\",\"database_id\":\"ca_adeno\"},{\"label\":\"co229f\",\"name\":\"co229f\",\"database_id\":\"ca_co229f\"},{\"label\":\"cooc43\",\"name\":\"cooc43\",\"database_id\":\"ca_cooc43\"},{\"label\":\"conl63\",\"name\":\"conl63\",\"database_id\":\"ca_conl63\"},{\"label\":\"rhino\",\"name\":\"rhino\",\"database_id\":\"ca_rhino\"},{\"label\":\"boca\",\"name\":\"boca\",\"database_id\":\"ca_boca\"},{\"label\":\"pe\",\"name\":\"pe\",\"database_id\":\"ca_pe\"},{\"label\":\"novco\",\"name\":\"novco\",\"database_id\":\"ca_novco\"},{\"label\":\"negatief\",\"name\":\"negatief\"}]}]},{\"label\":\"Neen\",\"name\":\"neen\"}]},{\"label\":\"Staal ontvangen?\",\"name\":\"staal_ontvangen\",\"type\":\"boolean\",\"database_id\":\"ca_sample\"},{\"label\":\"Datum test\",\"name\":\"datum_test\",\"type\":\"date\",\"database_id\":\"ca_testdate\"},{\"label\":\"Datum data-invoer\",\"name\":\"datum_datainvoer\",\"type\":\"date\",\"database_id\":\"ca_dateentry\"},{\"label\":\"Seizoen\",\"name\":\"seizoen\",\"type\":\"text\",\"database_id\":\"ca_season\"},{\"label\":\"Staal van slechte kwaliteit\",\"name\":\"staal_van_slechte_kwaliteit\",\"type\":\"text\",\"database_id\":\"ca_quality\"},{\"label\":\"Resultaat gevalideerd?\",\"name\":\"resultaat_gevalideerd\",\"type\":\"boolean\",\"database_id\":\"ca_valide\"},{\"label\":\"Datum van aankomst op NRC\",\"name\":\"datum_van_aankomst_op_nrc\",\"type\":\"date\",\"database_id\":\"ca_refdate\"}]}]}",
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/6"
                 }
             ]
 
@@ -1955,6 +1949,194 @@ List all existing Workflows that match the given QueryString parameters.
                     "metaData": {},
                     "createdOn": "2014-09-16 19:19:14",
                     "updatedOn": "2014-09-16 19:19:14",
+                    "history": [
+                        {
+                            "action": "CREATE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:19:14",
+                            "executedBy": "admin"
+                        }
+                    ],
+                    "allowedActions": [
+                        {
+                            "action": "SAVE",
+                            "documentContent": null,
+                            "metaData": null
+                        },
+                        {
+                            "action": "SUBMIT"
+                        }
+                    ]
+                }
+            ]
+            
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+            Range: "items=1-5"
+            
+
++ Response 206 (application/hal+json)
+
+    + Headers
+    
+            Content-Range: "1-5/10"
+
+    + Body
+    
+            [
+                {
+                    "id": 1,
+                    "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
+                    "landingZoneWorkflowUri": null,
+                    "status": "IN_PROGRESS",
+                    "identificationType": "NIHI",
+                    "identificationValue": "NIHI-123",
+                    "documentUri": "http://localhost:8080/healthdata_hd4dp/workflows/1/documents",
+                    "dataCollectionUri": "testUri",
+                    "dataCollectionId": 1,
+                    "metaData": {
+                        "PERSON": "Robin Merckx",
+                        "YEAR": "2014"
+                    },
+                    "createdOn": "2014-09-10 09:07:15",
+                    "updatedOn": "2014-09-10 09:18:27",
+                    "history": [
+                        {
+                            "action": "CREATE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:07:15",
+                            "executedBy": "admin"
+                        },
+                        {
+                            "action": "SAVE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:18:27",
+                            "executedBy": "admin"
+                        }
+                    ],
+                    "allowedActions": [
+                        {
+                            "action": "SAVE",
+                            "documentContent": null,
+                            "metaData": null
+                        },
+                        {
+                            "action": "SUBMIT"
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/2",
+                    "landingZoneWorkflowUri": null,
+                    "status": "IN_PROGRESS",
+                    "identificationType": "NIHI",
+                    "identificationValue": "NIHI-123",
+                    "documentUri": null,
+                    "dataCollectionUri": "testUri",
+                    "dataCollectionId": 2,
+                    "metaData": {},
+                    "createdOn": "2014-09-10 09:19:14",
+                    "updatedOn": "2014-09-10 09:19:14",
+                    "history": [
+                        {
+                            "action": "CREATE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:19:14",
+                            "executedBy": "admin"
+                        }
+                    ],
+                    "allowedActions": [
+                        {
+                            "action": "SAVE",
+                            "documentContent": null,
+                            "metaData": null
+                        },
+                        {
+                            "action": "SUBMIT"
+                        }
+                    ]
+                },
+                {
+                    "id": 3,
+                    "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/3",
+                    "landingZoneWorkflowUri": null,
+                    "status": "IN_PROGRESS",
+                    "identificationType": "NIHI",
+                    "identificationValue": "NIHI-123",
+                    "documentUri": null,
+                    "dataCollectionUri": "testUri",
+                    "dataCollectionId": 3,
+                    "metaData": {},
+                    "createdOn": "2014-09-10 09:19:14",
+                    "updatedOn": "2014-09-10 09:19:14",
+                    "history": [
+                        {
+                            "action": "CREATE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:19:14",
+                            "executedBy": "admin"
+                        }
+                    ],
+                    "allowedActions": [
+                        {
+                            "action": "SAVE",
+                            "documentContent": null,
+                            "metaData": null
+                        },
+                        {
+                            "action": "SUBMIT"
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/4",
+                    "landingZoneWorkflowUri": null,
+                    "status": "IN_PROGRESS",
+                    "identificationType": "NIHI",
+                    "identificationValue": "NIHI-123",
+                    "documentUri": null,
+                    "dataCollectionUri": "testUri",
+                    "dataCollectionId": 4,
+                    "metaData": {},
+                    "createdOn": "2014-09-10 09:19:14",
+                    "updatedOn": "2014-09-10 09:19:14",
+                    "history": [
+                        {
+                            "action": "CREATE",
+                            "newStatus": "IN_PROGRESS",
+                            "executedOn": "2014-09-10 09:19:14",
+                            "executedBy": "admin"
+                        }
+                    ],
+                    "allowedActions": [
+                        {
+                            "action": "SAVE",
+                            "documentContent": null,
+                            "metaData": null
+                        },
+                        {
+                            "action": "SUBMIT"
+                        }
+                    ]
+                },
+                {
+                    "id": 5,
+                    "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/5",
+                    "landingZoneWorkflowUri": null,
+                    "status": "IN_PROGRESS",
+                    "identificationType": "NIHI",
+                    "identificationValue": "NIHI-123",
+                    "documentUri": null,
+                    "dataCollectionUri": "testUri",
+                    "dataCollectionId": 5,
+                    "metaData": {},
+                    "createdOn": "2014-09-10 09:19:14",
+                    "updatedOn": "2014-09-10 09:19:14",
                     "history": [
                         {
                             "action": "CREATE",
