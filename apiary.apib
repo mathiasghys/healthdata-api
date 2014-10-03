@@ -1936,6 +1936,53 @@ Delete a workflow with the provided ID
                     }
                 ]
             }
+
+### Workflow - 9 [/workflows/9]
+
+### Retrieve workflow 9 [GET]
+
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": 9,
+                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/9",
+                "landingZoneWorkflowUri": null,
+                "status": "IN_PROGRESS",
+                "identificationType": "NIHI",
+                "identificationValue": "NIHI-123",
+                "documentUri": null,
+                "dataCollectionUri": "testUri",
+                "dataCollectionId": 9,
+                "metaData": {},
+                "createdOn": "2014-10-02 09:19:14",
+                "updatedOn": "2014-10-02 09:19:14",
+                "history": [
+                    {
+                        "action": "CREATE",
+                        "newStatus": "IN_PROGRESS",
+                        "executedOn": "2014-10-02 09:19:14",
+                        "executedBy": "admin"
+                    }
+                ],
+                "allowedActions": [
+                    {
+                        "action": "SAVE",
+                        "documentContent": null,
+                        "metaData": null
+                    },
+                    {
+                        "action": "SUBMIT"
+                    }
+                ]
+            }
             
 ### Workflow - 401 [/workflows/401]
 
