@@ -908,19 +908,24 @@ DataReference-related resources of the **HealthData API**
 
 - type
 - code
+- parentCode
 - value
 - language
+- parents
+- children
 
-## Data References - QueryString [/dataReferences{?type,code,value,language,validOn,filter,sorting}]
+## Data References - QueryString [/dataReferences{?type,code,parentCode,value,language,validOn,filter,sorting,fullSearch}]
 
 + Parameters
     + type (optional, string, `"ZIP"` ) ... `Type` of the Data Reference entry.
     + code (optional, string, `"1800"`) ... `Code` of the Data Reference entry.
+    + parentCode (optional, string, `"1800"`) ... `ParentCode` of the Data Reference entry.
     + value (optional, string, `"Vilvoorde"` ) ...  Value  of a Data Reference entry in a certain language.
     + language (optional, string, `"NL"` ) ...  Language  of the value of the Data Reference entry.
     + validOn (optional, string, `"11/10/1985"` ) ... The date that the value must be legal on. Today by default.
-    + filter (optional, string, `"ALL"` ) ...  The type of  Filter  you want to use when searching for a code or value. Possible values are ALL, START and END. ALL by default.
+    + filter (optional, string, `"ALL"` ) ...  The type of  Filter  you want to use when searching for a code or value. Possible values are ALL, EXACT, START and END. ALL by default.
     + sorting (optional, string, `"SEARCH_FIRST"` ) ... The type of sorting you want to use on your result. Possible values are SEARCH_FIRST and ALPHABETICALLY. SEARCH_FIRST by default.
+    + fullSearch (optional, string, `"true"` ) ... Option to add to the search to also load the parent and children codes. This will slow down the call so it is best done one a single result search.
     
 + Model (application/json)
 
@@ -932,13 +937,23 @@ DataReference-related resources of the **HealthData API**
             Accept: "application/json"
 
     + Body
-
+    
             [
                 {
-                    type: "ZIP"
-                    code: "1800"
-                    value: "Vilvoorde"
-                    language: "NL"
+                    type: "BNMDR"
+                    code: "42000000"
+                    parentCode: "40000000"
+                    value: "Inflammatory neuropathy, immunologically mediated"
+                    language: "nl"
+                    parents: [
+                        "40000000"
+                    ]
+                    children: [
+                        "42100000"
+                        "42200000"
+                        "42300000"
+                        "42400000"
+                    ]
                 }
             ]
 
