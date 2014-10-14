@@ -728,12 +728,18 @@ indicating the presence of the Content-Range response header.
                 }
             ]
 
-## Datacollection Definition - QueryString parameters [/datacollectiondefinitions{?identificationType,identificationValue,name,valid_from,valid_till,description}]
+## Datacollection Definition - QueryString parameters [/datacollectiondefinitions{?identificationType,identificationValue,name,validOn,description}]
 
 List all existing Datacollections that match the given QueryString parameters.
  
 ### GET
-
++ Parameters
+    + identificationType (required, string, `RIZIV`) ... the `IdentificationType` of the hd4dp user.
+    + identificationValue (required, string, `123456`) ... the `IdentificationValue` of the hd4dp user.
+    + name (optional, string, `"register 1"`) ... `name` of the DataCollectionDefinition.
+    + validOn (optional, string, `"11/10/1985"`) ... Date  on which the DataCollectionDefinition must be valid.
+    + description (optional, string, ) ... `Description` of the DataCollectionDefinition.
+    
 + Request
     
     + Body
