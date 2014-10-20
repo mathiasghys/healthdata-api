@@ -540,6 +540,11 @@ The Range header is used for pagination. If the Range header is included in the 
 indicating the presence of the Content-Range response header.
 
 + Request
+    + Headers
+    
+        Accept: "application/json",
+        Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
     + Body
             
             {
@@ -688,6 +693,7 @@ indicating the presence of the Content-Range response header.
 
     + Headers
             
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad",
             Range: "items=1-5"
     
     + Body
@@ -698,7 +704,8 @@ indicating the presence of the Content-Range response header.
 + Response 206 (application/json)
 
     + Headers
-    
+        
+            Accept: "application/json"
             Content-Range: "items 1-5/10"
 
     + Body
@@ -777,7 +784,7 @@ List all existing Datacollections that match the given QueryString parameters.
  
 ### GET
 + Parameters
-    + identificationType (required, string, `RIZIV`) ... the `IdentificationType` of the hd4dp user.
+    + identificationType (required, string, `NIHII`) ... the `IdentificationType` of the hd4dp user.
     + identificationValue (required, string, `123456`) ... the `IdentificationValue` of the hd4dp user.
     + name (optional, string, `"register 1"`) ... `name` of the DataCollectionDefinition.
     + validOn (optional, string, `"11/10/1985"`) ... Date  on which the DataCollectionDefinition must be valid.
@@ -785,6 +792,11 @@ List all existing Datacollections that match the given QueryString parameters.
     
 + Request
     
+    + Headers
+    
+        Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad",
+        Accept: "application/json"
+
     + Body
             
             {
