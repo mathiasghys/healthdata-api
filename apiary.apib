@@ -532,18 +532,23 @@ Add a new instance to the Datacollection Definition to the database.
                 "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/2"
             }
 
+## Datacollection Definition - QueryString parameters [/datacollectiondefinitions{?identificationType,identificationValue,name,validOn,description}]
 
+List all existing Datacollections that match the given QueryString parameters.
+ 
 ### GET
-
-List all existing Datacollection definitions that the user is authorized to see.
-The Range header is used for pagination. If the Range header is included in the request, the server is allowed to respond with a 206 Partial Content status code, 
-indicating the presence of the Content-Range response header.
-
++ Parameters
+    + identificationType (required, string, `NIHII`) ... the `IdentificationType` of the hd4dp user.
+    + identificationValue (required, string, `123456`) ... the `IdentificationValue` of the hd4dp user.
+    + name (optional, string, `"register 1"`) ... `name` of the DataCollectionDefinition.
+    + validOn (optional, string, `"11/10/1985"`) ... Date  on which the DataCollectionDefinition must be valid.
+    + description (optional, string, ) ... `Description` of the DataCollectionDefinition.
+    
 + Request
+    
     + Headers
     
-        Accept: "application/json",
-        Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+            Accept: "application/json"
 
     + Body
             
@@ -552,8 +557,6 @@ indicating the presence of the Content-Range response header.
 
 + Response 200 (application/json)
 
-    + Headers
-    
     + Body
     
             [
@@ -689,11 +692,12 @@ indicating the presence of the Content-Range response header.
                 }  
             ]
 
+
 + Request
 
     + Headers
             
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad",
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
             Range: "items=1-5"
     
     + Body
@@ -777,168 +781,6 @@ indicating the presence of the Content-Range response header.
                     "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/5"
                 }
             ]
-
-## Datacollection Definition - QueryString parameters [/datacollectiondefinitions{?identificationType,identificationValue,name,validOn,description}]
-
-List all existing Datacollections that match the given QueryString parameters.
- 
-### GET
-+ Parameters
-    + identificationType (required, string, `NIHII`) ... the `IdentificationType` of the hd4dp user.
-    + identificationValue (required, string, `123456`) ... the `IdentificationValue` of the hd4dp user.
-    + name (optional, string, `"register 1"`) ... `name` of the DataCollectionDefinition.
-    + validOn (optional, string, `"11/10/1985"`) ... Date  on which the DataCollectionDefinition must be valid.
-    + description (optional, string, ) ... `Description` of the DataCollectionDefinition.
-    
-+ Request
-    
-    + Headers
-    
-        Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad",
-        Accept: "application/json"
-
-    + Body
-            
-            {
-            }
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            [
-                {
-                    "id": "1",
-                    "name": "IQECAD",
-                    "description": "IQECAD",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/1"
-                },
-                {
-                    "id": "2",
-                    "name": "BCFR",
-                    "description": "BCFR",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/2"
-                },
-                {
-                    "id": "3",
-                    "name": "BEWSDBio",
-                    "description": "BEWSDBio",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-17 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/3"
-                },
-                {
-                    "id": "4",
-                    "name": "BEWSDOther",
-                    "description": "BEWSDOther",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-17 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/4"
-                },
-                {
-                    "id": "5",
-                    "name": "DENOMINATORS",
-                    "description": "DENOMINATORS",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/5"
-                },
-                {
-                    "id": "6",
-                    "name": "SARI",
-                    "description": "SARI",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/6"
-                },
-                {
-                    "id": "7",
-                    "name": "IQED",
-                    "description": "IQED",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/7"
-                },
-                {
-                    "id": "8",
-                    "name": "IQEDFoot",
-                    "description": "IQEDFoot",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/8"
-                },
-                {
-                    "id": "9",
-                    "name": "BNMDR",
-                    "description": "BNMDR",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-10-02 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/9"
-                },
-                {
-                    "id": "10",
-                    "name": "IQECAD_New",
-                    "description": "IQECAD_New",
-                    "content": null,
-                    "version": "1.0",
-                    "language": "NL",
-                    "createdOn": "2014-10-02 16:17:15",
-                    "published": "false",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "dataCollectionUri": "http://localhost:8080/catalogue/datacollectiondefinitions/10"
-                }  
-            ]
-
 
 # Group Data Provisioning API
 Interface exposed to external parties that want to upload prefilling data.
