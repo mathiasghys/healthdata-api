@@ -1064,6 +1064,163 @@ The authority object has the following attributes:
 
 ## User [/users]
 
+### GET
+Return a list of Users from the database.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+            Range: "items=1-5"
+
++ Response 206 (application/hal+json)
+
+    + Headers
+    
+            
+            Content-Range: "items 1-5/10"
+
+    + Body
+    
+            [
+                {
+                    "username":"username1",
+                    "password":"password1",
+                    "enabled":"true",
+                    "authorities": [
+                    {
+                        "authorityId":"1"
+                        "authority":"ROLE_USER"
+                    }],
+                    "profiles": [
+                    {
+                        "id":"1",
+                        "name":"profile_name",
+                        "roles": [
+                        {
+                            "id":"1",
+                            "name":"physician",
+                            "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                        }]
+                    }],
+                    "roles": [
+                    {
+                        "id": "2",
+                        "name":"administrator",
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                    }]
+                },
+                {
+                    "username":"username2",
+                    "password":"password2",
+                    "enabled":"true",
+                    "authorities": [
+                    {
+                        "authorityId":"1"
+                        "authority":"ROLE_USER"
+                    }],
+                    "profiles": [
+                    {
+                        "id":"1",
+                        "name":"profile_name",
+                        "roles": [
+                        {
+                            "id":"1",
+                            "name":"physician",
+                            "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                        }]
+                    }],
+                    "roles": [
+                    {
+                        "id": "2",
+                        "name":"administrator",
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                    }]
+                },
+                {
+                    "username":"username3",
+                    "password":"password3",
+                    "enabled":"true",
+                    "authorities": [
+                    {
+                        "authorityId":"1"
+                        "authority":"ROLE_USER"
+                    }],
+                    "profiles": [
+                    {
+                        "id":"1",
+                        "name":"profile_name",
+                        "roles": [
+                        {
+                            "id":"1",
+                            "name":"physician",
+                            "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                        }]
+                    }],
+                    "roles": [
+                    {
+                        "id": "2",
+                        "name":"administrator",
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                    }]
+                },
+                {
+                    "username":"username4",
+                    "password":"password4",
+                    "enabled":"true",
+                    "authorities": [
+                    {
+                        "authorityId":"1"
+                        "authority":"ROLE_USER"
+                    }],
+                    "profiles": [
+                    {
+                        "id":"1",
+                        "name":"profile_name",
+                        "roles": [
+                        {
+                            "id":"1",
+                            "name":"physician",
+                            "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                        }]
+                    }],
+                    "roles": [
+                    {
+                        "id": "2",
+                        "name":"administrator",
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                    }]
+                },
+                {
+                    "username":"username5",
+                    "password":"password5",
+                    "enabled":"true",
+                    "authorities": [
+                    {
+                        "authorityId":"1"
+                        "authority":"ROLE_USER"
+                    }],
+                    "profiles": [
+                    {
+                        "id":"1",
+                        "name":"profile_name",
+                        "roles": [
+                        {
+                            "id":"1",
+                            "name":"physician",
+                            "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/1"
+                        }]
+                    }],
+                    "roles": [
+                    {
+                        "id": "2",
+                        "name":"administrator",
+                        "roleUri":"https://private-d734-healthdata.apiary-mock.com/roles/2"
+                    }]
+                }
+            ]
+            
 ### POST
 Add a new user to the User database.
 
