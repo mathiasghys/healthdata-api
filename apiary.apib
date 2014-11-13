@@ -43,10 +43,10 @@ A Configuration resource consists basically of a key-value pair with some additi
 
 The *updatedOn* attribute is assigned by the logic at the moment of change.
 
-## Configuration - Key [/configurations/{key}]
+## Configuration - ID [/configurations/{id}]
 
 + Parameters
-    + key (required, string, `"property_key"`) ... Configuration `key`.
+    + id (required, string, `"configurations ID"`) ... Configuration `id`.
 
 + Model (application/json)
 
@@ -55,6 +55,7 @@ The *updatedOn* attribute is assigned by the logic at the moment of change.
     + Body
 
             {
+                "id": 1,
                 "key": "install_dir",
                 "value": "C:\Program Files\HD4DP",
                 "description": "installation location of the HD4DP program"
@@ -75,6 +76,7 @@ Create a new configuration key-value pair.
     + Body
             
             {
+                "id": 1,
                 "key": "install_dir",
                 "value": "C:\Program Files\HD4DP",
                 "description": "installation location of the HD4DP program"
@@ -87,6 +89,7 @@ Create a new configuration key-value pair.
     + Body
             
             {
+                "id": 1,
                 "key": "install_dir",
                 "value": "C:\Program Files\HD4DP",
                 "description": "installation location of the HD4DP program"
@@ -109,7 +112,7 @@ This API call will GET you the Configuration value that matches the passed key.
             {
             }
 + Response 200
-    [Configuration - Key][]
+    [Configuration - ID][]
 
 ### DELETE
 This API call will DELETE the configuration value that matches the passed key
@@ -137,6 +140,7 @@ This API call will UPDATE an existing configuration value.
     + Body
     
             {
+                "id": 1,
                 "key": "install_dir",
                 "value": "C:\Program Files (x86)\HD4DP",
                 "description": "installation location of the HD4DP program"
