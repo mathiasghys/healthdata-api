@@ -1048,7 +1048,6 @@ The actual token and a refresh token must be returned by the service
                 "scope": "read trust write"
             }
 
-
 # Group User API
 API user for the management of Users in Healthdata.
 
@@ -3481,3 +3480,42 @@ Execute an action on the Workflow with this 'ID'.
                         }
                     ]
                 }
+
+# Group Patient API
+Add partient informatin from the National Register.
+
+
+## Patient - QueryString [/patient/{ssin}]
+
++ Parameters
+    + ssin (required, string, `"85101138771"`) ... ssin number of the patient. Has example value.
+    
++ Model (application/json)
+
+    JSON representation of a Data Reference resource. 
+
+
+    + Headers
+
+            Accept: "application/json"
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
+    + Body
+
+            {
+                "lastName": "Merckx",
+                "firstName": "Robin",
+                "dateOfBirth": "1985-10-11 00:00:00",
+                "gender": "MALE",
+                "district": "1830",
+                "deceased": false,
+                "dateOfDeath": null,
+                "inss": "85101138771"
+            }
+
+### GET
+This API call will GET you the patient information enriched by the National Register.
+
++ Response 200
+
+    [Patient - QueryString][]
