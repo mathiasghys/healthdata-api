@@ -2216,15 +2216,16 @@ Delete a workflow with the provided ID
 
 + Response 401 
 
-## Workflow - QueryString [/workflows{?status,dataCollectionUri,_metaData}]
+## Workflow - QueryString [/workflows{?status,dataCollectionId,_metaData,fullSearch}]
  
 ### List all Workflows [GET]
 List all existing Workflows that match the given QueryString parameters.
 
 + Parameters
     + status (optional, string) ... Status of the Workflow
-    + dataCollectionUri (optional, string) ... DataCollectionUri of the Workflow
+    + dataCollectionId (optional, string) ... DataCollectionId of the Workflow
     + _metaData (optional, string) ... All other parameters are concidered metaData where the name is the Key of the metaData end the value is the value of the metaData
+    + fullSearch (optional, string) ... If the value is true you will load the document with content in the same request
 
 + Request
     
