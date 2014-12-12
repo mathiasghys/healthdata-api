@@ -864,7 +864,7 @@ The supported mappings include:
 - from _healthdata_ to _healthdata-comments_: the healthdata document must be provided as a single string, the result is a list of strings
 - from _healthdata_ to _healthdata-summary_: the healthdata document must be provided as a single string, the result is a JSON object (key-value)
 
-## Mapping [/mappings{?from,to,dataCollectionUri,content}]
+## Mapping [/mappings{?from,to,dataCollectionDefinitionUri,content}]
 
 ### POST
 
@@ -2202,7 +2202,7 @@ Delete a workflow with the provided ID
 
 + Response 401 
 
-## Workflow - QueryString [/workflows{?status,dataCollectionId,dataCollectionDefinition,_metaData,fullSearch}]
+## Workflow - QueryString [/workflows{?status,dataCollectionId,dataCollectionDefinitionId,_metaData,fullSearch}]
  
 ### List all Workflows [GET]
 List all existing Workflows that match the given QueryString parameters.
@@ -2996,8 +2996,9 @@ List all existing Workflows that match the given QueryString parameters.
                     "identificationType": "NIHI",
                     "identificationValue": "NIHI-123",
                     "documentUri": null,
-                    "dataCollectionUri": "testUri",
+                    "dataCollectionDefinitionUri": "testUri",
                     "dataCollectionId": 2,
+                    "dataCollectionDefinitionId": 2,
                     "metaData": {},
                     "createdOn": "2014-09-10 09:19:14",
                     "updatedOn": "2014-09-10 09:19:14",
@@ -3028,8 +3029,9 @@ List all existing Workflows that match the given QueryString parameters.
                     "identificationType": "NIHI",
                     "identificationValue": "NIHI-123",
                     "documentUri": null,
-                    "dataCollectionUri": "testUri",
+                    "dataCollectionDefinitionUri": "testUri",
                     "dataCollectionId": 3,
+                    "dataCollectionDefinitionId": 3,
                     "metaData": {},
                     "createdOn": "2014-09-10 09:19:14",
                     "updatedOn": "2014-09-10 09:19:14",
@@ -3060,8 +3062,9 @@ List all existing Workflows that match the given QueryString parameters.
                     "identificationType": "NIHI",
                     "identificationValue": "NIHI-123",
                     "documentUri": null,
-                    "dataCollectionUri": "testUri",
+                    "dataCollectionDefinitionUri": "testUri",
                     "dataCollectionId": 4,
+                    "dataCollectionDefinitionId": 4,
                     "metaData": {},
                     "createdOn": "2014-09-10 09:19:14",
                     "updatedOn": "2014-09-10 09:19:14",
@@ -3092,8 +3095,9 @@ List all existing Workflows that match the given QueryString parameters.
                     "identificationType": "NIHI",
                     "identificationValue": "NIHI-123",
                     "documentUri": null,
-                    "dataCollectionUri": "testUri",
+                    "dataCollectionDefinitionUri": "testUri",
                     "dataCollectionId": 5,
+                    "dataCollectionDefinitionId": 5,
                     "metaData": {},
                     "createdOn": "2014-09-10 09:19:14",
                     "updatedOn": "2014-09-10 09:19:14",
@@ -3391,7 +3395,6 @@ List all actions that can be executed on a Workflow.
             [
                 {
                     "action": "CREATE",
-                    "dataCollectionUri": null,
                     "dataCollectionId": null
                 },
                 {
@@ -3461,7 +3464,7 @@ Execute an action on the Workflow with this 'ID'.
                     "identificationType": "NIHI",
                     "identificationValue": "NIHI-123",
                     "documentUri": "http://localhost:8080/healthdata_hd4dp/workflows/1/documents",
-                    "dataCollectionUri": "testUri",
+                    "dataCollectionDefinitionUri": "testUri",
                     "metaData": {
                         "PERSON": "Robin Merckx",
                         "YEAR": "2014"
