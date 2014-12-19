@@ -1026,6 +1026,7 @@ API user for the management of Users in Healthdata.
 
 The user domain object has the following attributes:
 
+- user_id
 - username
 - password
 - enabled
@@ -1037,6 +1038,7 @@ The authority object has the following attributes:
 
 - authorityId
 - authority
+- user_id
 
 ## User [/users]
 
@@ -1061,6 +1063,7 @@ Return a list of Users from the database.
     
             [
                 {
+                    "id":"1",
                     "username":"username1",
                     "password":"password1",
                     "enabled":"true",
@@ -1079,6 +1082,7 @@ Return a list of Users from the database.
                     }]
                 },
                 {
+                    "id":"2",
                     "username":"username2",
                     "password":"password2",
                     "enabled":"true",
@@ -1097,6 +1101,7 @@ Return a list of Users from the database.
                     }]
                 },
                 {
+                    "id":"3",
                     "username":"username3",
                     "password":"password3",
                     "enabled":"true",
@@ -1115,6 +1120,7 @@ Return a list of Users from the database.
                     }]
                 },
                 {
+                    "id":"4",
                     "username":"username4",
                     "password":"password4",
                     "enabled":"true",
@@ -1133,6 +1139,7 @@ Return a list of Users from the database.
                     }]
                 },
                 {
+                    "id":"5",
                     "username":"username5",
                     "password":"password5",
                     "enabled":"true",
@@ -1188,6 +1195,7 @@ Add a new user to the User database.
     + Body
         
             {
+                "id":"1",
                 "username":"username",
                 "password":"password",
                 "enabled":"true",
@@ -1206,10 +1214,10 @@ Add a new user to the User database.
                 }]
             }
 
-## User - ID [/users/{username}]
+## User - ID [/users/{id}]
 
 + Parameters
-    + username (required, string, `"Dr. Zhivago"`) ... unique user name of the User object. Has example value.
+    + id (required, string, `"1"`) ... unique ID of the User object. Has example value.
 
 + Model (application/hal+json)
 
@@ -1218,6 +1226,7 @@ Add a new user to the User database.
     + Body
         
             {
+                "id":"1",
                 "username":"username",
                 "password":"password",
                 "enabled":"true",
@@ -1237,7 +1246,7 @@ Add a new user to the User database.
             }
 
 ###GET
-Retrieve a user object based on username
+Retrieve a user object based on user id
 
 + Request
     
@@ -1264,6 +1273,7 @@ Updates an existing user object. For example for a password change.
     + Body
         
             {
+                "id":"1",
                 "username":"username",
                 "password":"updated_password",
                 "enabled":"true",
@@ -1286,6 +1296,7 @@ Updates an existing user object. For example for a password change.
     + Body
         
             {
+                "id":"1",
                 "username":"username",
                 "password":"updated_password",
                 "enabled":"true",
@@ -1338,6 +1349,7 @@ Retrieves all the user data of the logged in user without the password property.
     + Body
         
             {
+                "id":"1",
                 "username":"username",
                 "password":null,
                 "enabled":"true",
