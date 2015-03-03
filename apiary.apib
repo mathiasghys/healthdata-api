@@ -150,11 +150,13 @@ This API call will UPDATE an existing configuration value.
             }
 + Response 204
 
-## Configurations [/configurations/]
+## Configurations - QueryString parameters [/configurations{?key}]
 
+List all existing Configuration that match the given QueryString parameters.
+ 
 ### GET
-
-List all existing configuration keys with their according values.
++ Parameters
+    + key (optional, string, `NIHII`) ... the configuration key.
 
 + Request
     
