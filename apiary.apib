@@ -33,12 +33,15 @@ Part of the **HealthData API** that allows to interact with configuration parame
 
 A Configuration resource consists basically of a key-value pair with some additional attributes:
 
+- id
 - key
 - value
+- defaultValue
 - description
+- type
+- allowedValues
+- readable
 - updatedOn
-- validFrom
-- validTill
 - configurationUri
 
 The *updatedOn* attribute is assigned by the logic at the moment of change.
@@ -56,47 +59,15 @@ The *updatedOn* attribute is assigned by the logic at the moment of change.
 
             {
                 "id": 1,
-                "key": "install_dir",
-                "value": "C:\Program Files\HD4DP",
-                "description": "installation location of the HD4DP program"
-                "updatedOn": "2014-09-08 16:17:28",
-                "validFrom": "2014-01-01 00:00:00",
-                "validTill": "2114-01-01 00:00:00",
-                "configurationUri" : "https://private-d734-healthdata.apiary-mock.com/configurations/install_dir"
-            }
-
-### POST
-Create a new configuration key-value pair.
-+ Request (application/json)
-    
-    + Headers
-        
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-    + Body
-            
-            {
-                "id": 1,
-                "key": "install_dir",
-                "value": "C:\Program Files\HD4DP",
-                "description": "installation location of the HD4DP program"
-                "validFrom": "2014-01-01 00:00:00",
-                "validTill": "2114-01-01 00:00:00",
-            }
-
-+ Response 201 (application/json)
-
-    + Body
-            
-            {
-                "id": 1,
-                "key": "install_dir",
-                "value": "C:\Program Files\HD4DP",
-                "description": "installation location of the HD4DP program"
-                "updatedOn": "2014-09-08 16:17:28",
-                "validFrom": "2014-01-01 00:00:00",
-                "validTill": "2114-01-01 00:00:00",
-                "configurationUri" : "https://private-d734-healthdata.apiary-mock.com/configurations/install_dir"
+                "key": "CATALOGUE_HOST",
+                "value": "https://catalogue.healthdata.be",
+                "defaultValue": "https://catalogue.healthdata.be",
+                "description": "the host of the catalogue",
+                "type": "STRING",
+                "allowedValues": [ ],
+                "readable": true,
+                "updatedOn": "2015-04-21T06:38:45Z",
+                "configurationUri": "http://test.healthdata.be:80/healthdata_hd4dp/configurations/1"
             }
 
 ### GET
@@ -107,26 +78,9 @@ This API call will GET you the Configuration value that matches the passed key.
     + Headers
         
             Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-    + Body
-    
-            {
-            }
+
 + Response 200
     [Configuration - ID][]
-
-### DELETE
-This API call will DELETE the configuration value that matches the passed key
-
-+ Request
-    
-    + Headers
-        
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-+ Response 204
-
-+ Response 404
-
-        The configuration you want to delete does not exist.
 
 ### PUT
 This API call will UPDATE an existing configuration value.
@@ -141,14 +95,18 @@ This API call will UPDATE an existing configuration value.
     
             {
                 "id": 1,
-                "key": "install_dir",
-                "value": "C:\Program Files (x86)\HD4DP",
-                "description": "installation location of the HD4DP program"
-                "validFrom": "2014-01-01 00:00:00",
-                "validTill": "2114-01-01 00:00:00",
-                "configurationUri" : "https://private-d734-healthdata.apiary-mock.com/configurations/install_dir"
+                "key": "CATALOGUE_HOST",
+                "value": "https://catalogue.healthdata.be",
+                "defaultValue": "https://catalogue.healthdata.be",
+                "description": "the host of the catalogue",
+                "type": "STRING",
+                "allowedValues": [ ],
+                "readable": true,
+                "updatedOn": "2015-04-21T06:38:45Z",
+                "configurationUri": "http://test.healthdata.be:80/healthdata_hd4dp/configurations/1"
             }
-+ Response 204
++ Response 200
+    [Configuration - ID][]
 
 ## Configurations - QueryString parameters [/configurations{?key,value,defaultValue,description,type}]
 
@@ -156,21 +114,17 @@ List all existing Configuration that match the given QueryString parameters.
  
 ### GET
 + Parameters
-    + key (optional, string, `AUTHENTICATION_TYPE`) ... the configuration key.
-    + value (optional, string, `DATABASE`) ... the configuration value.
-    + defaultValue (optional, string, `DATABASE`) ... the configuration default value.
-    + description (optional, string, `authentication type`) ... the configuration description.
-    + type (optional, string, `INTEGER`) ... the configuration type.
+    + key (optional, string, `CATALOGUE_HOST`) ... the configuration key.
+    + value (optional, string, `https://catalogue.healthdata.be`) ... the configuration value.
+    + defaultValue (optional, string, `https://catalogue.healthdata.be`) ... the configuration default value.
+    + description (optional, string, `the host of the catalogue`) ... the configuration description.
+    + type (optional, string, `STRING`) ... the configuration type [STRING, INTEGER, DATE or ENUM].
 
 + Request
     
     + Headers
         
             Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-    + Body
-            
-            {
-            }
 
 + Response 200 (application/json)
 
@@ -178,25 +132,48 @@ List all existing Configuration that match the given QueryString parameters.
     
             [
                 {
-                    "key": "install_dir",
-                    "value": "C:\Program Files\HD4DP",
-                    "description": "installation location of the HD4DP program"
-                    "updatedOn": "2014-09-08 16:17:28",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "configurationUri" : "https://private-d734-healthdata.apiary-mock.com/configurations/install_dir"
+                    "id": 1,
+                    "key": "CATALOGUE_HOST",
+                    "value": "https://catalogue.healthdata.be",
+                    "defaultValue": "https://catalogue.healthdata.be",
+                    "description": "the host of the catalogue",
+                    "type": "STRING",
+                    "allowedValues": [ ],
+                    "readable": true,
+                    "updatedOn": "2015-04-21T06:38:45Z",
+                    "configurationUri": "http://test.healthdata.be:80/healthdata_hd4dp/configurations/1"
                 },
                 {
-                    "key": "ehBox_client",
-                    "value": "hector",
-                    "description": "Name of the client used for ehBox communication with the landing zone."
-                    "updatedOn": "2014-09-08 16:17:28",
-                    "validFrom": "2014-01-01 00:00:00",
-                    "validTill": "2114-01-01 00:00:00",
-                    "configurationUri" : "https://private-d734-healthdata.apiary-mock.com/configurations/ehBox_client"
+                    "id": 2,
+                    "key": "CATALOGUE_PORT",
+                    "value": "443",
+                    "defaultValue": "443",
+                    "description": "the port of the catalogue",
+                    "type": "STRING",
+                    "allowedValues": [ ],
+                    "readable": true,
+                    "updatedOn": "2015-04-13T11:28:39Z",
+                    "configurationUri": "http://test.healthdata.be:80/healthdata_hd4dp/configurations/2"
                 }
             ]
 
+## Configurations - DataReference [/configurations/datareference]
+
++ Request
+    
+    + Headers
+        
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "hostname": "https://catalogue.healthdata.be",
+                "port": "443",
+                "pathname": "/healthdata_catalogue/dataReference"
+            }
 
 # Group Datacollection Definition API
 DataCollectionDefinitions-related resources of the **HealthData API**
