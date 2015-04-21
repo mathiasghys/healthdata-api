@@ -26,8 +26,6 @@ Collection of all the different APIs provided by HealthData.
 - 429 `Too Many Requests` - exceeded GoodData API limits. Pause requests, wait up to one minute, and try again. 
 - 503 `Service Unavailable` - service is temporary unavailable (e.g. scheduled Platform Maintenance). Try again later.
 
-# Group Annotations API
-
 # Group Configuration API
 Part of the **HealthData API** that allows to interact with configuration parameters
 
@@ -158,6 +156,9 @@ List all existing Configuration that match the given QueryString parameters.
             ]
 
 ## Configurations - DataReference [/configurations/datareference]
+
+### GET
+This API call will GET you the Configuration for access to the datareference of the catalogue without any required authentication. This is for the mapping and validation API.
 
 + Request
     
