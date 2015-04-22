@@ -969,20 +969,19 @@ Workflow-related resources of the **HealthData API**
 The workflow resource has the following attributes:
 
 - id
-- hd4dpWorkflowUri
-- landingZoneWorkflowUri
+- readableId
 - status
-- identificationType
-- identificationValue
-- documentUri
-- dataCollectionId
+- dataCollectionName
 - dataCollectionDefinitionId
-- dataCollectionDefinitionUri
 - metaData
 - createdOn
 - updatedOn
 - history
+- senderDetails
+- hd4dpWorkflowId
+- documentUri
 - allowedActions
+- dataCollectionDefinitionUri
 
 The history attribute itself has the following attributes:
 
@@ -990,6 +989,14 @@ The history attribute itself has the following attributes:
 - newStatus
 - executedOn
 - executedBy
+
+The senderDetails attribute itself has the following attributes:
+
+- id
+- identificationType
+- identificationValue
+- applicationId
+- codageFilename
 
 ## Workflow [/workflows]
 
@@ -1000,40 +1007,41 @@ The history attribute itself has the following attributes:
     + Body
 
             {
-                "id": 123,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/123",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": "http://localhost:8080/healthdata_webapp/workflows/123/documents",
-                "dataCollectionDefinitionUri": "http://localhost:8080/healthdata_catalogue/datacollectiondefinitions/123456",
-                "dataCollectionId": 123456,
-                "dataCollectionDefinitionId": 123456,
-                "metaData":  {
-                        "PERSON": "Robin Merckx",
-                        "YEAR": "2014"
-                    },
-                "createdOn": "2014-08-21 10:39:04",
-                "updatedOn": "2014-08-21 10:39:04",
+                "id": 150,
+                "readableId": "TEST_0000-0143",
+                "status": "APPROVED",
+                "dataCollectionName": "TEST",
+                "dataCollectionDefinitionId": 1,
+                "metaData": {
+                    "CODED_PATIENT_IDENTIFIER": "TEST_INSS_0000-0001"
+                },
+                "createdOn": "2015-04-08T17:44:25Z",
+                "updatedOn": "2015-04-08T17:45:17Z",
                 "history": [
                     {
-                            "action": "CREATE",
-                            "newStatus": "IN_PROGRESS",
-                            "executedOn": "2014-09-10 09:07:15",
-                            "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
+                        "action": "CREATE_FOR_REVIEW",
+                        "newStatus": "NEW",
+                        "executedOn": "2015-04-08T17:44:28Z",
+                        "executedBy": "Messaging Service"
                     },
                     {
-                        "action": "SUBMIT"
+                        "action": "UPDATE_STATUS",
+                        "newStatus": "APPROVED",
+                        "executedOn": "2015-04-08T17:45:17Z",
+                        "executedBy": "DWH Service"
                     }
-                ]
+                ],
+                "senderDetails": {
+                    "id": 1,
+                    "identificationType": "NIHII",
+                    "identificationValue": "43989894",
+                    "applicationId": "",
+                    "codageFilename": "healthdata.csv"
+                },
+                "hd4dpWorkflowId": "MTU3OA==",
+                "documentUri": "http://int.healthdata.be:80/healthdata_hd4res/workflows/150/documents",
+                "allowedActions": [ ],
+                "dataCollectionDefinitionUri": "http://int.healthdata.be:80/healthdata_catalogue/datacollectiondefinitions/1"
             }
 
 ### Create a workflow item [POST]
@@ -1042,21 +1050,15 @@ Create a new Workflow
     
     + Headers
     
+            Accept: application/json
+            Content-Type: application/json
             Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
 
     + Body
         
             {
-              "action": "CREATE"
-                "dataCollectionUri": "testUri"
-            }
-            
-            or
-            
-            {
-              "action": "CREATE_FOR_REVIEW", 
-              "documentContent": "some JSON",
-              "hd4dpWorkflowUri": "http://localhost:8080/hd4dp/workflows/1"
+                "action": "CREATE",
+                "dataCollectionName": "TEST"
             }
 
 + Response 200 (application/json)
@@ -1064,37 +1066,53 @@ Create a new Workflow
     + Body
     
             {
-                "id": 1,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
-                "landingZoneWorkflowUri": null,
+                "id": 808,
+                "readableId": null,
                 "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionId": 1,
-                "dataCollectionDefinitionId": 1,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:07:15",
-                "updatedOn": "2014-09-10 09:07:15",
+                "dataCollectionName": "TEST",
+                "dataCollectionDefinitionId": 105,
+                "metaData": { },
+                "createdOn": "2015-04-22T13:06:27Z",
+                "updatedOn": "2015-04-22T13:06:28Z",
                 "history": [
                     {
                         "action": "CREATE",
                         "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:07:15",
-                        "executedBy": "admin"
+                        "executedOn": "2015-04-22T13:06:28Z",
+                        "executedBy": "user"
                     }
                 ],
+                "senderDetails": {
+                    "applicationId": "",
+                    "id": 0,
+                    "codageFilename": "",
+                    "identificationType": "",
+                    "identificationValue": ""
+                },
+                "hd4dpWorkflowId": "808",
+                "documentUri": null,
                 "allowedActions": [
                     {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
+                        "sentOn": null,
+                        "metaData": null,
+                        "action": "SUBMIT",
+                        "endStatus": "SUBMITTED"
                     },
                     {
-                        "action": "SUBMIT"
+                        "sentOn": null,
+                        "metaData": null,
+                        "documentContent": null,
+                        "action": "SAVE",
+                        "endStatus": "IN_PROGRESS"
+                    },
+                    {
+                        "sentOn": null,
+                        "metaData": null,
+                        "action": "DELETE",
+                        "endStatus": "DELETED"
                     }
-                ]
+                ],
+                "dataCollectionDefinitionUri": "http://test.healthdata.be:80/healthdata_catalogue/datacollectiondefinitions/105"
             }
     
 ### Workflow - ID [/workflows/{id}]
@@ -1109,38 +1127,43 @@ Create a new Workflow
     + Body
 
             {
-                "id": 1,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
+                "id": 150,
+                "readableId": "TEST_0000-0143",
+                "status": "APPROVED",
+                "dataCollectionName": "TEST",
                 "dataCollectionDefinitionId": 1,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:07:15",
-                "updatedOn": "2014-09-10 09:07:15",
+                "metaData": {
+                    "CODED_PATIENT_IDENTIFIER": "TEST_INSS_0000-0001"
+                },
+                "createdOn": "2015-04-08T17:44:25Z",
+                "updatedOn": "2015-04-08T17:45:17Z",
                 "history": [
                     {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:07:15",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
+                        "action": "CREATE_FOR_REVIEW",
+                        "newStatus": "NEW",
+                        "executedOn": "2015-04-08T17:44:28Z",
+                        "executedBy": "Messaging Service"
                     },
                     {
-                        "action": "SUBMIT"
+                        "action": "UPDATE_STATUS",
+                        "newStatus": "APPROVED",
+                        "executedOn": "2015-04-08T17:45:17Z",
+                        "executedBy": "DWH Service"
                     }
-                ]
+                ],
+                "senderDetails": {
+                    "id": 1,
+                    "identificationType": "NIHII",
+                    "identificationValue": "43989894",
+                    "applicationId": "",
+                    "codageFilename": "healthdata.csv"
+                },
+                "hd4dpWorkflowId": "MTU3OA==",
+                "documentUri": "http://int.healthdata.be:80/healthdata_hd4res/workflows/150/documents",
+                "allowedActions": [ ],
+                "dataCollectionDefinitionUri": "http://int.healthdata.be:80/healthdata_catalogue/datacollectiondefinitions/1"
             }
+
 
 ### Retrieve a Workflow [GET]
 Get a Workflow with the provided ID
@@ -1154,606 +1177,6 @@ Get a Workflow with the provided ID
 + Response 200
 
     [Workflow - ID][]
-
-### Delete a workflow item [DELETE]
-Delete a workflow with the provided ID
-
-+ Request
-    
-    + Headers
-        
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 204
-
-### Workflow - 1 [/workflows/1]
-
-### Retrieve workflow 1 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 1,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 1,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:07:15",
-                "updatedOn": "2014-09-10 09:07:15",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:07:15",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-
-### Workflow - 2 [/workflows/2]
-
-### Retrieve workflow 2 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 2,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/2",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "CRZZ",
-                "dataCollectionDefinitionId": 2,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:07:15",
-                "updatedOn": "2014-09-10 09:07:15",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:07:15",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-            
-### Workflow - 3 [/workflows/3]
-
-### Retrieve workflow 3 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 3,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/3",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 3,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:19:14",
-                "updatedOn": "2014-09-10 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-            
-### Workflow - 4 [/workflows/4]
-
-### Retrieve workflow 4 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 4,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/4",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 4,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:19:14",
-                "updatedOn": "2014-09-10 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-            
-### Workflow - 5 [/workflows/5]
-
-### Retrieve workflow 5 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 5,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/5",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 5,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:19:14",
-                "updatedOn": "2014-09-10 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-            
-### Workflow - 6 [/workflows/6]
-
-### Retrieve workflow 6 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 6,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/6",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 6,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:19:14",
-                "updatedOn": "2014-09-10 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-            
-### Workflow - 7 [/workflows/7]
-
-### Retrieve workflow 7 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 7,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/7",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 7,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:19:14",
-                "updatedOn": "2014-09-10 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-            
-### Workflow - 8 [/workflows/8]
-
-### Retrieve workflow 8 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 8,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/8",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 8,
-                "metaData": {},
-                "createdOn": "2014-09-10 09:19:14",
-                "updatedOn": "2014-09-10 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-09-10 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-
-### Workflow - 9 [/workflows/9]
-
-### Retrieve workflow 9 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 9,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/9",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": null,
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 9,
-                "metaData": {},
-                "createdOn": "2014-10-02 09:19:14",
-                "updatedOn": "2014-10-02 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-10-02 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-
-### Workflow - 10 [/workflows/10]
-
-### Retrieve workflow 10 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 10,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/10",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": "http://localhost:8080/healthdata_hd4dp/workflows/10/documents",
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 10,
-                "metaData": {},
-                "createdOn": "2014-10-02 09:19:14",
-                "updatedOn": "2014-10-02 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-10-02 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-            
-### Workflow - 100 [/workflows/100]
-
-### Retrieve workflow 100 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 100,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/100",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": "http://localhost:8080/healthdata_hd4dp/workflows/100/documents",
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 10,
-                "metaData": {},
-                "createdOn": "2014-10-02 09:19:14",
-                "updatedOn": "2014-10-02 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-10-02 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-            
-### Workflow - 101 [/workflows/101]
-
-### Retrieve workflow 101 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 200 (application/json)
-
-    + Body
-
-            {
-                "id": 101,
-                "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/101",
-                "landingZoneWorkflowUri": null,
-                "status": "IN_PROGRESS",
-                "identificationType": "NIHI",
-                "identificationValue": "NIHI-123",
-                "documentUri": "http://localhost:8080/healthdata_hd4dp/workflows/101/documents",
-                "dataCollectionDefinitionUri": "testUri",
-                "dataCollectionName": "IQECAD",
-                "dataCollectionDefinitionId": 10,
-                "metaData": {},
-                "createdOn": "2014-10-02 09:19:14",
-                "updatedOn": "2014-10-02 09:19:14",
-                "history": [
-                    {
-                        "action": "CREATE",
-                        "newStatus": "IN_PROGRESS",
-                        "executedOn": "2014-10-02 09:19:14",
-                        "executedBy": "admin"
-                    }
-                ],
-                "allowedActions": [
-                    {
-                        "action": "SAVE",
-                        "documentContent": null,
-                        "metaData": null
-                    },
-                    {
-                        "action": "SUBMIT"
-                    }
-                ]
-            }
-
-
-### Workflow - 401 [/workflows/401]
-
-### Retrieve workflow 401 [GET]
-
-+ Request
-    
-    + Headers
-    
-            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-
-+ Response 401 
 
 ## Workflow - QueryString [/workflows{?status,dataCollectionName,dataCollectionDefinitionId,fullSearch,returnDeleted,user,senderIdentificationValue,_metaData}]
  
