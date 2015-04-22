@@ -312,136 +312,35 @@ List all existing Datacollections that match the given QueryString parameters.
     
             Accept: "application/json"
 
-    + Body
-            
-            {
-            }
-
 + Response 200 (application/json)
 
     + Body
     
             [
                 {
-                    "id": "1",
-                    "dataCollectionName": "IQECAD",
-                    "description": "IQECAD",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
+                    "id": 1,
+                    "dataCollectionName": "TEST",
+                    "description": "TEST Data Collection",
+                    "version": "1",
+                    "createdOn": "2015-04-03T16:01:12Z",
+                    "startDate": "2014-01-01T00:00:00Z",
+                    "endDateCreation": null,
+                    "endDateSubmission": null,
+                    "endDateComments": null,
+                    "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
                 },
                 {
-                    "id": "2",
-                    "dataCollectionName": "BCFR",
-                    "description": "BCFR",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "3",
-                    "dataCollectionName": "BEWSDBio",
-                    "description": "BEWSDBio",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-17 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "4",
-                    "dataCollectionName": "BEWSDOther",
-                    "description": "BEWSDOther",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-17 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "5",
-                    "dataCollectionName": "DENOMINATORS",
-                    "description": "DENOMINATORS",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "6",
-                    "dataCollectionName": "SARI",
-                    "description": "SARI",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "7",
-                    "dataCollectionName": "IQED",
-                    "description": "IQED",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "8",
-                    "dataCollectionName": "IQEDFoot",
-                    "description": "IQEDFoot",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "9",
-                    "dataCollectionName": "BNMDR",
-                    "description": "BNMDR",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-10-02 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "10",
-                    "dataCollectionName": "IQECAD_New",
-                    "description": "IQECAD_New",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-10-02 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                }  
+                    "id": 2,
+                    "dataCollectionName": "TEST2",
+                    "description": "TEST2 Data Collection",
+                    "version": "1",
+                    "createdOn": "2015-04-03T16:01:12Z",
+                    "startDate": "2014-01-01T00:00:00Z",
+                    "endDateCreation": null,
+                    "endDateSubmission": null,
+                    "endDateComments": null,
+                    "content": "{\"label\": \"TEST2\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                }
             ]
 
 
@@ -450,82 +349,29 @@ List all existing Datacollections that match the given QueryString parameters.
     + Headers
             
             Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
-            Range: "items=1-5"
-    
-    + Body
-            
-            {
-            }
+            Range: "items=1-1"
 
 + Response 206 (application/json)
 
     + Headers
         
             Accept: "application/json"
-            Content-Range: "items 1-5/10"
+            Content-Range: "items 1-1/2"
 
     + Body
     
             [
                 {
-                    "id": "1",
-                    "dataCollectionName": "IQECAD",
-                    "description": "IQECAD",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "2",
-                    "dataCollectionName": "BCFR",
-                    "description": "BCFR",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "3",
-                    "dataCollectionName": "BEWSDBio",
-                    "description": "BEWSDBio",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-17 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "4",
-                    "dataCollectionName": "BEWSDOther",
-                    "description": "BEWSDOther",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-17 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
-                },
-                {
-                    "id": "5",
-                    "dataCollectionName": "DENOMINATORS",
-                    "description": "DENOMINATORS",
-                    "content": null,
-                    "version": "1.0",
-                    "createdOn": "2014-09-08 16:17:15",
-                    "startDate": "2014-01-01 00:00:00",
-                    "endDateCreation": "2114-01-01 00:00:00",
-                    "endDateSubmission": "2114-01-01 00:00:00",
-                    "endDateComments": "2114-01-01 00:00:00"
+                    "id": 1,
+                    "dataCollectionName": "TEST",
+                    "description": "TEST Data Collection",
+                    "version": "1",
+                    "createdOn": "2015-04-03T16:01:12Z",
+                    "startDate": "2014-01-01T00:00:00Z",
+                    "endDateCreation": null,
+                    "endDateSubmission": null,
+                    "endDateComments": null,
+                    "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
                 }
             ]
 
