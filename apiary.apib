@@ -1069,17 +1069,25 @@ Create a new Workflow
                 "id": 1,
                 "readableId": null,
                 "status": "IN_PROGRESS",
-                "dataCollectionName": "TEST",
-                "dataCollectionDefinitionId": 105,
-                "metaData": { },
-                "createdOn": "2015-04-22T13:06:27Z",
-                "updatedOn": "2015-04-22T13:06:28Z",
+                "dataCollectionName": "IQEDFoot",
+                "dataCollectionDefinitionId": 3,
+                "metaData": {
+                    "PATIENT_IDENTIFIER": "11111111111"
+                },
+                "createdOn": "2014-01-01T00:00:00Z",
+                "updatedOn": "2014-01-02T00:00:00Z",
                 "history": [
                     {
                         "action": "CREATE",
                         "newStatus": "IN_PROGRESS",
-                        "executedOn": "2015-04-22T13:06:28Z",
-                        "executedBy": "user"
+                        "executedOn": "2014-01-01T00:00:00Z",
+                        "executedBy": "admin"
+                    },
+                    {
+                        "action": "SAVE",
+                        "newStatus": "IN_PROGRESS",
+                        "executedOn": "2014-01-02T00:00:00Z",
+                        "executedBy": "admin"
                     }
                 ],
                 "senderDetails": {
@@ -1089,8 +1097,8 @@ Create a new Workflow
                     "identificationType": "",
                     "identificationValue": ""
                 },
-                "hd4dpWorkflowId": "808",
-                "documentUri": null,
+                "hd4dpWorkflowId": null,
+                "documentUri": "http://test.healthdata.be:80/healthdata_hd4dp/workflows/1/documents",
                 "allowedActions": [
                     {
                         "sentOn": null,
@@ -1112,9 +1120,9 @@ Create a new Workflow
                         "endStatus": "DELETED"
                     }
                 ],
-                "dataCollectionDefinitionUri": "http://test.healthdata.be:80/healthdata_catalogue/datacollectiondefinitions/105"
+                "dataCollectionDefinitionUri": "http://test.healthdata.be:80/healthdata_catalogue/datacollectiondefinitions/3"
             }
-    
+
 ### Workflow - ID [/workflows/{id}]
 
 + Parameters
@@ -1522,12 +1530,12 @@ Execute an action on the Workflow with this 'ID'.
                                 "PERSON" : "Robin Merckx",
                                 "YEAR" : "2014"
                           },
-              "documentContent": "some JSON"
+              "documentContent": "{}"
             }
 + Response 200
 
     + Body
-    
+
             {
                     "id": 1,
                     "hd4dpWorkflowUri": "http://localhost:8080/healthdata_hd4dp/workflows/1",
