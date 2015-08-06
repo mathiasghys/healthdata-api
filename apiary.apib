@@ -39,8 +39,8 @@ A Configuration resource consists basically of a key-value pair with some additi
 - type
 - allowedValues
 - readable
+- advanced
 - updatedOn
-- configurationUri
 
 The *updatedOn* attribute is assigned by the logic at the moment of change.
 
@@ -64,8 +64,8 @@ The *updatedOn* attribute is assigned by the logic at the moment of change.
                 "type": "STRING",
                 "allowedValues": [ ],
                 "readable": true,
-                "updatedOn": "2015-04-21T06:38:45Z",
-                "configurationUri": "http://test.healthdata.be:80/healthdata_hd4dp/configurations/1"
+                "advanced": false,
+                "updatedOn": "2015-04-21T06:38:45Z"
             }
 
 ### GET
@@ -100,8 +100,8 @@ This API call will UPDATE an existing configuration value.
                 "type": "STRING",
                 "allowedValues": [ ],
                 "readable": true,
-                "updatedOn": "2015-04-21T06:38:45Z",
-                "configurationUri": "http://test.healthdata.be:80/healthdata_hd4dp/configurations/1"
+                "advanced": false,
+                "updatedOn": "2015-04-21T06:38:45Z"
             }
 + Response 200
     [Configuration - ID][]
@@ -138,8 +138,8 @@ List all existing Configuration that match the given QueryString parameters.
                     "type": "STRING",
                     "allowedValues": [ ],
                     "readable": true,
-                    "updatedOn": "2015-04-21T06:38:45Z",
-                    "configurationUri": "http://test.healthdata.be:80/healthdata_hd4dp/configurations/1"
+                    "advanced": false,
+                    "updatedOn": "2015-04-21T06:38:45Z"
                 },
                 {
                     "id": 2,
@@ -150,8 +150,8 @@ List all existing Configuration that match the given QueryString parameters.
                     "type": "STRING",
                     "allowedValues": [ ],
                     "readable": true,
+                    "advanced": false,
                     "updatedOn": "2015-04-13T11:28:39Z",
-                    "configurationUri": "http://test.healthdata.be:80/healthdata_hd4dp/configurations/2"
                 }
             ]
 
