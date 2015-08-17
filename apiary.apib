@@ -1435,6 +1435,86 @@ List all existing Workflows that match the given QueryString parameters.
                 }
             ]
 
+## Workflow - QueryString [/workflows/search/{dataCollectionNames}]
+ 
+### Workflow Search API [POST]
+Forwards the request to the ElasticSearch engine, only searching in the indexes specified by the dataCollectionNames parameter.
+
++ Parameters
+    + dataCollectionNames (required, string, `"bcfr,bnmdr"`) ... `List of the data collections in which the search should be executed, separate by commas.
+    
++ Request
+    
+    + Headers
+    
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
++ Response 200 (application/json)
+
+    + Body
+
+            { "took": 15,
+                "timed_out": false,
+                "_shards": {
+                    "total": 1,
+                    "successful": 1,
+                    "failed": 0
+                },
+                "hits": {
+                    "total": 1,
+                    "max_score": 1,
+                    "hits": [
+                        {
+                            "_index": "test",
+                            "_type": "workflow",
+                            "_id": "44358",
+                            "_score": 1,
+                            "_source": {
+                                "id": 44358,
+                                "readableId": null,
+                                "status": "DELETED",
+                                "document": null,
+                                "dataCollectionName": "TEST",
+                                "dataCollectionDefinitionId": 177,
+                                "metaData": {},
+                                "dateMetaData": {},
+                                "technicalMetaData": {},
+                                "createdOn": "2015-08-17T11:52:46+02:00",
+                                "updatedOn": "2015-08-17T11:52:50+02:00",
+                                "history": [
+                                    {
+                                        "id": 44359,
+                                        "action": "CREATE",
+                                        "newStatus": "IN_PROGRESS",
+                                        "executedOn": "2015-08-17T11:52:46+02:00",
+                                        "executedBy": "user",
+                                        "source": null,
+                                        "numberOfErrors": null,
+                                        "numberOfWarnings": null,
+                                        "percentageOfMandatory": null,
+                                        "percentageOfOptional": null
+                                    },
+                                    {
+                                        "id": null,
+                                        "action": "DELETE",
+                                        "newStatus": "DELETED",
+                                        "executedOn": null,
+                                        "executedBy": "user",
+                                        "source": null,
+                                        "numberOfErrors": null,
+                                        "numberOfWarnings": null,
+                                        "percentageOfMandatory": null,
+                                        "percentageOfOptional": null
+                                    }
+                                ],
+                                "hd4dpWorkflowId": "44358",
+                                "submittedOnce": false
+                            }
+                        }
+                    ]
+                }
+            }
+            
 ## Workflow - ID - Documents [/workflows/{id}/documents]
 
 ### Retrieve a Document [GET]
