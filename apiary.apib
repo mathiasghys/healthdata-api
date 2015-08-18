@@ -605,6 +605,116 @@ The actual token and a refresh token must be returned by the service
                 "scope": "read trust write"
             }
 
+# Group Translation API
+API for the translations of HealthData
+
+The translation domain object has the following attributes
+
+- key
+- nl
+- fr
+
+## Translations[/translations{?language}]
+
+### GET
+
++ Parameters
+    + language (required, string, `"NL"`) ... The language in which you want to receive the translations FR or NL are the possible options.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Accept: Application/json
+
++ Response 200 (application/json)
+    
+    + Body
+            
+            {
+                "Additional help can be accessed while using the application by clicking on the help icon in the upper right corner.": "Une aide supplémentaire est à votre disposition via l'icône d'aide dans le coin supérieur droit de l'application.",
+                "Additional information on form": "Des informations supplémentaires sur la forme",
+                "Additional information on substance": "Des informations supplémentaires sûr la substance",
+                "Additional information on the analysis method": "Des informations supplémentaires sûr le méthode d'analyse",
+                "Additional information on the nature of the sample": "Des informations supplémentaires sûr le caractère de l'échantillon"
+            }
+
+### PUT
+
+Create or update translations.
+Only for admin users.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Content-Type: Application/json
+            Authorization: Bearer ?
+
+    + Body
+    
+            [
+                {
+                    "key" : "key1",
+                    "nl" : "key1nl",
+                    "fr" : "key1fr"
+                },
+                {
+                    "key" : "key2",
+                    "nl" : "key2nl",
+                    "fr" : "key2fr"
+                },
+                {
+                    "key" : "key3",
+                    "nl" : "key3nl",
+                    "fr" : "key3fr"
+                },
+                {
+                    "key" : "key4",
+                    "nl" : "key4nl",
+                    "fr" : "key4fr"
+                }
+            ]
+
++ Response 204 (application/json)
+
+### DELETE
+
+Delete translations.
+Only for admin users.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Content-Type: Application/json
+            Authorization: Bearer ?
+
+    + Body
+    
+            [
+                {
+                    "key" : "key1",
+                    "nl" : "key1nl",
+                    "fr" : "key1fr"
+                },
+                {
+                    "key" : "key2",
+                    "nl" : "key2nl",
+                    "fr" : "key2fr"
+                },
+                {
+                    "key" : "key3",
+                    "nl" : "key3nl",
+                    "fr" : "key3fr"
+                },
+                {
+                    "key" : "key4",
+                    "nl" : "key4nl",
+                    "fr" : "key4fr"
+                }
+            ]
+
 # Group User API
 API user for the management of Users in Healthdata.
 
