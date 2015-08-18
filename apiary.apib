@@ -1099,6 +1099,13 @@ The history attribute itself has the following attributes:
 - newStatus
 - executedOn
 - executedBy
+- source
+- file
+- messageType
+- numberOfErrors
+- numberOfWarnings
+- percentageOfMandatory
+- percentageOfOptional
 
 The senderDetails attribute itself has the following attributes:
 
@@ -1132,13 +1139,27 @@ The senderDetails attribute itself has the following attributes:
                         "action": "CREATE_FOR_REVIEW",
                         "newStatus": "NEW",
                         "executedOn": "2015-04-08T17:44:28Z",
-                        "executedBy": "Messaging Service"
+                        "executedBy": "Messaging Service",
+                        "source": null,
+                        "file": null,
+                        "messageType": null,
+                        "numberOfErrors": null,
+                        "numberOfWarnings": null,
+                        "percentageOfMandatory": null,
+                        "percentageOfOptional": null
                     },
                     {
                         "action": "UPDATE_STATUS",
                         "newStatus": "APPROVED",
                         "executedOn": "2015-04-08T17:45:17Z",
-                        "executedBy": "DWH Service"
+                        "executedBy": "DWH Service",
+                        "source": null,
+                        "file": null,
+                        "messageType": null,
+                        "numberOfErrors": null,
+                        "numberOfWarnings": null,
+                        "percentageOfMandatory": null,
+                        "percentageOfOptional": null
                     }
                 ],
                 "senderDetails": {
@@ -1191,13 +1212,28 @@ Create a new Workflow
                         "action": "CREATE",
                         "newStatus": "IN_PROGRESS",
                         "executedOn": "2014-01-01T00:00:00Z",
-                        "executedBy": "admin"
+                        "executedBy": "admin",
+                        "source": null,
+                        "file": null,
+                        "messageType": null,
+                        "numberOfErrors": null,
+                        "numberOfWarnings": null,
+                        "percentageOfMandatory": null,
+                        "percentageOfOptional": null
                     },
                     {
                         "action": "SAVE",
                         "newStatus": "IN_PROGRESS",
                         "executedOn": "2014-01-02T00:00:00Z",
-                        "executedBy": "admin"
+                        "executedBy": "admin",
+                        "source": "Manual",
+                        "file": null,
+                        "messageType": null,
+                        "numberOfErrors": null,
+                        "numberOfWarnings": null,
+                        "percentageOfMandatory": null,
+                        "percentageOfOptional": null
+
                     }
                 ],
                 "senderDetails": {
@@ -1260,13 +1296,29 @@ Create a new Workflow
                         "action": "CREATE_FOR_REVIEW",
                         "newStatus": "NEW",
                         "executedOn": "2015-04-08T17:44:28Z",
-                        "executedBy": "Messaging Service"
+                        "executedBy": "Messaging Service",
+                        "source": null,
+                        "file": null,
+                        "messageType": null,
+                        "numberOfErrors": null,
+                        "numberOfWarnings": null,
+                        "percentageOfMandatory": null,
+                        "percentageOfOptional": null
+
                     },
                     {
                         "action": "UPDATE_STATUS",
                         "newStatus": "APPROVED",
                         "executedOn": "2015-04-08T17:45:17Z",
-                        "executedBy": "DWH Service"
+                        "executedBy": "DWH Service",
+                        "source": null,
+                        "file": null,
+                        "messageType": null,
+                        "numberOfErrors": null,
+                        "numberOfWarnings": null,
+                        "percentageOfMandatory": null,
+                        "percentageOfOptional": null
+
                     }
                 ],
                 "senderDetails": {
@@ -1342,7 +1394,15 @@ List all existing Workflows that match the given QueryString parameters.
                             "action": "CREATE",
                             "newStatus": "IN_PROGRESS",
                             "executedOn": "2015-04-22T13:06:28Z",
-                            "executedBy": "user"
+                            "executedBy": "user",
+                            "source": null,
+                            "file": null,
+                            "messageType": null,
+                            "numberOfErrors": null,
+                            "numberOfWarnings": null,
+                            "percentageOfMandatory": null,
+                            "percentageOfOptional": null
+
                         }
                     ],
                     "senderDetails": {
@@ -1391,7 +1451,15 @@ List all existing Workflows that match the given QueryString parameters.
                             "action": "CREATE",
                             "newStatus": "IN_PROGRESS",
                             "executedOn": "2015-04-22T13:06:28Z",
-                            "executedBy": "user"
+                            "executedBy": "user",
+                            "source": null,
+                            "file": null,
+                            "messageType": null,
+                            "numberOfErrors": null,
+                            "numberOfWarnings": null,
+                            "percentageOfMandatory": null,
+                            "percentageOfOptional": null
+
                         }
                     ],
                     "senderDetails": {
@@ -1459,7 +1527,15 @@ List all existing Workflows that match the given QueryString parameters.
                             "action": "CREATE",
                             "newStatus": "IN_PROGRESS",
                             "executedOn": "2015-04-22T13:06:28Z",
-                            "executedBy": "user"
+                            "executedBy": "user",
+                            "source": null,
+                            "file": null,
+                            "messageType": null,
+                            "numberOfErrors": null,
+                            "numberOfWarnings": null,
+                            "percentageOfMandatory": null,
+                            "percentageOfOptional": null
+
                         }
                     ],
                     "senderDetails": {
@@ -1508,7 +1584,14 @@ List all existing Workflows that match the given QueryString parameters.
                             "action": "CREATE",
                             "newStatus": "IN_PROGRESS",
                             "executedOn": "2015-04-22T13:06:28Z",
-                            "executedBy": "user"
+                            "executedBy": "user",
+                            "source": null,
+                            "file": null,
+                            "messageType": null,
+                            "numberOfErrors": null,
+                            "numberOfWarnings": null,
+                            "percentageOfMandatory": null,
+                            "percentageOfOptional": null
                         }
                     ],
                     "senderDetails": {
@@ -1599,6 +1682,8 @@ Forwards the request to the ElasticSearch engine, only searching in the indexes 
                                         "executedOn": "2015-08-17T11:52:46+02:00",
                                         "executedBy": "user",
                                         "source": null,
+                                        "file": null,
+                                        "messageType": null,
                                         "numberOfErrors": null,
                                         "numberOfWarnings": null,
                                         "percentageOfMandatory": null,
@@ -1611,6 +1696,8 @@ Forwards the request to the ElasticSearch engine, only searching in the indexes 
                                         "executedOn": null,
                                         "executedBy": "user",
                                         "source": null,
+                                        "file": null,
+                                        "messageType": null,
                                         "numberOfErrors": null,
                                         "numberOfWarnings": null,
                                         "percentageOfMandatory": null,
@@ -1746,13 +1833,27 @@ Execute an action on the Workflow with this 'ID'.
                             "action": "CREATE",
                             "newStatus": "IN_PROGRESS",
                             "executedOn": "2014-09-10 09:07:15",
-                            "executedBy": "admin"
+                            "executedBy": "admin",
+                            "source": null,
+                            "file": null,
+                            "messageType": null,
+                            "numberOfErrors": null,
+                            "numberOfWarnings": null,
+                            "percentageOfMandatory": null,
+                            "percentageOfOptional": null
                         },
                         {
                             "action": "SAVE",
                             "newStatus": "IN_PROGRESS",
                             "executedOn": "2014-09-10 09:18:27",
-                            "executedBy": "admin"
+                            "executedBy": "admin",
+                            "source": "Manual",
+                            "file": null,
+                            "messageType": null,
+                            "numberOfErrors": null,
+                            "numberOfWarnings": null,
+                            "percentageOfMandatory": null,
+                            "percentageOfOptional": null
                         }
                     ],
                     "allowedActions": [
