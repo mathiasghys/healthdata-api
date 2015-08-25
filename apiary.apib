@@ -1868,6 +1868,34 @@ Execute an action on the Workflow with this 'ID'.
                     ]
                 }
 
+## Workflow - Download [/workflows/download/{datacollectiondefinitionid}]
+
+### GET
+
++ Parameters
+    + datacollectiondefinitionid (required, long, `"1"`) ... The dataCollectionDefinitionId that you want do download all the workflows from.
+
++ Request (application/octet-stream)
+    
+    + Headers
+    
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
++ Response 200
+
+    + Headers
+
+            Content-Disposition: "attachment; filename="download.csv""
+
+    + Body
+    
+            favourite_color;patient_id;patient_id|date_of_birth;patient_id|deceased;patient_id|first_name;patient_id|name;patient_id|place_of_residence;patient_id|sex
+            ;19851011MEROM;11/10/1985;;Robin;Merckx;;M
+            ;19851011MEROM;11/10/1985;;Robin;Merckx;;M
+            ;19851011MEROM;11/10/1985;;Robin;Merckx;;M
+
+
+
 # Group Patient API
 Add partient informatin from the National Register.
 
