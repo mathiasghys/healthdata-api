@@ -1269,6 +1269,25 @@ Create a new Workflow
                 "dataCollectionDefinitionUri": "http://test.healthdata.be:80/healthdata_catalogue/datacollectiondefinitions/3"
             }
 
+### Delete workflows [DELETE]
+Delete a list of workflows 
++ Request
+    
+    + Headers
+    
+            Content-Type: application/json
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
+    + Body
+        
+            [
+                1,
+                2,
+                3
+            ]
+
++ Response 204
+
 ### Workflow - ID [/workflows/{id}]
 
 + Parameters
