@@ -187,6 +187,7 @@ The DataCollectionDefinition resource has the following attributes:
 - dataCollectionName
 - description
 - version
+- published
 - createdOn
 - startDate
 - endDateCreation
@@ -212,6 +213,7 @@ The states *id* and *created_on* are assigned by the Collections API at the mome
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
                 "version": "1",
+                "published": "true",
                 "createdOn": "2015-04-03T16:01:12Z",
                 "startDate": "2014-01-01T00:00:00Z",
                 "endDateCreation": null,
@@ -225,6 +227,30 @@ This API call will GET you the Datacollection definition with the provided ID.
     
 + Response 200
     [Datacollection Definition - ID][]
+
+## Datacollection Definition - Latest [/datacollectiondefinitions/latest/{name}]
+
+### GET
+This API call will GET you the Datacollection definition with the provided name and version.
++ Parameters
+    + name (required, string, `"register 1"`) ... `name` of the DataCollectionDefinition. Has example value.
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "id": 1,
+                "dataCollectionName": "TEST",
+                "description": "TEST Data Collection",
+                "version": "2",
+                "published": "false",
+                "createdOn": "2015-04-03T16:01:12Z",
+                "startDate": "2014-01-01T00:00:00Z",
+                "endDateCreation": null,
+                "endDateSubmission": null,
+                "endDateComments": null,
+                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+            }
 
 ## Datacollection Definition - Name & Version [/datacollectiondefinitions/{name}/{version}]
 
@@ -242,6 +268,7 @@ This API call will GET you the Datacollection definition with the provided name 
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
                 "version": "1",
+                "published": "true",
                 "createdOn": "2015-04-03T16:01:12Z",
                 "startDate": "2014-01-01T00:00:00Z",
                 "endDateCreation": null,
@@ -267,6 +294,7 @@ Add a new instance to the Datacollection Definition to the database. Only access
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
                 "version": "1",
+                "published": "true",
                 "startDate": "2014-01-01T00:00:00Z",
                 "endDateCreation": null,
                 "endDateSubmission": null,
@@ -283,6 +311,7 @@ Add a new instance to the Datacollection Definition to the database. Only access
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
                 "version": "1",
+                "published": "true",
                 "createdOn": "2015-04-03T16:01:12Z",
                 "startDate": "2014-01-01T00:00:00Z",
                 "endDateCreation": null,
@@ -291,7 +320,7 @@ Add a new instance to the Datacollection Definition to the database. Only access
                 "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
             }
 
-## Datacollection Definition - QueryString parameters [/datacollectiondefinitions{?identificationType,identificationValue,dataCollectionName,validForCreation,validForSubmission,validForComments,description,Range}]
+## Datacollection Definition - QueryString parameters [/datacollectiondefinitions{?identificationType,identificationValue,dataCollectionName,version,published,validForCreation,validForSubmission,validForComments,description,Range}]
 
 List all existing Datacollections that match the given QueryString parameters.
  
@@ -300,6 +329,8 @@ List all existing Datacollections that match the given QueryString parameters.
     + identificationType (required, string, `"NIHII"`) ... the `IdentificationType` of the hd4dp user.
     + identificationValue (required, string, `"123456"`) ... the `IdentificationValue` of the hd4dp user.
     + dataCollectionName (optional, string, `"register 1"`) ... `name` of the DataCollectionDefinition.
+    + version (optional, string, `"1"`) ... `version` of the DataCollectionDefinition
+    + published (optional, boolean, `"true"`) ... `published` flag of the DataCollectionDefinition
     + validForCreation (optional, string, `"11/10/1985"`) ... Date  on which the DataCollectionDefinition must be valid for creation.
     + validForSubmission (optional, string, `"11/10/1985"`) ... Date  on which the DataCollectionDefinition must be valid for submission.
     + validForComments (optional, string, `"11/10/1985"`) ... Date  on which the DataCollectionDefinition must be valid for comments.
@@ -322,6 +353,7 @@ List all existing Datacollections that match the given QueryString parameters.
                     "dataCollectionName": "TEST",
                     "description": "TEST Data Collection",
                     "version": "1",
+                    "published" : "true",
                     "createdOn": "2015-04-03T16:01:12Z",
                     "startDate": "2014-01-01T00:00:00Z",
                     "endDateCreation": null,
@@ -334,6 +366,7 @@ List all existing Datacollections that match the given QueryString parameters.
                     "dataCollectionName": "TEST2",
                     "description": "TEST2 Data Collection",
                     "version": "1",
+                    "published" : "true",
                     "createdOn": "2015-04-03T16:01:12Z",
                     "startDate": "2014-01-01T00:00:00Z",
                     "endDateCreation": null,
@@ -366,6 +399,7 @@ List all existing Datacollections that match the given QueryString parameters.
                     "dataCollectionName": "TEST",
                     "description": "TEST Data Collection",
                     "version": "1",
+                    "published": "true",
                     "createdOn": "2015-04-03T16:01:12Z",
                     "startDate": "2014-01-01T00:00:00Z",
                     "endDateCreation": null,
