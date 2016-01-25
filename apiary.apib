@@ -1987,3 +1987,15 @@ This API call will GET you the patient information enriched by the National Regi
 + Response 200
 
     [Patient - QueryString][]
+    
+# Group Status Messages API
+## Retrieving messages [/statusmessages?createdOn=2015-04-05T12:00:00+01:00]
+This API allows to retrieve the last status message received for each organization.
++ Parameters
+    + createdOn (optional, string, `"2015-04-05T12:00:00+01:00"`) ... Creation date (format: yyyy-MM-dd'T'HH:mm:ssXXX).
+
+### GET
+
+## Sending messages [/statusmessages/send]
+This API allows to manually send status messages
+### POST
