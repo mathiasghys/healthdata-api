@@ -176,6 +176,27 @@ This API call will GET you the Configuration for access to the datareference of 
                 "pathname": "/healthdata_catalogue/dataReference"
             }
 
+# Group Datacollection Definition API v2
+DataCollectionDefinitions-related resources of the **HealthData API**
+
+A single DataCollectionDefinition object with all its details
+
+The DataCollectionDefinition resource has the following attributes:
+
+- id
+- dataCollectionName
+- description
+- version
+- published
+- createdOn
+- startDate
+- endDateCreation
+- endDateSubmission
+- endDateComments
+- content
+
+The states *id* and *created_on* are assigned by the Collections API at the moment of creation.
+
 # Group Datacollection Definition API
 DataCollectionDefinitions-related resources of the **HealthData API**
 
@@ -196,6 +217,133 @@ The DataCollectionDefinition resource has the following attributes:
 - content
 
 The states *id* and *created_on* are assigned by the Collections API at the moment of creation.
+
+## Datacollection Definitions [/datacollectiondefinitions/manager]
+
++ Parameters
+
++ Model (application/json)
+
+    JSON representation of all DataCollectionDefinition resources. 
+
+    + Body
+        [
+            {
+                "id": 1,
+                "dataCollectionName": "TEST",
+                "description": "TEST Data Collection",
+                "version"  {
+                        "major": 1,
+                        "minor": 1
+                },
+                "published": "true",
+                "createdOn": "2016-02-01T16:00:00Z",
+                "startDate": "2016-02-01T00:00:00Z",
+                "endDateCreation": null,
+                "endDateSubmission": null,
+                "endDateComments": null,
+                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+            },
+            {
+                "id": 2,
+                "dataCollectionName": "ABUH",
+                "description": "ABUH Data Collection",
+                "version"  {
+                        "major": 1,
+                        "minor": 1
+                },
+                "published": "true",
+                "createdOn": "2016-02-01T16:00:00Z",
+                "startDate": "2016-02-01T00:00:00Z",
+                "endDateCreation": null,
+                "endDateSubmission": null,
+                "endDateComments": null,
+                "content": "{\"label\": \"ABUH\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+            },
+
+### GET
+This API call will GET you all the Datacollection definitions.
+    
++ Response 200
+    [Datacollection Definitions][]
+
+### POST
+Add a new instance to the Datacollection Definition to the database. Only accessible for an ADMIN user
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
+    + Body
+    
+            {
+                "dataCollectionName": "TEST",
+                "description": "TEST Data Collection",
+                "version"  {
+                        "major": 1,
+                        "minor": 1
+                },
+                "published": "true",
+                "startDate": "2014-01-01T00:00:00Z",
+                "endDateCreation": null,
+                "endDateSubmission": null,
+                "endDateComments": null,
+                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+            } 
+        
+            
++ Response 200 (application/json)
+    + Body
+
+            {
+                "id": 1,
+                "dataCollectionName": "TEST",
+                "description": "TEST Data Collection",
+                "version"  {
+                        "major": 1,
+                        "minor": 1
+                },
+                "published": "true",
+                "createdOn": "2015-04-03T16:01:12Z",
+                "startDate": "2014-01-01T00:00:00Z",
+                "endDateCreation": null,
+                "endDateSubmission": null,
+                "endDateComments": null,
+                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+            }
+
+
+
+
+
+
+
+
+## Datacollection Definition - Latest [/datacollectiondefinitions/latest/{name}]
+
+### GET
+This API call will GET you the Datacollection definition with the provided name and version.
++ Parameters
+    + name (required, string, `"register 1"`) ... `name` of the DataCollectionDefinition. Has example value.
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "id": 1,
+                "dataCollectionName": "TEST",
+                "description": "TEST Data Collection",
+                "version": "2",
+                "published": "false",
+                "createdOn": "2015-04-03T16:01:12Z",
+                "startDate": "2014-01-01T00:00:00Z",
+                "endDateCreation": null,
+                "endDateSubmission": null,
+                "endDateComments": null,
+                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+            }
 
 ## Datacollection Definition - ID [/datacollectiondefinitions/{id}]
 
@@ -224,6 +372,12 @@ The states *id* and *created_on* are assigned by the Collections API at the mome
 
 ### GET
 This API call will GET you the Datacollection definition with the provided ID.
+    
++ Response 200
+    [Datacollection Definition - ID][]
+
+### Post
+This API call creates you the defined Datacollection definition with the provided ID.
     
 + Response 200
     [Datacollection Definition - ID][]
