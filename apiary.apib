@@ -187,6 +187,7 @@ The DataCollectionDefinition resource has the following attributes:
 - dataCollectionName
 - description
 - version
+- history
 - published
 - createdOn
 - startDate
@@ -195,7 +196,7 @@ The DataCollectionDefinition resource has the following attributes:
 - endDateComments
 - content
 
-The states *id* and *created_on* are assigned by the Collections API at the moment of creation.
+The states *id* and *created_on* are assigned by the Datacollection definition API at the moment of creation.
 
 ## Datacollection Definitions [/datacollectiondefinitions/manager]
 
@@ -204,163 +205,165 @@ The states *id* and *created_on* are assigned by the Collections API at the mome
     JSON representation of all DataCollectionDefinition resources. 
 
     + Body
-        [
-            {
-                "id": 1,
-                "dataCollectionName": "TEST",
-                "description": "TEST Data Collection",
-                "version":  {
-                        "major": 1,
-                        "minor": 1
+    
+            [
+                {
+                    "id": 1,
+                    "dataCollectionName": "TEST",
+                    "description": "TEST Data Collection",
+                    "version":  {
+                            "major": 1,
+                            "minor": 1
+                    },
+                    "published": "true",
+                    "createdOn": "2016-02-01T16:00:00Z",
+                    "startDate": "2016-02-01T00:00:00Z",
+                    "endDateCreation": null,
+                    "endDateSubmission": null,
+                    "endDateComments": null,
+                    "content": {
+                        "label": "TEST",
+                        "fields": [
+                            {
+                                "label": "Favourite color",
+                                "name": "favourite_color",
+                                "type": "text",
+                                "required": true
+                            },
+                            {
+                                "label": "Patient ID",
+                                "name": "patient_id",
+                                "type": "patientID",
+                                "required": true,
+                                "keep": true,
+                                "inputsize": 12,
+                                "fields": [
+                                    {
+                                        "label": "Name",
+                                        "name": "name",
+                                        "required": "noSSIN",
+                                        "keep": false
+                                    },
+                                    {
+                                        "label": "First Name",
+                                        "name": "first_name",
+                                        "required": "noSSIN",
+                                        "keep": false
+                                    },
+                                    {
+                                        "label": "Date of birth",
+                                        "name": "date_of_birth",
+                                        "required": "noSSIN",
+                                        "keep": true
+                                    },
+                                    {
+                                        "label": "Sex",
+                                        "name": "sex",
+                                        "required": "noSSIN",
+                                        "keep": true
+                                    },
+                                    {
+                                        "label": "Place of residence",
+                                        "name": "place_of_residence",
+                                        "required": false,
+                                        "keep": true
+                                    },
+                                    {
+                                        "label": "Deceased?",
+                                        "name": "deceased",
+                                        "required": false,
+                                        "keep": true
+                                    },
+                                    {
+                                        "label": "Date of death",
+                                        "name": "date_of_death",
+                                        "required": false,
+                                        "keep": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 },
-                "published": "true",
-                "createdOn": "2016-02-01T16:00:00Z",
-                "startDate": "2016-02-01T00:00:00Z",
-                "endDateCreation": null,
-                "endDateSubmission": null,
-                "endDateComments": null,
-                "content": {
-                    "label": "TEST",
-                    "fields": [
-                        {
-                            "label": "Favourite color",
-                            "name": "favourite_color",
-                            "type": "text",
-                            "required": true
-                        },
-                        {
-                            "label": "Patient ID",
-                            "name": "patient_id",
-                            "type": "patientID",
-                            "required": true,
-                            "keep": true,
-                            "inputsize": 12,
-                            "fields": [
-                                {
-                                    "label": "Name",
-                                    "name": "name",
-                                    "required": "noSSIN",
-                                    "keep": false
-                                },
-                                {
-                                    "label": "First Name",
-                                    "name": "first_name",
-                                    "required": "noSSIN",
-                                    "keep": false
-                                },
-                                {
-                                    "label": "Date of birth",
-                                    "name": "date_of_birth",
-                                    "required": "noSSIN",
-                                    "keep": true
-                                },
-                                {
-                                    "label": "Sex",
-                                    "name": "sex",
-                                    "required": "noSSIN",
-                                    "keep": true
-                                },
-                                {
-                                    "label": "Place of residence",
-                                    "name": "place_of_residence",
-                                    "required": false,
-                                    "keep": true
-                                },
-                                {
-                                    "label": "Deceased?",
-                                    "name": "deceased",
-                                    "required": false,
-                                    "keep": true
-                                },
-                                {
-                                    "label": "Date of death",
-                                    "name": "date_of_death",
-                                    "required": false,
-                                    "keep": true
-                                }
-                            ]
-                        }
-                    ]
+                {
+                    "id": 2,
+                    "dataCollectionName": "ABUH",
+                    "description": "ABUH Data Collection",
+                    "version":  {
+                            "major": 1,
+                            "minor": 1
+                    },
+                    "published": "true",
+                    "createdOn": "2016-02-01T16:00:00Z",
+                    "startDate": "2016-02-01T00:00:00Z",
+                    "endDateCreation": null,
+                    "endDateSubmission": null,
+                    "endDateComments": null,
+                    "content": {
+                        "label": "ABUH",
+                        "fields": [
+                            {
+                                "label": "Favourite color",
+                                "name": "favourite_color",
+                                "type": "text",
+                                "required": true
+                            },
+                            {
+                                "label": "Patient ID",
+                                "name": "patient_id",
+                                "type": "patientID",
+                                "required": true,
+                                "keep": true,
+                                "inputsize": 12,
+                                "fields": [
+                                    {
+                                        "label": "Name",
+                                        "name": "name",
+                                        "required": "noSSIN",
+                                        "keep": false
+                                    },
+                                    {
+                                        "label": "First Name",
+                                        "name": "first_name",
+                                        "required": "noSSIN",
+                                        "keep": false
+                                    },
+                                    {
+                                        "label": "Date of birth",
+                                        "name": "date_of_birth",
+                                        "required": "noSSIN",
+                                        "keep": true
+                                    },
+                                    {
+                                        "label": "Sex",
+                                        "name": "sex",
+                                        "required": "noSSIN",
+                                        "keep": true
+                                    },
+                                    {
+                                        "label": "Place of residence",
+                                        "name": "place_of_residence",
+                                        "required": false,
+                                        "keep": true
+                                    },
+                                    {
+                                        "label": "Deceased?",
+                                        "name": "deceased",
+                                        "required": false,
+                                        "keep": true
+                                    },
+                                    {
+                                        "label": "Date of death",
+                                        "name": "date_of_death",
+                                        "required": false,
+                                        "keep": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 }
-            },
-            {
-                "id": 2,
-                "dataCollectionName": "ABUH",
-                "description": "ABUH Data Collection",
-                "version":  {
-                        "major": 1,
-                        "minor": 1
-                },
-                "published": "true",
-                "createdOn": "2016-02-01T16:00:00Z",
-                "startDate": "2016-02-01T00:00:00Z",
-                "endDateCreation": null,
-                "endDateSubmission": null,
-                "endDateComments": null,
-                "content": {
-                    "label": "ABUH",
-                    "fields": [
-                        {
-                            "label": "Favourite color",
-                            "name": "favourite_color",
-                            "type": "text",
-                            "required": true
-                        },
-                        {
-                            "label": "Patient ID",
-                            "name": "patient_id",
-                            "type": "patientID",
-                            "required": true,
-                            "keep": true,
-                            "inputsize": 12,
-                            "fields": [
-                                {
-                                    "label": "Name",
-                                    "name": "name",
-                                    "required": "noSSIN",
-                                    "keep": false
-                                },
-                                {
-                                    "label": "First Name",
-                                    "name": "first_name",
-                                    "required": "noSSIN",
-                                    "keep": false
-                                },
-                                {
-                                    "label": "Date of birth",
-                                    "name": "date_of_birth",
-                                    "required": "noSSIN",
-                                    "keep": true
-                                },
-                                {
-                                    "label": "Sex",
-                                    "name": "sex",
-                                    "required": "noSSIN",
-                                    "keep": true
-                                },
-                                {
-                                    "label": "Place of residence",
-                                    "name": "place_of_residence",
-                                    "required": false,
-                                    "keep": true
-                                },
-                                {
-                                    "label": "Deceased?",
-                                    "name": "deceased",
-                                    "required": false,
-                                    "keep": true
-                                },
-                                {
-                                    "label": "Date of death",
-                                    "name": "date_of_death",
-                                    "required": false,
-                                    "keep": true
-                                }
-                            ]
-                        }
-                    ]
-                }
-            },
+            ]
 
 ### GET
 This API call will GET you all the Datacollection definitions.
