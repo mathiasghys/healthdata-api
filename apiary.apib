@@ -209,7 +209,7 @@ The states *id* and *created_on* are assigned by the Collections API at the mome
                 "id": 1,
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
-                "version"  {
+                "version":  {
                         "major": 1,
                         "minor": 1
                 },
@@ -219,13 +219,75 @@ The states *id* and *created_on* are assigned by the Collections API at the mome
                 "endDateCreation": null,
                 "endDateSubmission": null,
                 "endDateComments": null,
-                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                "content": {
+                    "label": "TEST",
+                    "fields": [
+                        {
+                            "label": "Favourite color",
+                            "name": "favourite_color",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "label": "Patient ID",
+                            "name": "patient_id",
+                            "type": "patientID",
+                            "required": true,
+                            "keep": true,
+                            "inputsize": 12,
+                            "fields": [
+                                {
+                                    "label": "Name",
+                                    "name": "name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "First Name",
+                                    "name": "first_name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "Date of birth",
+                                    "name": "date_of_birth",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Sex",
+                                    "name": "sex",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Place of residence",
+                                    "name": "place_of_residence",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Deceased?",
+                                    "name": "deceased",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Date of death",
+                                    "name": "date_of_death",
+                                    "required": false,
+                                    "keep": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             },
             {
                 "id": 2,
                 "dataCollectionName": "ABUH",
                 "description": "ABUH Data Collection",
-                "version"  {
+                "version":  {
                         "major": 1,
                         "minor": 1
                 },
@@ -235,7 +297,69 @@ The states *id* and *created_on* are assigned by the Collections API at the mome
                 "endDateCreation": null,
                 "endDateSubmission": null,
                 "endDateComments": null,
-                "content": "{\"label\": \"ABUH\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                "content": {
+                    "label": "ABUH",
+                    "fields": [
+                        {
+                            "label": "Favourite color",
+                            "name": "favourite_color",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "label": "Patient ID",
+                            "name": "patient_id",
+                            "type": "patientID",
+                            "required": true,
+                            "keep": true,
+                            "inputsize": 12,
+                            "fields": [
+                                {
+                                    "label": "Name",
+                                    "name": "name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "First Name",
+                                    "name": "first_name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "Date of birth",
+                                    "name": "date_of_birth",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Sex",
+                                    "name": "sex",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Place of residence",
+                                    "name": "place_of_residence",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Deceased?",
+                                    "name": "deceased",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Date of death",
+                                    "name": "date_of_death",
+                                    "required": false,
+                                    "keep": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             },
 
 ### GET
@@ -258,7 +382,7 @@ Add a new instance to the Datacollection Definition to the database. Only access
             {
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
-                "version"  {
+                "version":  {
                         "major": 1,
                         "minor": 1
                 },
@@ -267,7 +391,69 @@ Add a new instance to the Datacollection Definition to the database. Only access
                 "endDateCreation": null,
                 "endDateSubmission": null,
                 "endDateComments": null,
-                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                "content": {
+                    "label": "TEST",
+                    "fields": [
+                        {
+                            "label": "Favourite color",
+                            "name": "favourite_color",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "label": "Patient ID",
+                            "name": "patient_id",
+                            "type": "patientID",
+                            "required": true,
+                            "keep": true,
+                            "inputsize": 12,
+                            "fields": [
+                                {
+                                    "label": "Name",
+                                    "name": "name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "First Name",
+                                    "name": "first_name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "Date of birth",
+                                    "name": "date_of_birth",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Sex",
+                                    "name": "sex",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Place of residence",
+                                    "name": "place_of_residence",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Deceased?",
+                                    "name": "deceased",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Date of death",
+                                    "name": "date_of_death",
+                                    "required": false,
+                                    "keep": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             } 
         
             
@@ -278,17 +464,149 @@ Add a new instance to the Datacollection Definition to the database. Only access
                 "id": 1,
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
-                "version"  {
+                "version":  {
                         "major": 1,
                         "minor": 1
                 },
+                "history":  [
+                    {
+                        "id": 1,
+                        "createdOn" : "2016-02-01T00:00:00Z",
+                        "content": {
+                            "label": "TEST",
+                            "fields": [
+                                {
+                                    "label": "Favourite color",
+                                    "name": "favourite_color",
+                                    "type": "text",
+                                    "required": true
+                                },
+                                {
+                                    "label": "Patient ID",
+                                    "name": "patient_id",
+                                    "type": "patientID",
+                                    "required": true,
+                                    "keep": true,
+                                    "inputsize": 12,
+                                    "fields": [
+                                        {
+                                            "label": "Name",
+                                            "name": "name",
+                                            "required": "noSSIN",
+                                            "keep": false
+                                        },
+                                        {
+                                            "label": "First Name",
+                                            "name": "first_name",
+                                            "required": "noSSIN",
+                                            "keep": false
+                                        },
+                                        {
+                                            "label": "Date of birth",
+                                            "name": "date_of_birth",
+                                            "required": "noSSIN",
+                                            "keep": true
+                                        },
+                                        {
+                                            "label": "Sex",
+                                            "name": "sex",
+                                            "required": "noSSIN",
+                                            "keep": true
+                                        },
+                                        {
+                                            "label": "Place of residence",
+                                            "name": "place_of_residence",
+                                            "required": false,
+                                            "keep": true
+                                        },
+                                        {
+                                            "label": "Deceased?",
+                                            "name": "deceased",
+                                            "required": false,
+                                            "keep": true
+                                        },
+                                        {
+                                            "label": "Date of death",
+                                            "name": "date_of_death",
+                                            "required": false,
+                                            "keep": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "username": "Mathias Ghys"
+                    }
+                ],
                 "published": "true",
                 "createdOn": "2016-02-01T00:00:00Z",
                 "startDate": "2016-02-01T00:00:00Z",
                 "endDateCreation": null,
                 "endDateSubmission": null,
                 "endDateComments": null,
-                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                "content": {
+                    "label": "TEST",
+                    "fields": [
+                        {
+                            "label": "Favourite color",
+                            "name": "favourite_color",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "label": "Patient ID",
+                            "name": "patient_id",
+                            "type": "patientID",
+                            "required": true,
+                            "keep": true,
+                            "inputsize": 12,
+                            "fields": [
+                                {
+                                    "label": "Name",
+                                    "name": "name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "First Name",
+                                    "name": "first_name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "Date of birth",
+                                    "name": "date_of_birth",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Sex",
+                                    "name": "sex",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Place of residence",
+                                    "name": "place_of_residence",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Deceased?",
+                                    "name": "deceased",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Date of death",
+                                    "name": "date_of_death",
+                                    "required": false,
+                                    "keep": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
 
 ## Datacollection Definitions Id [/datacollectiondefinitions/manager/{id}]
@@ -306,7 +624,7 @@ Add a new instance to the Datacollection Definition to the database. Only access
                 "id": 1,
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
-                "version"  {
+                "version":  {
                         "major": 1,
                         "minor": 1
                 },
@@ -316,7 +634,69 @@ Add a new instance to the Datacollection Definition to the database. Only access
                 "endDateCreation": null,
                 "endDateSubmission": null,
                 "endDateComments": null,
-                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                "content": {
+                    "label": "TEST",
+                    "fields": [
+                        {
+                            "label": "Favourite color",
+                            "name": "favourite_color",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "label": "Patient ID",
+                            "name": "patient_id",
+                            "type": "patientID",
+                            "required": true,
+                            "keep": true,
+                            "inputsize": 12,
+                            "fields": [
+                                {
+                                    "label": "Name",
+                                    "name": "name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "First Name",
+                                    "name": "first_name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "Date of birth",
+                                    "name": "date_of_birth",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Sex",
+                                    "name": "sex",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Place of residence",
+                                    "name": "place_of_residence",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Deceased?",
+                                    "name": "deceased",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Date of death",
+                                    "name": "date_of_death",
+                                    "required": false,
+                                    "keep": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
 
 ### GET
@@ -340,7 +720,7 @@ This API call will update the Datacollection definition with the provided ID.
                 "id": 1,
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
-                "version"  {
+                "version":  {
                         "major": 1,
                         "minor": 2
                 },
@@ -350,7 +730,69 @@ This API call will update the Datacollection definition with the provided ID.
                 "endDateCreation": null,
                 "endDateSubmission": null,
                 "endDateComments": null,
-                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                "content": {
+                    "label": "TEST",
+                    "fields": [
+                        {
+                            "label": "Favourite color",
+                            "name": "favourite_color",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "label": "Patient ID",
+                            "name": "patient_id",
+                            "type": "patientID",
+                            "required": true,
+                            "keep": true,
+                            "inputsize": 12,
+                            "fields": [
+                                {
+                                    "label": "Name",
+                                    "name": "name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "First Name",
+                                    "name": "first_name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "Date of birth",
+                                    "name": "date_of_birth",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Sex",
+                                    "name": "sex",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Place of residence",
+                                    "name": "place_of_residence",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Deceased?",
+                                    "name": "deceased",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Date of death",
+                                    "name": "date_of_death",
+                                    "required": false,
+                                    "keep": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             } 
         
             
@@ -361,7 +803,7 @@ This API call will update the Datacollection definition with the provided ID.
                 "id": 1,
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
-                "version"  {
+                "version":  {
                         "major": 1,
                         "minor": 2
                 },
@@ -371,7 +813,69 @@ This API call will update the Datacollection definition with the provided ID.
                 "endDateCreation": null,
                 "endDateSubmission": null,
                 "endDateComments": null,
-                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                "content": {
+                    "label": "TEST",
+                    "fields": [
+                        {
+                            "label": "Favourite color",
+                            "name": "favourite_color",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "label": "Patient ID",
+                            "name": "patient_id",
+                            "type": "patientID",
+                            "required": true,
+                            "keep": true,
+                            "inputsize": 12,
+                            "fields": [
+                                {
+                                    "label": "Name",
+                                    "name": "name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "First Name",
+                                    "name": "first_name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "Date of birth",
+                                    "name": "date_of_birth",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Sex",
+                                    "name": "sex",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Place of residence",
+                                    "name": "place_of_residence",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Deceased?",
+                                    "name": "deceased",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Date of death",
+                                    "name": "date_of_death",
+                                    "required": false,
+                                    "keep": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
 
 ## Datacollection Definition Id history [/datacollectiondefinitions/manager/{id}/history]
@@ -397,18 +901,149 @@ Add a history item for a dcd with specified id.
                 "id": 1,
                 "dataCollectionName": "TEST",
                 "description": "TEST Data Collection",
-                "version"  {
+                "version":  {
                         "major": 1,
                         "minor": 1
                 },
-                "history": 
+                "history":  [
+                    {
+                        "id": 1,
+                        "createdOn" : "2016-02-01T00:00:00Z",
+                        "content": {
+                            "label": "TEST",
+                            "fields": [
+                                {
+                                    "label": "Favourite color",
+                                    "name": "favourite_color",
+                                    "type": "text",
+                                    "required": true
+                                },
+                                {
+                                    "label": "Patient ID",
+                                    "name": "patient_id",
+                                    "type": "patientID",
+                                    "required": true,
+                                    "keep": true,
+                                    "inputsize": 12,
+                                    "fields": [
+                                        {
+                                            "label": "Name",
+                                            "name": "name",
+                                            "required": "noSSIN",
+                                            "keep": false
+                                        },
+                                        {
+                                            "label": "First Name",
+                                            "name": "first_name",
+                                            "required": "noSSIN",
+                                            "keep": false
+                                        },
+                                        {
+                                            "label": "Date of birth",
+                                            "name": "date_of_birth",
+                                            "required": "noSSIN",
+                                            "keep": true
+                                        },
+                                        {
+                                            "label": "Sex",
+                                            "name": "sex",
+                                            "required": "noSSIN",
+                                            "keep": true
+                                        },
+                                        {
+                                            "label": "Place of residence",
+                                            "name": "place_of_residence",
+                                            "required": false,
+                                            "keep": true
+                                        },
+                                        {
+                                            "label": "Deceased?",
+                                            "name": "deceased",
+                                            "required": false,
+                                            "keep": true
+                                        },
+                                        {
+                                            "label": "Date of death",
+                                            "name": "date_of_death",
+                                            "required": false,
+                                            "keep": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        "username": "Mathias Ghys"
+                    }
+                ],
                 "published": "true",
                 "createdOn": "2016-02-01T00:00:00Z",
                 "startDate": "2016-02-01T00:00:00Z",
                 "endDateCreation": null,
                 "endDateSubmission": null,
                 "endDateComments": null,
-                "content": "{\"label\": \"TEST\",\"fields\": [{\"label\": \"Favourite color\",\"name\": \"favourite_color\",\"type\": \"text\",\"required\": true},        {            \"label\": \"Patient ID\",            \"name\": \"patient_id\",            \"type\": \"patientID\",            \"required\": true,            \"keep\": true,            \"inputsize\": 12,            \"fields\": [                {                    \"label\": \"Name\",                    \"name\": \"name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"First Name\",                    \"name\": \"first_name\",                    \"required\": \"noSSIN\",                    \"keep\": false                },                {                    \"label\": \"Date of birth\",                    \"name\": \"date_of_birth\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Sex\",                    \"name\": \"sex\",                    \"required\": \"noSSIN\",                    \"keep\": true                },                {                    \"label\": \"Place of residence\",                    \"name\": \"place_of_residence\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Deceased?\",                    \"name\": \"deceased\",                    \"required\": false,                    \"keep\": true                },                {                    \"label\": \"Date of death\",                    \"name\": \"date_of_death\",                    \"required\": false,                    \"keep\": true                }            ]        }]}"
+                "content": {
+                    "label": "TEST",
+                    "fields": [
+                        {
+                            "label": "Favourite color",
+                            "name": "favourite_color",
+                            "type": "text",
+                            "required": true
+                        },
+                        {
+                            "label": "Patient ID",
+                            "name": "patient_id",
+                            "type": "patientID",
+                            "required": true,
+                            "keep": true,
+                            "inputsize": 12,
+                            "fields": [
+                                {
+                                    "label": "Name",
+                                    "name": "name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "First Name",
+                                    "name": "first_name",
+                                    "required": "noSSIN",
+                                    "keep": false
+                                },
+                                {
+                                    "label": "Date of birth",
+                                    "name": "date_of_birth",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Sex",
+                                    "name": "sex",
+                                    "required": "noSSIN",
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Place of residence",
+                                    "name": "place_of_residence",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Deceased?",
+                                    "name": "deceased",
+                                    "required": false,
+                                    "keep": true
+                                },
+                                {
+                                    "label": "Date of death",
+                                    "name": "date_of_death",
+                                    "required": false,
+                                    "keep": true
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
 
 ### GET
