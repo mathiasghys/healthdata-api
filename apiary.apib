@@ -2491,6 +2491,107 @@ Retrieves all the user data of the logged in user without the password property.
                     }
                 ]
             }
+            
+# Group User Configurations API
+API for the management of user configurations in Healthdata.
+
+The user configuration domain object has the following attributes:
+
+- id
+- key
+- type
+- value
+- defaultValue
+- description
+
+## Get User Configurations [/users/configurations]
+
+### GET
+Return the list of configurations for a user.
+
++ Request (application/json)
+
+    + Headers
+    
+        Authorization: "Bearer <user token>"
+        
++ Response 200 (application/json)
+        
+    + Body
+    
+        [
+          {
+            "id": 27,
+            "key": "LOWER_BOUND_FOR_IMMEDIATE_NOTIFICATION",
+            "value": "10",
+            "defaultValue": "10",
+            "type": "INTEGER",
+            "description": "Minimal number of new registrations for triggering immediate notification"
+          },
+          {
+            "id": 28,
+            "key": "NEW_REGISTRATION_PERIOD",
+            "value": "1d",
+            "defaultValue": "1",
+            "type": "INTEGER",
+            "description": "Period during which a registration is considered new"
+          },
+          {
+            "id": 29,
+            "key": "OLD_REGISTRATION_PERIOD",
+            "value": "1d",
+            "defaultValue": "5",
+            "type": "INTEGER",
+            "description": "Period after which a registration is considered old"
+          },
+          {
+            "id": 30,
+            "key": "REMINDERS_FREQUENCY",
+            "value": "5m",
+            "defaultValue": "7",
+            "type": "INTEGER",
+            "description": "Frequency of notification reminders"
+          }
+        ]
+       
+## Update User Configuration [/users/configurations/{id}] 
+
+### PUT
+Updates an existing user configuration object.
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer <user token>"
+
+    + Body
+        
+            {
+                "id": 27,
+                "key": "LOWER_BOUND_FOR_IMMEDIATE_NOTIFICATION",
+                "value": "30",
+                "defaultValue": "10",
+                "type": "INTEGER",
+                "description": "Minimal number of new registrations for triggering immediate notification"
+            }
+            
++ Response 200 (application/json)
+    
+    + Body
+        
+            {
+              "id": 27,
+              "key": "LOWER_BOUND_FOR_IMMEDIATE_NOTIFICATION",
+              "value": "30",
+              "defaultValue": "10",
+              "type": "INTEGER",
+              "description": "Minimal number of new registrations for triggering immediate notification"
+            }
+
++ Response 404
+
+        No user configuration found with id 1
 
 # Group Validation API
 API used for the validation of data collection instances.
