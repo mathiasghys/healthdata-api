@@ -2187,6 +2187,69 @@ Only for admin users.
                 }
             ]
 
+# Group HD4DP User API
+
+## HD4DP User API [/hd4dpusers]
+
+### GET
+Return the list of HD4DP users. Only for ADMIN_USER. Query parameters can be provided to filter the results set.
+
++ Parameters
+    + dataCollectionName (optional, string, `"IQED"`) ... The data collection name.
+    + identificationType (optional, string, `"RIZIV"`) ... The identification type of the hospital.
+    + identificationValue (optional, string, `"11111111"`) ... The identification type of the hospital.
+    + authority (optional, string, `"ROLE_USER"`) ... The authority (Possible values: ROLE\_USER, ROLE\_ADMIN).
+
++ Request (application/json)
+    
+    + Headers
+    
+            Authorization: "Bearer d33af621-0a6e-40f7-b1f4-d4226b45bbad"
+
++ Response 200HD4DP u (application/hal+json)
+
+    + Body
+    
+        [
+            {
+                "id": 2,
+                "hd4dpId": 49,
+                "username": "john.doe",
+                "firstName": "John",
+                "lastName": "Doe",
+                "email": "john.doe@mail.com",
+                "enabled": true,
+                "ldapUser": false,
+                "healthDataIdentification": {
+                    "type": "RIZIV",
+                    "value": "11111111",
+                    "name": "Multicenter Main"
+                },
+                "authorities": [
+                    {
+                        "authority": "ROLE_USER"
+                    }
+                ],
+                "dataCollectionNames": [
+                    "BNMDR",
+                    "BCFR",
+                    "TEST UNIQUE",
+                    "IQEDFoot",
+                    "BEWSD",
+                    "CRRD",
+                    "IQED_Recode",
+                    "TEST",
+                    "IQECAD_Recode",
+                    "IQED",
+                    "IQECAD",
+                    "BCFRecode",
+                    "STI_survey"
+                ],
+                "createdOn": "2016-09-13T12:03:53+02:00",
+                "updatedOn": "2016-09-27T17:44:04+02:00"
+            }
+        ]
+
 # Group User API
 API user for the management of Users in Healthdata.
 
